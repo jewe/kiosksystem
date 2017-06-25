@@ -1,7 +1,7 @@
 
 # update aller pakete
 sudo apt-get update
-sudo apt-get dist-upgrade
+# sudo apt-get dist-upgrade
 
 # uninstall unneeded applications
 sudo apt-get remove -y firefox
