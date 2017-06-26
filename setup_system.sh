@@ -110,6 +110,12 @@ sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmp
 sudo apt-get install nodejs-legacy
 # currently 3.5.2
 sudo apt-get install npm
+# node manager
+sudo npm install -g n
+# install currently 8.1.2
+sudo n latest
+
+
 
 # platz machen
 sudo apt-get clean
