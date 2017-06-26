@@ -1,6 +1,6 @@
 
 # UNINSTALL unneeded applications
-echo "------------"
+printf "\n------------\n"
 echo "UNINSTALL unneeded applications"
 
 ## check/update with
@@ -28,14 +28,14 @@ export DISPLAY=:0.0
 
 
 # UPDATE ALL PACKAGES
-echo "------------"
+printf "\n------------\n"
 echo "UPDATE ALL PACKAGES"
 sudo apt-get update
 # sudo apt-get dist-upgrade
 
 
 # SYSTEM CONFIG
-echo "------------"
+printf "\n------------\n"
 echo "SYSTEM CONFIG"
 export DISPLAY=:0.0
 
@@ -125,7 +125,7 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 
 
 # platz machen
-echo "------------"
+printf "\n------------\n"
 echo "CLEANUP"
 sudo apt-get clean
 sudo apt-get autoremove
