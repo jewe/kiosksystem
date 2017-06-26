@@ -10,21 +10,21 @@ sudo apt-get remove -y transmission-common
 sudo apt-get remove -y ubuntu-mate-libreoffice-draw-icons
 sudo apt-get remove -y libreoffice-core
 sudo apt-get remove -y libreoffice-common
-sudo apt-get remove -y dictionaries-common
+# sudo apt-get remove -y dictionaries-common
 sudo apt-get remove -y hexchat simple-scan pidgin brasero cheese
 sudo apt-get remove -y account-plugin-facebook account-plugin-flickr deja-dup
 
 # TODO: installs instead notification-daemon ?
-sudo apt-get remove -y mate-notification-daemon 
+# sudo apt-get remove -y mate-notification-daemon 
 
 sudo apt-get remove -y mate-icon-theme-faenza
 sudo apt-get remove -y mate-screensaver 
 sudo apt-get remove -y ubuntu-mate-wallpapers ubuntu-mate-welcome
-sudo apt-get remove -y update-notifier
+# sudo apt-get remove -y update-notifier
 # mac like dock
-sudo apt-get remove -y plank
+#sudo apt-get remove -y plank
 # screenreader
-sudo apt-get remove -y gnome-orca
+# sudo apt-get remove -y gnome-orca
 
 # 
 sudo apt-get install -y openssh-server
@@ -78,8 +78,8 @@ gsettings set org.gnome.desktop.background picture-opacity 100
 gsettings set org.gnome.desktop.background show-desktop-icons false
 gsettings set org.gnome.desktop.background picture-options 'centered'
 
-# disable notifications
-gsettings set com.ubuntu.update-notifier no-show-notifications true
+# disable notifications (??? No such schema)
+# gsettings set com.ubuntu.update-notifier no-show-notifications true
 
 # disable display going to sleep
 gsettings set org.mate.power-manager sleep-display-ac 0
@@ -143,4 +143,4 @@ sudo rm /home/user/Music
 printf "\n------------\n"
 echo "CLEANUP"
 sudo apt-get clean
-sudo apt-get autoremove
+sudo apt-get -y autoremove
