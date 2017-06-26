@@ -1,14 +1,20 @@
 
 # UNINSTALL unneeded applications
+echo "------------"
+echo "UNINSTALL unneeded applications"
+
 ## check/update with
 ## apt list --installed
-sudo apt-get remove -y firefox rhythmbox samba-common seahorse thunderbird galculator plank transmission
+sudo apt-get remove -y firefox rhythmbox samba-common seahorse thunderbird galculator plank 
+# transmission
 sudo apt-get remove -y ubuntu-mate-libreoffice-draw-icons
 sudo apt-get remove -y libreoffice-core
 sudo apt-get remove -y hexchat simple-scan pidgin transmission brasero cheese
 sudo apt-get remove -y account-plugin-facebook account-plugin-flickr deja-dup
+
 # TODO: installs instead notification-daemon
 # sudo apt-get remove -y mate-notification-daemon 
+
 # sudo apt-get remove -y mate-icon-theme-faenza
 # sudo apt-get remove -y mate-screensaver 
 sudo apt-get remove -y sound-theme-freedesktop ubuntu-mate-wallpapers ubuntu-mate-welcome
@@ -21,11 +27,15 @@ export DISPLAY=:0.0
 
 
 # UPDATE ALL PACKAGES
+echo "------------"
+echo "UPDATE ALL PACKAGES"
 sudo apt-get update
 # sudo apt-get dist-upgrade
 
 
 # SYSTEM CONFIG
+echo "------------"
+echo "SYSTEM CONFIG"
 export DISPLAY=:0.0
 
 ## check/update with: 
@@ -114,5 +124,7 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 
 
 # platz machen
+echo "------------"
+echo "CLEANUP"
 sudo apt-get clean
 sudo apt-get autoremove
