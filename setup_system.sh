@@ -1,8 +1,4 @@
 
-# UPDATE ALL PACKAGES
-sudo apt-get update
-# sudo apt-get dist-upgrade
-
 # UNINSTALL unneeded applications
 ## check/update with
 ## apt list --installed
@@ -22,11 +18,18 @@ sudo apt-get remove -y cheese
 sudo apt-get remove -y rhythmbox
 
 # remove unused locals
+export DISPLAY=:0.0
 sudo apt-get install localepurge
 
 
+# UPDATE ALL PACKAGES
+sudo apt-get update
+# sudo apt-get dist-upgrade
+
 
 # SYSTEM CONFIG
+export DISPLAY=:0.0
+
 ## check/update with: 
 ## gsettings list-recursively org.mate.background
 
@@ -39,7 +42,6 @@ gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.mate.screensaver lock-enabled false
 
 # set background
-export DISPLAY=:0.0
 gsettings set org.mate.background primary-color '#555555'
 gsettings set org.mate.background secondary-color '#444444'
 gsettings set org.mate.background picture-opacity 0
@@ -99,7 +101,7 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 
 
 # create kiosk user
-sudo adduser kiosk kiosk
+sudo adduser kiosk
 # autologin
 
 
