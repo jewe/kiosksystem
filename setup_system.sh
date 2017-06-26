@@ -37,17 +37,18 @@ gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.mate.screensaver lock-enabled false
 
 # set background
-mv ./WW_Wallpaper.png /usr/share/backgrounds/
-mv ./WW_Wallpaper_HD.png /usr/share/backgrounds/
-gsettings set org.mate.background picture-filename WW_Wallpaper.png
+sudo rm -Rf /usr/share/backgrounds/*
+sudo mv ./WW_Wallpaper.png /usr/share/backgrounds/
+sudo mv ./WW_Wallpaper_HD.png /usr/share/backgrounds/
+gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper.png
 
 gsettings set org.mate.background primary-color '#555555'
 gsettings set org.mate.background secondary-color '#444444'
 gsettings set org.mate.background picture-opacity 100
 gsettings set org.mate.background show-desktop-icons false
 
-# what's the difference?
-gsettings set org.gnome.desktop.background picture-uri WW_Wallpaper.png
+# what's the difference here?
+gsettings set org.gnome.desktop.background picture-uri /usr/share/backgrounds/WW_Wallpaper.png
 
 gsettings set org.gnome.desktop.background primary-color '#555555'
 gsettings set org.gnome.desktop.background secondary-color '#444444'
