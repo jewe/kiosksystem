@@ -21,13 +21,21 @@ sudo apt-get remove -y brasero
 sudo apt-get remove -y cheese
 sudo apt-get remove -y rhythmbox
 
+# remove unused locals
+sudo apt-get install localepurge
+
+
+
 # SYSTEM CONFIG
 ## check/update with: 
 ## gsettings list-recursively org.mate.background
 
-# disable lock screen
-gsettings set org.gnome.desktop.screensaver lock-enabled false 
+# disable lock screen 
 gsettings set org.mate.lockdown disable-lock-screen true
+
+# screensaver
+gsettings set org.gnome.desktop.session idle-delay 0
+gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.mate.screensaver lock-enabled false
 
 # set background
@@ -51,10 +59,10 @@ gsettings set org.mate.power-manager sleep-display-ups 0
 # display: disable dim
 gsettings set org.mate.power-manager kbd-brightness-dim-by-on-idle 100
 
-# hide top panel (not working)
+# hide top panel (needs reboot)
 dconf write /org/mate/panel/toplevels/top/auto-hide true
 
-# hide bottom panel (ok)
+# hide bottom panel
 dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 
 # config all elements 
@@ -82,39 +90,17 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 #org.gnome.desktop.lockdown disable-print-setup false
 #org.gnome.desktop.lockdown disable-save-to-disk false
 
-# remove unused locals
-sudo apt-get install localepurge
 
-# INSTALL SOFTWARE
-
-# hide mouse
-sudo apt-get install -y unclutter
+# check and remove unneeded services
+# systemctl list-units
 
 
-sudo apt-get install -y vim
-sudo apt-get install -y curl
-sudo apt-get install -y build-essential
-sudo apt-get install -y dropbear
-sudo apt-get install -y openssh-sftp-server
-sudo apt-get install -y zram-config
-sudo apt-get install -y nano
-#sudo apt-get install -y 
-#sudo apt-get install -y 
+# readonly filesystem
 
-# chromium browser
-sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg
-# or https://www.google.com/chrome/browser/desktop/
 
-# nodejs
-# currently v4.2.6
-sudo apt-get install nodejs-legacy
-# currently 3.5.2
-sudo apt-get install npm
-# node manager
-sudo npm install -g n
-# install currently 8.1.2
-sudo n latest
-
+# create kiosk user
+sudo adduser kiosk kiosk
+# autologin
 
 
 # platz machen
