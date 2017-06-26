@@ -14,6 +14,7 @@ sudo apt-get install -y unclutter
 
 # SOFTWARE PACKAGES
 
+
 # nginx
 sudo apt-get install nginx
 
@@ -22,6 +23,16 @@ sudo apt-get install nginx
 sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg
 # or https://www.google.com/chrome/browser/desktop/
 # disable keyring window
+
+# copy start-script
+sudo mv ./opt/chrome.sh /opt/
+sudo chmod +x /opt/chrome.sh
+
+# copy service
+sudo mv ./system/chrome.service /etc/systemd/system/
+sudo systemctl enable chrome 
+
+
 
 
 # nodejs
