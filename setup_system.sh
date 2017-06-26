@@ -2,10 +2,14 @@
 # UNINSTALL unneeded applications
 ## check/update with
 ## apt list --installed
-sudo apt-get remove -y firefox rhythmbox samba-common seahorse thunderbird
+sudo apt-get remove -y firefox rhythmbox samba-common seahorse thunderbird galculator plank transmission
 sudo apt-get remove -y ubuntu-mate-libreoffice-draw-icons
 sudo apt-get remove -y libreoffice-core
 sudo apt-get remove -y hexchat simple-scan pidgin transmission brasero cheese
+sudo apt-get remove -y account-plugin-facebook account-plugin-flickr deja-dup
+sudo apt-get remove -y mate-notification-daemon mate-icon-theme-faenza
+sudo apt-get remove -y mate-screensaver sound-theme-freedesktop ubuntu-mate-lightdm-theme ubuntu-mate-wallpapers ubuntu-mate-welcome
+sudo apt-get remove -y update-notifier
 
 
 # remove unused locals
@@ -33,15 +37,21 @@ gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.mate.screensaver lock-enabled false
 
 # set background
+mv ./WW_Wallpaper.png /usr/share/backgrounds/
+mv ./WW_Wallpaper_HD.png /usr/share/backgrounds/
+gsettings set org.mate.background picture-filename WW_Wallpaper.png
+
 gsettings set org.mate.background primary-color '#555555'
 gsettings set org.mate.background secondary-color '#444444'
-gsettings set org.mate.background picture-opacity 0
+gsettings set org.mate.background picture-opacity 100
 gsettings set org.mate.background show-desktop-icons false
 
 # what's the difference?
+gsettings set org.gnome.desktop.background picture-uri WW_Wallpaper.png
+
 gsettings set org.gnome.desktop.background primary-color '#555555'
 gsettings set org.gnome.desktop.background secondary-color '#444444'
-gsettings set org.gnome.desktop.background picture-opacity 0
+gsettings set org.gnome.desktop.background picture-opacity 100
 gsettings set org.gnome.desktop.background show-desktop-icons false
 
 
