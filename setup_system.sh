@@ -39,7 +39,10 @@ gsettings set org.mate.background picture-opacity 0
 gsettings set org.mate.background show-desktop-icons false
 
 # what's the difference?
-# org.gnome.desktop.background picture-opacity 0
+gsettings set org.gnome.desktop.background primary-color '#555555'
+gsettings set org.gnome.desktop.background secondary-color '#444444'
+gsettings set org.gnome.desktop.background picture-opacity 0
+gsettings set org.gnome.desktop.background show-desktop-icons false
 
 
 # disable notifications
