@@ -17,7 +17,7 @@ sudo apt-get install -y unclutter
 sudo apt-get install -y nginx
 
 
-# chromium browser
+# chromium browser (currently 58.0)
 sudo apt-get install -y chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg webaccounts-chromium-extension unity-chromium-extension
 # or https://www.google.com/chrome/browser/desktop/
 # disable keyring window
@@ -30,6 +30,11 @@ sudo chmod +x /opt/chrome.sh
 sudo mv ./system/chrome.service /etc/systemd/system/
 sudo systemctl enable chrome 
 
+
+# google chrome (currently 59.0)
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
 
 
 
