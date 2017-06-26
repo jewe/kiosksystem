@@ -26,6 +26,8 @@ sudo apt-get remove -y plank
 # screenreader
 sudo apt-get remove -y gnome-orca
 
+# 
+sudo apt-get install -y openssh-server
 
 # remove unused locals
 export DISPLAY=:0.0
@@ -65,6 +67,7 @@ gsettings set org.mate.background primary-color '#555555'
 gsettings set org.mate.background secondary-color '#444444'
 gsettings set org.mate.background picture-opacity 100
 gsettings set org.mate.background show-desktop-icons false
+gsettings set org.mate.background picture-options 'centered'
 
 # what's the difference here?
 gsettings set org.gnome.desktop.background picture-uri /usr/share/backgrounds/WW_Wallpaper.png
@@ -73,7 +76,7 @@ gsettings set org.gnome.desktop.background primary-color '#555555'
 gsettings set org.gnome.desktop.background secondary-color '#444444'
 gsettings set org.gnome.desktop.background picture-opacity 100
 gsettings set org.gnome.desktop.background show-desktop-icons false
-
+gsettings set org.gnome.desktop.background picture-options 'centered'
 
 # disable notifications
 gsettings set com.ubuntu.update-notifier no-show-notifications true
@@ -127,6 +130,13 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 # create kiosk user
 # sudo adduser kiosk
 # autologin
+# /etc/lightdm/lightdm.conf 
+
+
+sudo rm /home/user/Videos
+sudo rm /home/user/Templates
+sudo rm /home/user/Pictures
+sudo rm /home/user/Music
 
 
 # platz machen
