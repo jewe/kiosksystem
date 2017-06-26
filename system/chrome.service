@@ -1,0 +1,9 @@
+[Unit]
+Description=Chrome-Browser
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /opt/kiosk.sh
+
+[Install]
+WantedBy=multi-user.target
