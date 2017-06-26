@@ -133,10 +133,10 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 # /etc/lightdm/lightdm.conf 
 
 
-sudo rm /home/user/Videos
-sudo rm /home/user/Templates
-sudo rm /home/user/Pictures
-sudo rm /home/user/Music
+sudo rmdir /home/user/Videos
+sudo rmdir /home/user/Templates
+sudo rmdir /home/user/Pictures
+sudo rmdir /home/user/Music
 
 
 # platz machen
