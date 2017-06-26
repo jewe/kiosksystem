@@ -7,14 +7,17 @@ sudo apt-get remove -y ubuntu-mate-libreoffice-draw-icons
 sudo apt-get remove -y libreoffice-core
 sudo apt-get remove -y hexchat simple-scan pidgin transmission brasero cheese
 sudo apt-get remove -y account-plugin-facebook account-plugin-flickr deja-dup
-sudo apt-get remove -y mate-notification-daemon mate-icon-theme-faenza
-sudo apt-get remove -y mate-screensaver sound-theme-freedesktop ubuntu-mate-lightdm-theme ubuntu-mate-wallpapers ubuntu-mate-welcome
-sudo apt-get remove -y update-notifier
+# TODO: installs instead notification-daemon
+# sudo apt-get remove -y mate-notification-daemon 
+# sudo apt-get remove -y mate-icon-theme-faenza
+# sudo apt-get remove -y mate-screensaver 
+sudo apt-get remove -y sound-theme-freedesktop ubuntu-mate-wallpapers ubuntu-mate-welcome
+# sudo apt-get remove -y update-notifier
 
 
 # remove unused locals
 export DISPLAY=:0.0
-sudo apt-get install localepurge
+# sudo apt-get install localepurge
 
 
 # UPDATE ALL PACKAGES
@@ -106,7 +109,7 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 
 
 # create kiosk user
-sudo adduser kiosk
+# sudo adduser kiosk
 # autologin
 
 
