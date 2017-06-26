@@ -1,9 +1,7 @@
 # HELPER
 
-sudo apt-get install -y vim
-sudo apt-get install -y nano
-sudo apt-get install -y curl
-sudo apt-get install -y build-essential
+sudo apt-get install -y vim nano
+sudo apt-get install -y curl build-essential
 sudo apt-get install -y dropbear
 sudo apt-get install -y openssh-sftp-server
 sudo apt-get install -y zram-config
@@ -16,11 +14,11 @@ sudo apt-get install -y unclutter
 
 
 # nginx
-sudo apt-get install nginx
+sudo apt-get install -y nginx
 
 
 # chromium browser
-sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg
+sudo apt-get install -y chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg webaccounts-chromium-extension unity-chromium-extension
 # or https://www.google.com/chrome/browser/desktop/
 # disable keyring window
 
@@ -28,7 +26,7 @@ sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmp
 sudo mv ./opt/chrome.sh /opt/
 sudo chmod +x /opt/chrome.sh
 
-# copy service
+# copy service for start script
 sudo mv ./system/chrome.service /etc/systemd/system/
 sudo systemctl enable chrome 
 
@@ -37,9 +35,9 @@ sudo systemctl enable chrome
 
 # nodejs
 # currently v4.2.6
-sudo apt-get install nodejs-legacy
+sudo apt-get install -y nodejs-legacy
 # currently 3.5.2
-sudo apt-get install npm
+sudo apt-get install -y npm
 # node manager
 sudo npm install -g n
 # install currently 8.1.2
