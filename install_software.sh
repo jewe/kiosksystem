@@ -1,25 +1,29 @@
 # HELPER
-
+printf "\n------------\n"
+echo "INSTALL HELPER"
 sudo apt-get install -y vim nano
 sudo apt-get install -y curl build-essential
 sudo apt-get install -y dropbear
 sudo apt-get install -y openssh-sftp-server
 sudo apt-get install -y zram-config
-#sudo apt-get install -y 
-#sudo apt-get install -y 
+sudo apt-get install -y xdotool
+
+
 # hide mouse
 sudo apt-get install -y unclutter
 
 # SOFTWARE PACKAGES
-
+printf "\n------------\n"
+echo "INSTALL SOFTWARE PACKAGES"
 
 # nginx
 sudo apt-get install -y nginx
 
 
 # chromium browser (currently 58.0)
-sudo apt-get install -y chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg webaccounts-chromium-extension unity-chromium-extension
-# or https://www.google.com/chrome/browser/desktop/
+sudo apt-get install -y chromium-browser 
+sudo apt-get install -y chromium-browser-l10n chromium-codecs-ffmpeg unity-chromium-extension
+sudo apt-get install -y webaccounts-chromium-extension
 # disable keyring window
 
 # copy start-script
