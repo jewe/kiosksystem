@@ -60,8 +60,8 @@ gsettings set org.mate.screensaver lock-enabled false
 
 # set background
 sudo rm -Rf /usr/share/backgrounds/*
-sudo mv ./WW_Wallpaper.png /usr/share/backgrounds/
-sudo mv ./WW_Wallpaper_HD.png /usr/share/backgrounds/
+sudo mv ./backgrounds/WW_Wallpaper.png /usr/share/backgrounds/
+sudo mv ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/
 gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper_HD.png
 
 gsettings set org.mate.background primary-color '#555555'
@@ -135,9 +135,10 @@ sudo rmdir /home/user/Videos
 sudo rmdir /home/user/Templates
 sudo rmdir /home/user/Pictures
 sudo rmdir /home/user/Music
+mv ./sample_Images/* /home/user/Pictures
 
 sudo rmdir /home/kiosk/Templates
-
+mv ./sample_Images/* /home/kiosk/Pictures
 
 
 # platz machen
