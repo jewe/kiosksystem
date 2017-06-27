@@ -16,8 +16,8 @@ gsettings set org.mate.screensaver lock-enabled false
 
 # set background
 sudo rm -Rf /usr/share/backgrounds/*
-sudo mv ./WW_Wallpaper.png /usr/share/backgrounds/
-sudo mv ./WW_Wallpaper_HD.png /usr/share/backgrounds/
+sudo mv ./backgrounds/WW_Wallpaper.png /usr/share/backgrounds/
+sudo mv ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/
 gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper.png
 
 gsettings set org.mate.background primary-color '#555555'
@@ -83,6 +83,5 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 
 # bluetooth off
 # TODO make persistent
-sudo rfkill block bluetooth
 sudo systemctl disable bluetooth
 
