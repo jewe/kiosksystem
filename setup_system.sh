@@ -123,20 +123,44 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 # check and remove unneeded services
 # systemctl list-units
 
+# bluetooth off
+sudo rfkill block bluetooth
 
 # readonly filesystem
+# https://wiki.ubuntuusers.de/Nur-Lesen_Root-Dateisystem/
+
+
 
 
 # create kiosk user
-# sudo adduser kiosk
+printf "\n------------\n"
+echo "Create kiosk user"
+
+sudo adduser kiosk
 # autologin
 # /etc/lightdm/lightdm.conf 
+# See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
+sudo bash -c 'cat > /usr/share/lightdm/lightdm.conf.d/99-kiosk.conf' << EOF
+[Seat:*]
+user-session=kiosk
+EOF
+# Setting below options in only 99-kiosk.conf doesn't seem enough (conflicts on autologin-user).
+sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
+[Seat:*]
+autologin-guest=false
+autologin-user=kiosk
+autologin-user-timeout=0
+EOF
+
 
 
 sudo rmdir /home/user/Videos
 sudo rmdir /home/user/Templates
 sudo rmdir /home/user/Pictures
 sudo rmdir /home/user/Music
+
+sudo rmdir /home/kiosk/Templates
+
 
 
 # platz machen
