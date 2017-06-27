@@ -14,9 +14,6 @@ sudo apt-get remove -y libreoffice-common
 sudo apt-get remove -y hexchat simple-scan pidgin brasero cheese
 sudo apt-get remove -y account-plugin-facebook account-plugin-flickr deja-dup
 
-# TODO: installs instead notification-daemon ?
-# sudo apt-get remove -y mate-notification-daemon 
-
 sudo apt-get remove -y mate-icon-theme-faenza
 sudo apt-get remove -y mate-screensaver 
 sudo apt-get remove -y ubuntu-mate-wallpapers ubuntu-mate-welcome
@@ -121,31 +118,30 @@ sudo adduser kiosk
 # prev: /usr/share/lightdm/lightdm.conf.d/99-kiosk.conf
 sudo bash -c 'cat > /etc/lightdm/lightdm.conf.d/50-kiosk.conf' << EOF
 [Seat:*]
-user-session=kiosk
 autologin-user=kiosk
 autologin-user-timeout=0
 EOF
 
 # Setting below options in only 99-kiosk.conf doesn't seem enough (conflicts on autologin-user).
 
-#sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
-#[Seat:*]
-#autologin-guest=false
-#autologin-user=kiosk
-#autologin-user-timeout=0
-#EOF
+sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
+[Seat:*]
+autologin-guest=false
+autologin-user=kiosk
+autologin-user-timeout=0
+EOF
 
-# allow sudo for installation 
+# temporarily allow sudo for installation 
 sudo adduser kiosk sudo
 
 sudo rmdir /home/user/Videos
 sudo rmdir /home/user/Templates
 #sudo rmdir /home/user/Pictures
 sudo rmdir /home/user/Music
-mv ./sample_Images/* /home/user/Pictures
+cp ./sample_Images/* /home/user/Pictures
 
 sudo rmdir /home/kiosk/Templates
-mv ./sample_Images/* /home/kiosk/Pictures
+cp ./sample_Images/* /home/kiosk/Pictures
 
 
 # platz machen
