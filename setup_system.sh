@@ -27,7 +27,7 @@ sudo apt-get remove -y ubuntu-mate-wallpapers ubuntu-mate-welcome
 # sudo apt-get remove -y gnome-orca
 
 # dropbear?
-sudo apt-get install -y openssh-server
+# sudo apt-get install -y openssh-server
 
 # remove unused locals
 export DISPLAY=:0.0
@@ -96,6 +96,8 @@ dconf write /org/mate/panel/toplevels/top/auto-hide true
 # hide bottom panel
 dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 
+# disable bluetooth
+sudo systemctl disable bluetooth
 
 
 # readonly filesystem
