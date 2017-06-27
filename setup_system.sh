@@ -10,7 +10,6 @@ sudo apt-get remove -y transmission-common
 sudo apt-get remove -y ubuntu-mate-libreoffice-draw-icons
 sudo apt-get remove -y libreoffice-core
 sudo apt-get remove -y libreoffice-common
-# sudo apt-get remove -y dictionaries-common
 sudo apt-get remove -y hexchat simple-scan pidgin brasero cheese
 sudo apt-get remove -y account-plugin-facebook account-plugin-flickr deja-dup
 
@@ -22,9 +21,9 @@ sudo apt-get remove -y mate-screensaver
 sudo apt-get remove -y ubuntu-mate-wallpapers ubuntu-mate-welcome
 # sudo apt-get remove -y update-notifier
 # mac like dock
-#sudo apt-get remove -y plank
+sudo apt-get remove -y plank
 # screenreader
-# sudo apt-get remove -y gnome-orca
+sudo apt-get remove -y gnome-orca
 
 # dropbear?
 # sudo apt-get install -y openssh-server
