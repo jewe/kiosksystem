@@ -3,11 +3,16 @@ printf "\n------------\n"
 echo "INSTALL HELPER"
 sudo apt-get install -y vim nano
 sudo apt-get install -y curl build-essential
+# ssh server ?
 sudo apt-get install -y dropbear
+# ?
 sudo apt-get install -y openssh-sftp-server
+# ?
 sudo apt-get install -y zram-config
+# simulate keystrokes
 sudo apt-get install -y xdotool
-
+# slideshow / image viewer
+sudo apt-get install -y gthumb 
 
 # hide mouse
 sudo apt-get install -y unclutter
