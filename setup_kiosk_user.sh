@@ -84,5 +84,5 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 # bluetooth off
 # TODO make persistent
 sudo rfkill block bluetooth
-
+sudo systemctl disable bluetooth
 
