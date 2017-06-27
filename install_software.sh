@@ -27,7 +27,9 @@ sudo apt-get install -y nginx
 
 # slideshow / image viewer
 sudo apt-get install -y gthumb 
-# config fade in Preferences - Viewer - Slideshow Transition Effect - Fade in
+# config fade in Preferences - Viewer
+#    - Slideshow Transition Effect - Fade in
+#    - Restart wenn finished
 # copy start-script
 sudo mv ./opt/slideshow.sh /opt/
 sudo chmod +x /opt/slideshow.sh
@@ -51,6 +53,7 @@ sudo mv ./system/chrome.service /etc/systemd/system/
 chromium-browser --disable-sync-preferences
 
 # google chrome (currently 59.0)
+# TODO kiosk need write permission
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 rm google-chrome-stable_current_amd64.deb
