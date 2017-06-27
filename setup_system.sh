@@ -26,7 +26,7 @@ sudo apt-get remove -y ubuntu-mate-wallpapers ubuntu-mate-welcome
 # screenreader
 # sudo apt-get remove -y gnome-orca
 
-# 
+# dropbear?
 sudo apt-get install -y openssh-server
 
 # remove unused locals
@@ -38,6 +38,7 @@ export DISPLAY=:0.0
 printf "\n------------\n"
 echo "UPDATE ALL PACKAGES"
 sudo apt-get update
+# keep LTS distribution?
 # sudo apt-get dist-upgrade
 
 
@@ -77,6 +78,7 @@ gsettings set org.gnome.desktop.background secondary-color '#444444'
 gsettings set org.gnome.desktop.background picture-opacity 100
 gsettings set org.gnome.desktop.background show-desktop-icons false
 gsettings set org.gnome.desktop.background picture-options 'centered'
+
 
 # disable notifications (??? No such schema)
 # gsettings set com.ubuntu.update-notifier no-show-notifications true
@@ -124,6 +126,7 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 # systemctl list-units
 
 # bluetooth off
+# TODO make persistent
 sudo rfkill block bluetooth
 
 # readonly filesystem
@@ -140,17 +143,20 @@ sudo adduser kiosk
 # autologin
 # /etc/lightdm/lightdm.conf 
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
+
 sudo bash -c 'cat > /usr/share/lightdm/lightdm.conf.d/99-kiosk.conf' << EOF
 [Seat:*]
 user-session=kiosk
 EOF
+
 # Setting below options in only 99-kiosk.conf doesn't seem enough (conflicts on autologin-user).
-sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
-[Seat:*]
-autologin-guest=false
-autologin-user=kiosk
-autologin-user-timeout=0
-EOF
+
+#sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
+#[Seat:*]
+#autologin-guest=false
+#autologin-user=kiosk
+#autologin-user-timeout=0
+#EOF
 
 
 
