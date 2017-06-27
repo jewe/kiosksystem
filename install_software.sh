@@ -11,8 +11,7 @@ sudo apt-get install -y openssh-sftp-server
 sudo apt-get install -y zram-config
 # simulate keystrokes
 sudo apt-get install -y xdotool
-# slideshow / image viewer
-sudo apt-get install -y gthumb 
+
 
 # hide mouse
 sudo apt-get install -y unclutter
@@ -23,6 +22,13 @@ echo "INSTALL SOFTWARE PACKAGES"
 
 # nginx
 sudo apt-get install -y nginx
+
+
+# slideshow / image viewer
+sudo apt-get install -y gthumb 
+# copy start-script
+sudo mv ./opt/slideshow.sh /opt/
+sudo chmod +x /opt/slideshow.sh
 
 
 # chromium browser (currently 58.0)
