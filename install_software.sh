@@ -31,9 +31,9 @@ sudo apt-get install -y gthumb
 #    - Slideshow Transition Effect - Fade in
 #    - Restart wenn finished
 # copy start-script
-sudo mv ./opt/slideshow.sh /opt/
+sudo cp ./opt/slideshow.sh /opt/
 sudo chmod +x /opt/slideshow.sh
-
+sudo cp -R sample_Images/* /home/kiosk/Pictures/
 
 # chromium browser (currently 58.0)
 sudo apt-get install -y chromium-browser 
@@ -42,7 +42,7 @@ sudo apt-get install -y webaccounts-chromium-extension
 # disable keyring window
 
 # copy start-script
-sudo mv ./opt/chrome.sh /opt/
+sudo cp ./opt/chrome.sh /opt/
 sudo chmod +x /opt/chrome.sh
 
 # copy service for start script
