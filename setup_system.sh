@@ -60,9 +60,9 @@ gsettings set org.mate.screensaver lock-enabled false
 
 # set background
 sudo rm -Rf /usr/share/backgrounds/*
-sudo mv ./backgrounds/WW_Wallpaper.png /usr/share/backgrounds/
-sudo mv ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/
-sudo mv ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/ubuntu-mate-common/Ubuntu-Mate-Cold-lightdm.jpg
+sudo cp ./backgrounds/WW_Wallpaper.png /usr/share/backgrounds/
+sudo cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/
+sudo cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/ubuntu-mate-common/Ubuntu-Mate-Cold-lightdm.jpg
 
 gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper_HD.png
 
@@ -119,7 +119,7 @@ sudo adduser kiosk
 
 
 # prev: /usr/share/lightdm/lightdm.conf.d/99-kiosk.conf
-sudo bash -c 'cat > /etc/lightdm/lightdm.conf.d/50-myconfig.conf' << EOF
+sudo bash -c 'cat > /etc/lightdm/lightdm.conf.d/50-kiosk.conf' << EOF
 [Seat:*]
 user-session=kiosk
 autologin-user=kiosk
