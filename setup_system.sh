@@ -1,3 +1,4 @@
+# Ubuntu MATE 16.04.2
 
 # UNINSTALL unneeded applications
 printf "\n------------\n"
@@ -61,6 +62,8 @@ gsettings set org.mate.screensaver lock-enabled false
 sudo rm -Rf /usr/share/backgrounds/*
 sudo mv ./backgrounds/WW_Wallpaper.png /usr/share/backgrounds/
 sudo mv ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/
+sudo mv ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/ubuntu-mate-common/Ubuntu-Mate-Cold-lightdm.jpg
+
 gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper_HD.png
 
 gsettings set org.mate.background primary-color '#555555'
@@ -114,9 +117,13 @@ sudo adduser kiosk
 # /etc/lightdm/lightdm.conf 
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
 
-sudo bash -c 'cat > /usr/share/lightdm/lightdm.conf.d/99-kiosk.conf' << EOF
+
+# prev: /usr/share/lightdm/lightdm.conf.d/99-kiosk.conf
+sudo bash -c 'cat > /etc/lightdm/lightdm.conf.d/50-myconfig.conf' << EOF
 [Seat:*]
 user-session=kiosk
+autologin-user=kiosk
+autologin-user-timeout=0
 EOF
 
 # Setting below options in only 99-kiosk.conf doesn't seem enough (conflicts on autologin-user).
@@ -128,11 +135,12 @@ EOF
 #autologin-user-timeout=0
 #EOF
 
-
+# allow sudo for installation 
+sudo adduser kiosk sudo
 
 sudo rmdir /home/user/Videos
 sudo rmdir /home/user/Templates
-sudo rmdir /home/user/Pictures
+#sudo rmdir /home/user/Pictures
 sudo rmdir /home/user/Music
 mv ./sample_Images/* /home/user/Pictures
 
