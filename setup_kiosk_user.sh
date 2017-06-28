@@ -3,6 +3,9 @@ printf "\n------------\n"
 echo "SYSTEM CONFIG"
 export DISPLAY=:0.0
 
+sudo rmdir /home/kiosk/Templates
+cp ./sample_Images/* /home/kiosk/Pictures
+
 ## check/update with: 
 ## gsettings list-recursively org.mate.background
 
