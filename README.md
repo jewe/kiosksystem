@@ -16,3 +16,10 @@ cd kiosksystem
 sh setup_system.sh
 sudo reboot
 ```
+
+After Reboot:
+```
+cd /opt/tmp/kiosksystem/
+sh setup_kiosk_user.sh
+sh install_kiosk_software.sh
+```
