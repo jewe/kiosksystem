@@ -23,20 +23,17 @@ sudo apt-get remove -y plank
 # screenreader
 sudo apt-get remove -y gnome-orca
 
-# dropbear?
-# sudo apt-get install -y openssh-server
 
 # remove unused locals
 export DISPLAY=:0.0
-# sudo apt-get install localepurge
+# sudo apt-get install localepurge # FIXME
 
 
 # UPDATE ALL PACKAGES
 printf "\n------------\n"
 echo "UPDATE ALL PACKAGES"
 sudo apt-get update
-# breaks LTS distribution?
-# sudo apt-get dist-upgrade
+sudo apt-get -y dist-upgrade
 
 
 # SYSTEM CONFIG
@@ -60,6 +57,7 @@ sudo rm -Rf /usr/share/backgrounds/*
 sudo cp ./backgrounds/WW_Wallpaper.png /usr/share/backgrounds/
 sudo cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/
 # greeter
+sudo mkdir /usr/share/backgrounds/ubuntu-mate-common
 sudo cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/ubuntu-mate-common/Ubuntu-Mate-Cold-lightdm.jpg
 
 gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper_HD.png
@@ -136,9 +134,6 @@ sudo rmdir /home/user/Templates
 #sudo rmdir /home/user/Pictures
 sudo rmdir /home/user/Music
 cp ./sample_Images/* /home/user/Pictures
-
-sudo rmdir /home/kiosk/Templates
-cp ./sample_Images/* /home/kiosk/Pictures
 
 
 # platz machen
