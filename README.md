@@ -23,3 +23,10 @@ cd /opt/tmp/kiosksystem/
 sh setup_kiosk_user.sh
 sh install_kiosk_software.sh
 ```
+
+optional:
+```
+cd /opt/tmp/kiosksystem/
+sh install_chrome.sh
+sh install_slideshow.sh
+```
