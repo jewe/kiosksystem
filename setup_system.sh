@@ -35,7 +35,7 @@ export DISPLAY=:0.0
 printf "\n------------\n"
 echo "UPDATE ALL PACKAGES"
 sudo apt-get update
-# keep LTS distribution?
+# breaks LTS distribution?
 # sudo apt-get dist-upgrade
 
 
@@ -59,6 +59,7 @@ gsettings set org.mate.screensaver lock-enabled false
 sudo rm -Rf /usr/share/backgrounds/*
 sudo cp ./backgrounds/WW_Wallpaper.png /usr/share/backgrounds/
 sudo cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/
+# greeter
 sudo cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/ubuntu-mate-common/Ubuntu-Mate-Cold-lightdm.jpg
 
 gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper_HD.png
@@ -89,10 +90,10 @@ gsettings set org.mate.power-manager sleep-display-ups 0
 # display: disable dim
 gsettings set org.mate.power-manager kbd-brightness-dim-by-on-idle 100
 
-# hide top panel (needs reboot)
+# autohide top panel (needs reboot)
 dconf write /org/mate/panel/toplevels/top/auto-hide true
 
-# hide bottom panel
+# autohide bottom panel
 dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 
 # disable bluetooth
@@ -111,11 +112,8 @@ echo "Create kiosk user"
 
 sudo adduser kiosk
 # autologin
-# /etc/lightdm/lightdm.conf 
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
 
-
-# prev: /usr/share/lightdm/lightdm.conf.d/99-kiosk.conf
 sudo bash -c 'cat > /etc/lightdm/lightdm.conf.d/50-kiosk.conf' << EOF
 [Seat:*]
 autologin-user=kiosk
@@ -123,7 +121,6 @@ autologin-user-timeout=0
 EOF
 
 # Setting below options in only 99-kiosk.conf doesn't seem enough (conflicts on autologin-user).
-
 sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
 [Seat:*]
 autologin-guest=false
