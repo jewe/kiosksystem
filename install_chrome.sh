@@ -18,7 +18,12 @@ sudo mv ./system/chrome.service /etc/systemd/system/
 #sudo systemctl enable chrome 
 
 # first run to configure
+echo "ween gleich chromium aufgeht, wieder schliessen (druecke enter)"
+read X
 chromium-browser --disable-sync-preferences
+
+
+#######
 
 # google chrome (currently 59.0)
 # TODO kiosk need write permission
@@ -26,8 +31,11 @@ sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo rm google-chrome-stable_current_amd64.deb
 
+
 # first run to configure
-google-chrome &
+echo "ween gleich chrome aufgeht, konfigurieren / haken entfernen und wieder schliessen (druecke enter)"
+read X
+google-chrome
 
 
 # nginx
