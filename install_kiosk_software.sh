@@ -22,6 +22,8 @@ sudo apt-get install -y scrot
 # hide mouse
 sudo apt-get install -y unclutter
 
+# vnc
+sudo apt-get install -y xvnc
 
 # nodejs
 # currently v4.2.6
@@ -30,8 +32,8 @@ sudo apt-get install -y nodejs-legacy
 sudo apt-get install -y npm
 # node manager
 sudo npm install -g n
-# install (currently 8.1.2)
-sudo n latest
+# install (fixed 8.1.2)
+sudo n 8.1.2
 
 
 
