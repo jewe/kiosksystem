@@ -6,6 +6,7 @@ echo "UNINSTALL unneeded applications"
 
 ## check/update with
 ## apt list --installed
+# FIXME: dpkg alle Pakete nach Größe sortieren
 sudo apt-get remove -y firefox rhythmbox samba-common thunderbird galculator 
 sudo apt-get remove -y transmission-common
 sudo apt-get remove -y ubuntu-mate-libreoffice-draw-icons
