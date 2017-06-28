@@ -1,10 +1,12 @@
+# FIXME: warten bis apt process nicht mehr läuft oder vorher auto-update ausschalten
+
 # SYSTEM CONFIG
 printf "\n------------\n"
 echo "SYSTEM CONFIG"
 export DISPLAY=:0.0
 
+# cleanup home directory
 sudo rmdir /home/kiosk/Templates
-cp ./sample_Images/* /home/kiosk/Pictures
 
 ## check/update with: 
 ## gsettings list-recursively org.mate.background
@@ -64,10 +66,10 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 #org.gnome.settings-daemon.plugins.power
 
 #org.mate.panel.menubar icon-name 'start-here'
-#org.mate.panel.menubar show-icon true
-#org.mate.panel.menubar show-places true
-#org.mate.panel.menubar show-desktop true
-#org.mate.panel.menubar show-applications true
+org.mate.panel.menubar show-icon false
+org.mate.panel.menubar show-places false
+org.mate.panel.menubar show-desktop false
+org.mate.panel.menubar show-applications false
 
 
 #org.gnome.desktop.lockdown disable-command-line false
@@ -75,7 +77,7 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 #org.gnome.desktop.lockdown disable-user-switching false
 #org.gnome.desktop.lockdown user-administration-disabled false
 #org.gnome.desktop.lockdown disable-printing false
-#org.gnome.desktop.lockdown disable-log-out false
+# org.gnome.desktop.lockdown disable-log-out false
 #org.gnome.desktop.lockdown disable-lock-screen false
 #org.gnome.desktop.lockdown disable-print-setup false
 #org.gnome.desktop.lockdown disable-save-to-disk false
