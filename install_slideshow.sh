@@ -1,6 +1,8 @@
 printf "\n------------\n"
 echo "INSTALL GTHUMB SLIDESHOW"
 
+cp ./sample_Images/* /home/kiosk/Pictures
+
 export DISPLAY=:0.0
 
 # slideshow / image viewer
