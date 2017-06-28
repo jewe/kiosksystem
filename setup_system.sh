@@ -108,7 +108,7 @@ sudo systemctl disable bluetooth
 printf "\n------------\n"
 echo "Create kiosk user"
 
-sudo adduser kiosk
+sudo adduser kiosk # FIXME
 # autologin
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
 
