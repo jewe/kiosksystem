@@ -1,0 +1,18 @@
+
+# append this file to /etc/bash.bashrc
+
+# declare global kiosk functions
+
+
+exit_if_disabled() {
+  read -r SWITCH <"$KIOSKSERVICE"  
+  test "$SWITCH" = 'enabled' || exit
+}
+
+
+log() {
+  logger -s -- "$0: $*"
+  echo "$( date ): $0: $*" >>"$KIOSKSERVICE.log" 
+}
+
+
