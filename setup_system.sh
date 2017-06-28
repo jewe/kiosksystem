@@ -130,6 +130,7 @@ EOF
 # temporarily allow sudo for installation 
 sudo adduser kiosk sudo
 
+# cleanup home directory
 sudo rmdir /home/user/Videos
 sudo rmdir /home/user/Templates
 #sudo rmdir /home/user/Pictures
@@ -137,7 +138,7 @@ sudo rmdir /home/user/Music
 cp ./sample_Images/* /home/user/Pictures
 
 
-# platz machen
+# cleanup
 printf "\n------------\n"
 echo "CLEANUP"
 sudo apt-get clean
