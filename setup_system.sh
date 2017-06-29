@@ -137,6 +137,14 @@ sudo rmdir /home/user/Templates
 sudo rmdir /home/user/Music
 cp ./sample_Images/* /home/user/Pictures
 
+# prepare /opt/
+sudo mkdir /opt/kiosk
+sudo mkdir /opt/kiosk/services
+sudo mkdir /opt/kiosk/logs
+
+# custom functions
+
+
 
 # cleanup
 printf "\n------------\n"
