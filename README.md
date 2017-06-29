@@ -7,7 +7,7 @@ https://ubuntu-mate.org/download/#xenial
 
 
 ```
-cd /opt
+sudo cd /opt
 sudo mkdir tmp
 sudo chmod 0777 tmp/
 cd tmp/
