@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SERVICE = "${0##*/}" 
-SERVICE2 = ${SERVICE%.*}
+SERVICE="${0##*/}" 
+SERVICE2=${SERVICE%.*}
 
 #chromium-browser
 #SERVICE="/opt/service.browser"
