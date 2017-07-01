@@ -141,9 +141,12 @@ cp ./sample_Images/* /home/user/Pictures
 sudo mkdir /opt/kiosk
 sudo mkdir /opt/kiosk/services
 sudo mkdir /opt/kiosk/logs
+sudo chmod -R 0777 /opt/kiosk/ # FIXME
+
 
 # custom functions
-
+sudo cp ./etc/rc.local /etc/
+sudo cat ./opt/global_functions >> /etc/bash.bashrc
 
 
 # cleanup
