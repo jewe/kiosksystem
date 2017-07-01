@@ -1,12 +1,12 @@
 #!/bin/bash
 
+# read scriptname to set servicename
 SERVICE="${0##*/}" 
-SERVICE2=${SERVICE%.*}
+SERVICE=${SERVICE%.*}
 
-#chromium-browser
-#SERVICE="/opt/service.browser"
+kiosklog "$SERVICE step 1"
 
-#case "$1" in enabled|disabled) echo "$1" >"$SERVICE"; exit ;;  esac
+case "$1" in enabled|disabled) echo "$1" >"/opt/kiosk/services/$SERVICE"; exit ;;  esac
 
 #exit_if_disabled() {
 #  read -r SWITCH <"$SERVICE"  
@@ -30,6 +30,6 @@ while true; do #rm -rf ~/.{config,cache}/google-chrome/
   #chromium-browser --kiosk --no-first-run --incognito --no-default-browser-check --disable-translate --disk-cache-dir=/tmp/cache 'http://localhost'
   #exit_if_disabled
   
-  kiosklog "chrome started $SERVICE - $SERVICE2"
+  kiosklog "chrome started $SERVICE"
   exit 0
 done
