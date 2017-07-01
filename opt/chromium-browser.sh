@@ -4,7 +4,7 @@
 SERVICE="${0##*/}" 
 SERVICE=${SERVICE%.*}
 
-kiosklog "$SERVICE step 1"
+kiosklog "$SERVICE" "$SERVICE step 1"
 
 case "$1" in enabled|disabled) echo "$1" >"/opt/kiosk/services/$SERVICE"; exit ;;  esac
 
@@ -30,6 +30,6 @@ while true; do #rm -rf ~/.{config,cache}/google-chrome/
   #chromium-browser --kiosk --no-first-run --incognito --no-default-browser-check --disable-translate --disk-cache-dir=/tmp/cache 'http://localhost'
   #exit_if_disabled
   
-  kiosklog "chrome started $SERVICE"
+  kiosklog "$SERVICE" "chrome started $SERVICE"
   exit 0
 done
