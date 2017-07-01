@@ -9,17 +9,20 @@
 # In order to enable or disable this script just change the execution
 # bits.
 
-export DISPLAY=:0.0
+#export DISPLAY=:0.0
 
 # ?
-xset -dpms
+#xset -dpms
 # screensaver off
-xset s off
+#xset s off
 
 # xrandr
 
 # start chromium-browser
 /opt/chromium-browser.sh
 #/opt/google-chrome.sh
+
+. /home/user/tmp/kiosksystem/opt/global_functions
+kiosklog "startup" "rc.local"
 
 exit 0
