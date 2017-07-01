@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# load global functions
+. /opt/tmp/kiosksystem/opt/global_functions
+
 # read scriptname to set servicename
 SERVICE="${0##*/}" 
 SERVICE=${SERVICE%.*}
