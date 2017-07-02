@@ -170,6 +170,9 @@ sudo mv orca-autostart.desktop orca-autostart.desktop.disabled
 # updates
 sudo mv update-notifier.desktop update-notifier.desktop.disabled
 
+sudo mv /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop.disabled
+
+
 # cleanup
 printf "\n------------\n"
 echo "CLEANUP"
