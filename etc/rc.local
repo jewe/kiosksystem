@@ -19,7 +19,7 @@
 # xrandr
 
 # start chromium-browser
-/opt/chromium-browser.sh
+#/opt/chromium-browser.sh
 #/opt/google-chrome.sh
 
 . /home/user/tmp/kiosksystem/opt/global_functions
