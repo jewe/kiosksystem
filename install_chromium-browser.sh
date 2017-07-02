@@ -17,6 +17,7 @@ kioskctl enable chromium-browser
 
 # autostart 
 sudo cp ./autostart/chromium-browser.sh.desktop /home/kiosk/.config/autostart/
+sudo chown kiosk /home/kiosk/.config/autostart/chromium-browser.sh.desktop
 sudo chmod +x /home/kiosk/.config/autostart/chromium-browser.sh.desktop
 
 # first run to configure
