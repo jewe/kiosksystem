@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/chromium-browser.sh
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[en_US]=chromium-browser
+Name=chromium-browser
+Comment[en_US]=start chromium-browser
+Comment=start chromium-browser
