@@ -149,8 +149,7 @@ sudo cp ./etc/rc.local /etc/
 sudo su
 sudo cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc
 exit
-sudo cp ./opt/chromium-browser.sh /opt/
-sudo chmod +x /opt/chromium-browser.sh
+
 
 
 # cleanup
