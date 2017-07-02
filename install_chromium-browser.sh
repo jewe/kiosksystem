@@ -31,4 +31,4 @@ sudo apt-get install -y nginx
 
 # cleanup
 sudo apt-get clean
-sudo apt-get autoremove
+sudo apt-get -y autoremove
