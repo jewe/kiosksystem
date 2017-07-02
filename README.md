@@ -27,6 +27,6 @@ sh install_kiosk_software.sh
 optional:
 ```
 cd /opt/tmp/kiosksystem/
-sh install_chrome.sh
+sh install_chromium-browser.sh
 sh install_slideshow.sh
 ```
