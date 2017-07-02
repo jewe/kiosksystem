@@ -3,7 +3,7 @@
 ## Installation
 Download Ubuntu Mate
 https://ubuntu-mate.org/download/#xenial
-(Tested with 16.04.2 LTS)
+(16.04.2 LTS)
 
 
 ```
