@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export DISPLAY=:0.0
+
 # load global functions
 . /opt/tmp/kiosksystem/opt/global_functions
 
