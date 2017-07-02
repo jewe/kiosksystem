@@ -12,6 +12,13 @@ sudo apt-get install -y webaccounts-chromium-extension
 sudo cp ./opt/chromium-browser.sh /opt/
 sudo chmod +x /opt/chromium-browser.sh
 
+. /home/user/tmp/kiosksystem/opt/global_functions
+kioskctl enable chromium-browser
+
+# autostart 
+sudo cp ./autostart/chromium-browser.sh.desktop /home/kiosk/.config/autostart/
+sudo chmod +x /home/kiosk/.config/autostart/chromium-browser.sh.desktop
+
 # first run to configure
 echo "wenn gleich chromium aufgeht, wieder schliessen (druecke enter)"
 read X
