@@ -39,4 +39,4 @@ sudo n 8.1.2
 
 # cleanup
 sudo apt-get clean
-sudo apt-get autoremove
+sudo apt-get -y autoremove
