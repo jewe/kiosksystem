@@ -12,7 +12,7 @@ sudo apt-get install -y webaccounts-chromium-extension
 sudo cp ./opt/chromium-browser.sh /opt/
 sudo chmod +x /opt/chromium-browser.sh
 
-. /home/user/tmp/kiosksystem/opt/global_functions
+. /opt/tmp/kiosksystem/opt/global_functions
 kioskctl enable chromium-browser
 
 # autostart 
