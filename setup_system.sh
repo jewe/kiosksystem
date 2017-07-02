@@ -24,6 +24,9 @@ sudo apt-get remove -y plank
 # screenreader
 sudo apt-get remove -y gnome-orca
 
+# keyring app (otherwise problems with chromium-browser)
+sudo apt-get remove -y gnome-keyring
+
 
 # remove unused locals
 export DISPLAY=:0.0
@@ -150,7 +153,21 @@ sudo su
 sudo cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc
 exit
 
-
+# disable services in /etc/xdg/autostart/
+# FIXME: change Autostart-enabled to false
+cd /etc/xdg/autostart/
+# bluetooth
+mv blueman.desktop blueman.desktop.disabled
+# backup
+mv deja-dup-monitor.desktop deja-dup-monitor.desktop.disabled
+# power manager
+mv mate-power-manager.desktop mate-power-manager.desktop.disabled
+# screensaver
+mv mate-screensaver.desktop mate-screensaver.desktop.disabled
+# screenreader
+mv orca-autostart.desktop orca-autostart.desktop.disabled
+# updates
+mv update-notifier.desktop update-notifier.desktop.disabled
 
 # cleanup
 printf "\n------------\n"
