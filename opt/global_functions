@@ -6,23 +6,26 @@
 
 # declare global kiosk functions
 
+# Usage:
+# exit_if_disabled [service]
 exit_if_disabled() {
   read -r SWITCH <"/opt/kiosk/services/$1"  
   test "$SWITCH" = 'enabled' || exit
 }
 
-
+# Usage:
+# kiosklog [service] [message]
 kiosklog() {
   logger -s -- "$0: $*"
-  echo "$( date ): $0: $*" >>"/opt/kiosk/logs/startup.log" 
+  echo "$( date ): $0: $*" >>"/opt/kiosk/logs/kiosk.log" 
   echo "$( date ): $0: $*" >>"/opt/kiosk/logs/$1.log" 
 }
 
+# Usage: 
 # kioskctl enable chromium-browser
 kioskctl(){
-	echo "service $2 is $1d"
-	echo "$1d" > "/opt/kiosk/services/$2"
-  
-  kiosklog "service $2 is $1d now"
+  echo "service $2 is $1d"
+  echo "$1d" > "/opt/kiosk/services/$2"
+  kiosklog "kiosk" "service $2 is $1d now"
 }
 
