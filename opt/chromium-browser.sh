@@ -24,5 +24,5 @@ while true; do
   kiosklog "$SERVICE" "$SERVICE started"
   chromium-browser --kiosk --no-first-run --incognito --no-default-browser-check --disable-translate --disk-cache-dir=/tmp/cache 'http://localhost'
   kiosklog "$SERVICE" "$SERVICE crashed"
-  exit_if_disabled
+  exit_if_disabled "$SERVICE"
 done
