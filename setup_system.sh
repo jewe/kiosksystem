@@ -155,19 +155,19 @@ exit
 
 # disable services in /etc/xdg/autostart/
 # FIXME: change Autostart-enabled to false
-cd /etc/xdg/autostart/
+
 # bluetooth
-mv blueman.desktop blueman.desktop.disabled
+mv /etc/xdg/autostart/blueman.desktop /etc/xdg/autostart/blueman.desktop.disabled
 # backup
-mv deja-dup-monitor.desktop deja-dup-monitor.desktop.disabled
+mv /etc/xdg/autostart/deja-dup-monitor.desktop /etc/xdg/autostart/deja-dup-monitor.desktop.disabled
 # power manager
-mv mate-power-manager.desktop mate-power-manager.desktop.disabled
+mv /etc/xdg/autostart/mate-power-manager.desktop /etc/xdg/autostart/mate-power-manager.desktop.disabled
 # screensaver
-mv mate-screensaver.desktop mate-screensaver.desktop.disabled
+mv /etc/xdg/autostart/mate-screensaver.desktop /etc/xdg/autostart/mate-screensaver.desktop.disabled
 # screenreader
-mv orca-autostart.desktop orca-autostart.desktop.disabled
+mv /etc/xdg/autostart/orca-autostart.desktop /etc/xdg/autostart/orca-autostart.desktop.disabled
 # updates
-mv update-notifier.desktop update-notifier.desktop.disabled
+mv /etc/xdg/autostart/update-notifier.desktop /etc/xdg/autostart/update-notifier.desktop.disabled
 
 # cleanup
 printf "\n------------\n"
