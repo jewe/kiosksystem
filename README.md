@@ -17,7 +17,7 @@ sh setup_system.sh
 sudo reboot
 ```
 
-After Reboot:
+After Reboot login as kiosk@ip and:
 ```
 cd /opt/tmp/kiosksystem/
 sh setup_kiosk_user.sh
