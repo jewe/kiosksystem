@@ -4,9 +4,6 @@ echo "INSTALL KIOSK HELPER"
 
 sudo apt-get install -y vim nano curl build-essential
 
-# minimal ssh server (vs. openssh-server ?)
-#sudo apt-get install -y dropbear
-
 # ?
 #sudo apt-get install -y openssh-sftp-server
 

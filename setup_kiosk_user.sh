@@ -65,12 +65,10 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 #org.mate.gnome-main-menu.lock-down
 #org.gnome.settings-daemon.plugins.power
 
-#org.mate.panel.menubar icon-name 'start-here'
-gsettings set org.mate.panel.menubar show-icon false
-gsettings set org.mate.panel.menubar show-places false
-gsettings set org.mate.panel.menubar show-desktop false
-gsettings set org.mate.panel.menubar show-applications false
-
+dconf write /org/mate/panel/menubar/show-icon false
+dconf write /org/mate/panel/menubar/show-places false
+dconf write /org/mate/panel/menubar/show-desktop false
+#dconf write /org/mate/panel/menubar/show-applications false
 
 #org.gnome.desktop.lockdown disable-command-line false
 #org.gnome.desktop.lockdown disable-application-handlers false

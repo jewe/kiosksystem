@@ -30,3 +30,5 @@ cd /opt/tmp/kiosksystem/
 sh install_chromium-browser.sh
 sh install_slideshow.sh
 ```
+
+

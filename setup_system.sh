@@ -27,9 +27,7 @@ sudo apt-get remove -y gnome-orca
 # keyring app (otherwise problems with chromium-browser)
 sudo apt-get remove -y gnome-keyring
 
-
 # remove unused locals
-export DISPLAY=:0.0
 # sudo apt-get install localepurge # FIXME
 
 
@@ -103,8 +101,18 @@ sudo systemctl disable bluetooth
 
 
 # readonly filesystem
+printf "\n------------\n"
+echo "Readonly filesystem"
+
 # https://wiki.ubuntuusers.de/Nur-Lesen_Root-Dateisystem/
 
+
+# main user: user
+# cleanup home directory
+sudo rmdir /home/user/Videos
+sudo rmdir /home/user/Templates
+sudo rmdir /home/user/Music
+cp ./sample_Images/* /home/user/Pictures
 
 
 
@@ -133,12 +141,10 @@ EOF
 # temporarily allow sudo for installation 
 sudo adduser kiosk sudo
 
-# cleanup home directory
-sudo rmdir /home/user/Videos
-sudo rmdir /home/user/Templates
-#sudo rmdir /home/user/Pictures
-sudo rmdir /home/user/Music
-cp ./sample_Images/* /home/user/Pictures
+
+
+printf "\n------------\n"
+echo "Install kiosk scripts"
 
 # prepare /opt/
 sudo mkdir /opt/kiosk
@@ -149,6 +155,7 @@ sudo chmod -R 0777 /opt/kiosk/ # FIXME
 
 # custom functions
 sudo cp ./etc/rc.local /etc/
+# FIXME
 sudo su
 sudo cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc
 exit
@@ -169,7 +176,7 @@ sudo mv mate-screensaver.desktop mate-screensaver.desktop.disabled
 sudo mv orca-autostart.desktop orca-autostart.desktop.disabled
 # updates
 sudo mv update-notifier.desktop update-notifier.desktop.disabled
-
+# mate welcome
 sudo mv /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop.disabled
 
 

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/slideshow.sh
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[en_US]=GThumb-Slidehow
+Name=chromium-GThumb-Slidehow
+Comment[en_US]=start GThumb-Slidehow
+Comment=start GThumb-Slidehow
