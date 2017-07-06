@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tag der Sommerfrische im Schwarzatal am 27.08.2017</title>
+    <title>Kiosksystem NGINX</title>
     
     <script type="text/javascript">
   
@@ -22,7 +22,7 @@
         }
         h1 {
             text-transform: uppercase;
-            margin-top: 15%;
+            margin-top: 10%;
             margin-bottom: 0;
         }
 
@@ -40,20 +40,27 @@
     <div style="text-align: center;">
         
         <h1>Kiosksystem</h1>
-        <h2>NGINX</h2>
+        <h2> </h2>
         <pre>
 replace this file:
     cd /var/www/html
+
+
+change autostart URL in
+    cd /opt/
+    sudo nano chromium-browser.sh
+
 
 control:
     systemctl start nginx
     systemctl disable nginx
 
+
 conf:
     /etc/nginx/nginx.conf
 
-logs:
 
+logs:
     /var/log/nginx/error.log
     /var/log/nginx/access.log
         </pre>

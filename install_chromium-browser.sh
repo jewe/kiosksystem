@@ -20,8 +20,8 @@ sudo chown kiosk /home/kiosk/.config/autostart/chromium-browser.sh.desktop
 sudo chmod +x /home/kiosk/.config/autostart/chromium-browser.sh.desktop
 
 # first run to configure
-echo "wenn gleich chromium aufgeht, wieder schliessen (druecke enter)"
-read X
+#echo "wenn gleich chromium aufgeht, wieder schliessen (druecke enter)"
+#read X
 chromium-browser --disable-sync-preferences
 
 
@@ -30,8 +30,8 @@ sudo apt-get install -y nginx
 
 # replace webroot index
 sudo chown user /var/www/html
-# TODO
-  # show ip, dir, url in script
+sudo rm index.nginx-debian.html
+cp ./www/index.html /var/www/html/
 
 # cleanup
 sudo apt-get clean
