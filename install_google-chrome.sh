@@ -1,3 +1,7 @@
+
+# WIP
+
+
 printf "\n------------\n"
 echo "INSTALL GOOGLE CHROME"
 

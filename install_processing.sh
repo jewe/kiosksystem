@@ -1,3 +1,5 @@
+# WIP
+
 printf "\n------------\n"
 echo "INSTALL PROCESSING 3.3.5"
 
