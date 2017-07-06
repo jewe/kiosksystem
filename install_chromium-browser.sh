@@ -28,6 +28,10 @@ chromium-browser --disable-sync-preferences
 # nginx
 sudo apt-get install -y nginx
 
+# replace webroot index
+sudo chown user /var/www/html
+# TODO
+  # show ip, dir, url in script
 
 # cleanup
 sudo apt-get clean
