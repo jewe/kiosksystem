@@ -30,7 +30,7 @@ sudo apt-get install -y nginx
 
 # replace webroot index
 sudo chown user /var/www/html
-sudo rm index.nginx-debian.html
+sudo rm /var/www/html/index.nginx-debian.html
 cp ./www/index.html /var/www/html/
 
 # cleanup
