@@ -19,6 +19,9 @@ sudo apt-get install -y scrot
 # hide mouse
 sudo apt-get install -y unclutter
 
+# screen config
+sudo apt-get install -y compizconfig-settings-manager
+
 # vnc
 sudo apt-get install -y xvnc
 
