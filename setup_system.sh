@@ -114,6 +114,8 @@ sudo rmdir /home/user/Templates
 sudo rmdir /home/user/Music
 cp ./sample_Images/* /home/user/Pictures
 
+# create key (for git etc.) 
+ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa  # FIXME: skip password
 
 
 # create kiosk user
