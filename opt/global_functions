@@ -10,7 +10,7 @@
 # exit_if_disabled [service]
 exit_if_disabled() {
   read -r SWITCH <"/opt/kiosk/services/$1"  
-  test "$SWITCH" = 'enabled' || exit
+  test "$SWITCH" = 'enabled' || exit # FIXME: add message if disabled
 }
 
 # Usage:
@@ -28,4 +28,61 @@ kioskctl(){
   echo "$1d" > "/opt/kiosk/services/$2"
   kiosklog "kiosk" "service $2 is $1d now"
 }
+
+
+kioskstatus(){
+	echo "===  IP  ===" 
+	myip4()
+	myip6()
+	first_ethernet_mac()
+	
+	echo "===  SERVICES  ==="
+	cd /opt/kiosk/services/
+	tail *
+
+	echo "===  LOGS  ==="
+	cd /opt/kiosk/logs
+	tail *
+}
+
+
+kiosktest(){
+	# FIXME
+	# check screensaver
+
+	# check energy save option
+
+	# check disabled updates
+
+	# check disabled notifications
+
+
+}
+
+
+
+
+
+defaultroute_dev(){
+	ip route list exact '0.0.0.0/0' | cut -d' ' -f5
+}
+
+myip4(){
+	set -- $( ip address show dev "$(defaultroute_dev)" | fgrep 'inet ' | head -n1 )
+	echo ${2:-no_ipV4}
+}
+
+myip6(){
+	set -- $( ip address show dev "$(defaultroute_dev)" | fgrep 'inet6 ' | head -n1 )
+	echo ${2:-no_ipV6}
+}
+first_ethernet_mac(){
+	ip --oneline link show |
+	 fgrep '<BROADCAST,MULTICAST,UP,LOWER_UP' |
+	  sed 's|.*link/ether \(.*\) brd.*|\1|'
+}
+
+
+
+
 
