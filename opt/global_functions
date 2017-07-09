@@ -31,22 +31,42 @@ kioskctl(){
 
 
 kioskstatus(){
-	echo "===  IP  ===" 
-	myip4()
-	myip6()
-	first_ethernet_mac()
+	printf "\n===  RO / RW  ===\n"
+	echo "$( print_mount_status ) mounted"
+
+	printf "\n===  IP + MAC  ===\n"
+	echo "IPv4  	$( myip4 )" 
+	echo "IPv6  	$( myip6 )"
+	echo "MAC  		$( first_ethernet_mac )"
 	
-	echo "===  SERVICES  ==="
+
+	printf "\n===  SERVICES  ===\n"
 	cd /opt/kiosk/services/
 	tail *
 
-	echo "===  LOGS  ==="
+	printf "\n===  LOGS  ===\n"
 	cd /opt/kiosk/logs
 	tail *
 }
 
 
+# kioskmount ro|rw
+kioskmount(){
+	if $1=="ro" then
+		sudo mv /etc/overlayroot.local.conf.disabled /etc/overlayroot.local.conf
+		echo "ro mounted after reboot"
+	else
+		sudo mv /etc/overlayroot.local.conf /etc/overlayroot.local.conf.disabled
+		echo "rw mounted after reboot"
+	fi
+	echo "Press key to reboot now"
+	read X
+	sudo reboot
+}
+
+
 kiosktest(){
+	echo ""
 	# FIXME
 	# check screensaver
 
@@ -55,13 +75,24 @@ kiosktest(){
 	# check disabled updates
 
 	# check disabled notifications
+	notify-send "This should be invisible"
+
+	# check permissions?
+
+}
 
 
+kioskdir(){
+	cd /opt/tmp/kiosksystem/
 }
 
 
 
 
+
+print_mount_status(){
+	mount | grep -q 'overlayroot' && echo "ro" || "rw"
+}
 
 defaultroute_dev(){
 	ip route list exact '0.0.0.0/0' | cut -d' ' -f5
@@ -76,6 +107,7 @@ myip6(){
 	set -- $( ip address show dev "$(defaultroute_dev)" | fgrep 'inet6 ' | head -n1 )
 	echo ${2:-no_ipV6}
 }
+
 first_ethernet_mac(){
 	ip --oneline link show |
 	 fgrep '<BROADCAST,MULTICAST,UP,LOWER_UP' |

@@ -1,5 +1,8 @@
 # Ubuntu MATE 16.04.2
 
+# THIS FILE IS STEP 1
+
+
 # UNINSTALL unneeded applications
 printf "\n------------\n"
 echo "UNINSTALL unneeded applications"
@@ -80,9 +83,6 @@ gsettings set org.gnome.desktop.background show-desktop-icons false
 gsettings set org.gnome.desktop.background picture-options 'centered'
 
 
-# disable notifications (??? No such schema)
-# gsettings set com.ubuntu.update-notifier no-show-notifications true
-
 # disable display going to sleep
 gsettings set org.mate.power-manager sleep-display-ac 0
 gsettings set org.mate.power-manager sleep-display-battery 0
@@ -103,8 +103,12 @@ sudo systemctl disable bluetooth
 # readonly filesystem
 printf "\n------------\n"
 echo "Readonly filesystem"
+sudo apt-get install -y overlayroot
 
-# https://wiki.ubuntuusers.de/Nur-Lesen_Root-Dateisystem/
+sudo su 
+sudo echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.disabled
+exit
+
 
 
 # main user: user
@@ -163,7 +167,7 @@ sudo cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc
 exit
 
 # disable services in /etc/xdg/autostart/
-# FIXME: change Autostart-enabled to false
+# FIXME: change Autostart-enabled to false instead of renaming
 
 cd /etc/xdg/autostart/
 # bluetooth
@@ -180,6 +184,8 @@ sudo mv orca-autostart.desktop orca-autostart.desktop.disabled
 sudo mv update-notifier.desktop update-notifier.desktop.disabled
 # mate welcome
 sudo mv /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop.disabled
+# notifications
+sudo mv /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service.disabled 
 
 
 # cleanup
