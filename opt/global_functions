@@ -31,28 +31,26 @@ kioskctl(){
 
 
 kioskstatus(){
-	printf "\n===  RO / RW  ===\n"
+	printf "\n===  RO / RW  ===\n\n"
 	echo "$( print_mount_status ) mounted"
 
-	printf "\n===  IP + MAC  ===\n"
+	printf "\n\n\n===  IP + MAC  ===\n\n"
 	echo "IPv4  	$( myip4 )" 
 	echo "IPv6  	$( myip6 )"
-	echo "MAC  		$( first_ethernet_mac )"
+	echo "MAC  	$( first_ethernet_mac )"
 	
 
-	printf "\n===  SERVICES  ===\n"
-	cd /opt/kiosk/services/
-	tail *
+	printf "\n\n\n===  SERVICES  ===\n\n"
+	cd /opt/kiosk/services/ && tail *
 
-	printf "\n===  LOGS  ===\n"
-	cd /opt/kiosk/logs
-	tail *
+	printf "\n\n\n===  LOGS  ===\n\n"
+	cd /opt/kiosk/logs && tail *
 }
 
 
 # kioskmount ro|rw
 kioskmount(){
-	if $1=="ro" then
+	if $1 = "ro"; then
 		sudo mv /etc/overlayroot.local.conf.disabled /etc/overlayroot.local.conf
 		echo "ro mounted after reboot"
 	else
