@@ -45,12 +45,15 @@ kioskstatus(){
 
 	printf "\n\n\n===  LOGS  ===\n\n"
 	cd /opt/kiosk/logs && tail *
+
+	printf "\n\n"
 }
 
 
 # kioskmount ro|rw
 kioskmount(){
-	if $1 = "ro"; then
+	echo "currently $( print_mount_status ) mounted (detected by output of mount)"
+	if [ $1 = "ro" ]; then
 		sudo mv /etc/overlayroot.local.conf.disabled /etc/overlayroot.local.conf
 		echo "ro mounted after reboot"
 	else
