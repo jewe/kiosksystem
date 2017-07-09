@@ -109,6 +109,7 @@ sudo su
 sudo echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.disabled
 exit
 
+sudo cp /boot/grub/grub.cfg /boot/grub/grub.cfg.bak
 
 
 # main user: user

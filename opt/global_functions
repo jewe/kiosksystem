@@ -54,13 +54,15 @@ kioskstatus(){
 kioskmount(){
 	echo "currently $( print_mount_status ) mounted (detected by output of mount)"
 	if [ $1 = "ro" ]; then
-		sudo mv /etc/overlayroot.local.conf.disabled /etc/overlayroot.local.conf
+		sudo cp /etc/overlayroot.local.conf.disabled /etc/overlayroot.local.conf
 		echo "ro mounted after reboot"
 	else
-		sudo mv /etc/overlayroot.local.conf /etc/overlayroot.local.conf.disabled
+		sudo /usr/sbin/overlayroot-chroot
+		sudo rm -f /etc/overlayroot.local.conf
+		exit
 		echo "rw mounted after reboot"
 	fi
-	echo "Press key to reboot now"
+	echo "Press return to reboot now"
 	read X
 	sudo reboot
 }
