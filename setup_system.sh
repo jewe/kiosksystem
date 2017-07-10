@@ -104,11 +104,8 @@ sudo systemctl disable bluetooth
 printf "\n------------\n"
 echo "Readonly filesystem"
 sudo apt-get install -y overlayroot
-
-sudo su 
-sudo echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.disabled
-exit
-
+# prepare disabled config
+sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.disabled"
 sudo cp /boot/grub/grub.cfg /boot/grub/grub.cfg.bak
 
 
@@ -162,10 +159,7 @@ sudo chmod -R 0777 /opt/kiosk/ # FIXME
 
 # custom functions
 sudo cp ./etc/rc.local /etc/
-# FIXME
-sudo su
-sudo cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc
-exit
+sudo /bin/su -c "sudo cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc"
 
 # disable services in /etc/xdg/autostart/
 # FIXME: change Autostart-enabled to false instead of renaming
