@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/google-chrome.sh
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[en_US]=google-chrome
+Name=google-chrome
+Comment[en_US]=start google-chrome
+Comment=start google-chrome

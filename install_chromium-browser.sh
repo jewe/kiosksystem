@@ -36,3 +36,7 @@ cp ./www/index.html /var/www/html/
 # cleanup
 sudo apt-get clean
 sudo apt-get -y autoremove
+
+echo "Installation complete"
+echo "Service enabled - disable with:"
+echo "kioskctl disable chromium-browser"

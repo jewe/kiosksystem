@@ -25,3 +25,8 @@ sudo chmod +x /home/kiosk/.config/autostart/slideshow.sh.desktop
 # sample images
 sudo cp -R sample_Images/* /home/kiosk/Pictures/
 
+
+
+echo "Installation complete"
+echo "Service enabled - disable with:"
+echo "kioskctl disable slideshow"

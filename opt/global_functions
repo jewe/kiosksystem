@@ -26,6 +26,7 @@ kiosklog() {
 kioskctl(){
   echo "service $2 is $1d"
   echo "$1d" > "/opt/kiosk/services/$2"
+  echo "currently $( print_mount_status ) mounted"
   kiosklog "kiosk" "service $2 is $1d now"
 }
 
@@ -56,11 +57,13 @@ kioskmount(){
 	if [ $1 = "ro" ]; then
 		sudo cp /etc/overlayroot.local.conf.disabled /etc/overlayroot.local.conf
 		echo "ro mounted after reboot"
+		kiosklog "kiosk" "ro mounted"
 	else
 		sudo /usr/sbin/overlayroot-chroot
 		sudo rm -f /etc/overlayroot.local.conf
 		exit
 		echo "rw mounted after reboot"
+		kiosklog "kiosk" "rw mounted"
 	fi
 	echo "Press return to reboot now"
 	read X
@@ -70,6 +73,10 @@ kioskmount(){
 
 kiosktest(){
 	echo ""
+
+
+    echo "currently $( print_mount_status ) mounted"
+
 	# FIXME
 	# check screensaver
 

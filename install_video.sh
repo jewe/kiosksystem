@@ -19,3 +19,7 @@ sudo chmod +x /home/kiosk/.config/autostart/video.sh.desktop
 # sample images
 sudo cp -R sample_Images/*.mov /home/kiosk/Pictures/
 
+
+echo "Installation complete"
+echo "Service enabled - disable with:"
+echo "kioskctl disable video"
