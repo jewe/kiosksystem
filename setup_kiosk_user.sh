@@ -87,3 +87,10 @@ dconf write /org/mate/panel/menubar/show-desktop false
 # bluetooth off
 sudo systemctl disable bluetooth
 
+
+# reboot
+echo "Press return to install kiosk software or "
+echo "ctrl-c to break"
+read X
+install_kiosk_software.sh
+

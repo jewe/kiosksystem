@@ -22,7 +22,7 @@ sudo chown kiosk /home/kiosk/.config/autostart/google-chrome.sh.desktop
 sudo chmod +x /home/kiosk/.config/autostart/google-chrome.sh.desktop
 
 # first run to configure
-google-chrome
+google-chrome &
 
 
 # nginx
@@ -31,7 +31,7 @@ sudo apt-get install -y nginx
 # replace webroot index
 sudo chown user /var/www/html
 sudo rm /var/www/html/index.nginx-debian.html
-cp ./www/index.html /var/www/html/
+sudo cp ./www/index.html /var/www/html/
 
 # cleanup
 sudo apt-get clean

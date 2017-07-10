@@ -101,7 +101,7 @@ kioskdir(){
 
 
 print_mount_status(){
-	mount | grep -q 'overlayroot' && echo "ro" || "rw"
+	mount | grep -q 'overlayroot' && echo "ro" || echo "rw"
 }
 
 defaultroute_dev(){

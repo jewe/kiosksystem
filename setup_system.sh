@@ -116,7 +116,9 @@ sudo rmdir /home/user/Templates
 sudo rmdir /home/user/Music
 cp ./sample_Images/* /home/user/Pictures
 
-# create key (for git etc.) 
+# create key (for git etc.)
+echo "---"
+echo "Press return to generate ssh-key without passphrase" 
 ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa  # FIXME: skip password
 
 
@@ -188,3 +190,11 @@ printf "\n------------\n"
 echo "CLEANUP"
 sudo apt-get clean
 sudo apt-get -y autoremove
+
+
+# reboot
+echo "Press return to reboot now and login as 'kiosk'"
+read X
+sudo reboot
+
+
