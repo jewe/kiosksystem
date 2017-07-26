@@ -15,7 +15,7 @@ cd tmp/
 git clone https://github.com/jewe/kiosksystem.git
 cd kiosksystem
 sh setup_system.sh
-sudo reboot
+# sudo reboot
 ```
 
 After Reboot login as kiosk@ip and:
@@ -30,6 +30,9 @@ optional:
 cd /opt/tmp/kiosksystem/
 sh install_chromium-browser.sh
 sh install_slideshow.sh
+
+# mount ro etc.
+sh lockdown.sh
 ```
 
 

@@ -65,9 +65,9 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 #org.mate.gnome-main-menu.lock-down
 #org.gnome.settings-daemon.plugins.power
 
-dconf write /org/mate/panel/menubar/show-icon false
-dconf write /org/mate/panel/menubar/show-places false
-dconf write /org/mate/panel/menubar/show-desktop false
+# dconf write /org/mate/panel/menubar/show-icon false
+# dconf write /org/mate/panel/menubar/show-places false
+# dconf write /org/mate/panel/menubar/show-desktop false
 #dconf write /org/mate/panel/menubar/show-applications false
 
 #org.gnome.desktop.lockdown disable-command-line false
@@ -92,5 +92,5 @@ sudo systemctl disable bluetooth
 echo "Press return to install kiosk software or "
 echo "ctrl-c to break"
 read X
-install_kiosk_software.sh
+./install_kiosk_software.sh
 
