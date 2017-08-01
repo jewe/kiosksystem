@@ -11,10 +11,12 @@
 
 #export DISPLAY=:0.0
 
-# ?
+# disable DPMS (Energy Star) features
 #xset -dpms
 # screensaver off
 #xset s off
+# don't blank the video device
+#xset s noblank
 
 # xrandr
 
@@ -22,7 +24,7 @@
 #/opt/chromium-browser.sh
 #/opt/google-chrome.sh
 
-. /home/user/tmp/kiosksystem/opt/global_functions
+. /opt/tmp/kiosksystem/opt/global_functions
 kiosklog "startup" "rc.local"
 
 exit 0

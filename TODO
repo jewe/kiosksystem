@@ -1,0 +1,18 @@
+## Screensaver
+
+2017-08-01
+display off after 10min(?)
+
+check with:
+	xset q
+	dpms needs to be disabled - nochange!
+	xset s off - yes! screensaver - timeout = 0!
+
+
+rc.local changed - no success
+-> rc.local cannot execute export DISPLAY=:0.0! 
+
+
+## Help
+path for configs
+

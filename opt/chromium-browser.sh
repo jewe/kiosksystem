@@ -2,6 +2,14 @@
 
 export DISPLAY=:0.0
 
+# disable DPMS (Energy Star) features
+xset -dpms
+# screensaver off
+xset s off
+# don't blank the video device
+xset s noblank
+
+
 # load global functions
 . /opt/tmp/kiosksystem/opt/global_functions
 

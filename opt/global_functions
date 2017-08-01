@@ -79,8 +79,10 @@ kiosktest(){
 
 	# FIXME
 	# check screensaver
+	xset q
 
 	# check energy save option
+	#xset q
 
 	# check disabled updates
 
@@ -89,6 +91,8 @@ kiosktest(){
 
 	# check permissions?
 
+	# check rc.local
+	#sudo /etc/init.d/rc.local start
 }
 
 

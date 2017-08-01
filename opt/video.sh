@@ -2,6 +2,15 @@
 
 export DISPLAY=:0.0
 
+# disable DPMS (Energy Star) features
+xset -dpms
+# screensaver off
+xset s off
+# don't blank the video device
+xset s noblank
+
+
+
 # load global functions
 . /opt/tmp/kiosksystem/opt/global_functions
 
@@ -15,7 +24,7 @@ exit_if_disabled "$SERVICE"
 
 while true; do 
   kiosklog "$SERVICE" "$SERVICE started"
-  vlc ~/Pictures/station.mov --fullscreen --no-mouse-events --loop --no-osd --no-audio  
+  vlc ~/Videos/station.mov --fullscreen --no-mouse-events --loop --no-osd --no-audio  
   kiosklog "$SERVICE" "$SERVICE crashed"
   sleep 6 # to get time to open terminal (ctrl-alt t)
   exit_if_disabled "$SERVICE"

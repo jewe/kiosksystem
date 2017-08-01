@@ -17,7 +17,7 @@ sudo chown kiosk /home/kiosk/.config/autostart/video.sh.desktop
 sudo chmod +x /home/kiosk/.config/autostart/video.sh.desktop
 
 # sample images
-sudo cp -R sample_Images/*.mov /home/kiosk/Pictures/
+sudo cp -R sample_Images/*.mov /home/kiosk/Videos/
 
 # start to configure
 vlc &

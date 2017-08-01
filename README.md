@@ -35,4 +35,6 @@ sh install_slideshow.sh
 sh lockdown.sh
 ```
 
+## Slideshow
+config:
 
