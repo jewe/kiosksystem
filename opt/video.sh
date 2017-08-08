@@ -9,6 +9,7 @@ xset s off
 # don't blank the video device
 xset s noblank
 
+# xrandr --output HDMI-1 -s 1920x1200 --rotation inverted
 
 
 # load global functions
@@ -22,12 +23,12 @@ kiosklog "$SERVICE" "$SERVICE script started $0"
 
 exit_if_disabled "$SERVICE"
 
+FILE=/home/kiosk/Videos/G-Marcks_Bildstation-Muche_Master.mp4
+
 while true; do 
   kiosklog "$SERVICE" "$SERVICE started"
-  vlc ~/Videos/station.mov --fullscreen --no-mouse-events --loop --no-osd --no-audio  
+  vlc "$FILE" --fullscreen --no-mouse-events --loop --no-osd --no-audio  
   kiosklog "$SERVICE" "$SERVICE crashed"
   sleep 6 # to get time to open terminal (ctrl-alt t)
   exit_if_disabled "$SERVICE"
 done
-
-

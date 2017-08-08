@@ -16,3 +16,19 @@ rc.local changed - no success
 ## Help
 path for configs
 
+# kioskclearlogs
+
+list of all commands
+
+
+
+
+
+kiosk@user-desktop:/opt/kiosk/services$ kioskctl disable google-chrome
+service google-chrome is disabled
+No command ' echo' found, did you mean:
+ Command 'aecho' from package 'netatalk' (universe)
+ Command 'echo' from package 'coreutils' (main)
+ echo: command not found
+currently  mounted
+<13>Aug  8 14:36:33 kiosk: -bash: kiosk service google-chrome is disabled now
