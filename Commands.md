@@ -26,6 +26,9 @@ prints debug infos about screensaver status etc.
 Usage:
 kiosktest
 
+## kiosklogsclear
+remove all logs in /opt/kiosk/logs
+
 
 ## kioskdir
 

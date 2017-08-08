@@ -32,3 +32,7 @@ No command ' echo' found, did you mean:
  echo: command not found
 currently  mounted
 <13>Aug  8 14:36:33 kiosk: -bash: kiosk service google-chrome is disabled now
+
+
+
+sudo adduser user kiosk

@@ -108,10 +108,12 @@ kioskhelp(){
 	cat /opt/tmp/kiosksystem/Commands.md
 }
 
-
+kiosklogsclear(){
+	truncate -s 0 /opt/kiosk/logs/*log
+}
 
 print_mount_status(){
-	(mount | grep -q 'overlayroot') && echo "ro" || echo "rw"
+	(mount | grep -q 'overlayroot') && echo "ro" || "rw"
 }
 
 defaultroute_dev(){
