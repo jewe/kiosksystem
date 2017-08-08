@@ -113,7 +113,14 @@ kiosklogsclear(){
 }
 
 print_mount_status(){
-	(mount | grep -q 'overlayroot') && echo "ro" || "rw"
+	#(mount | grep -q 'overlayroot') && echo "ro" || "rw"
+
+	if mount | grep -q 'overlayroot'; then
+    	echo "ro"
+	else
+		echo "rw"
+	fi
+
 }
 
 defaultroute_dev(){
