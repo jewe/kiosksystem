@@ -147,6 +147,21 @@ EOF
 # temporarily allow sudo for installation 
 sudo adduser kiosk sudo
 
+# allow 'user' to access files from kiosk
+sudo adduser user kiosk
+
+# allow kiosk and user shutting down the computer
+sudo su
+grep -q ^'user' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/reboot' >>/etc/sudoers
+grep -q ^'user' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/shutdown' >>/etc/sudoers
+grep -q ^'kiosk' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/reboot' >>/etc/sudoers
+grep -q ^'kiosk' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/shutdown' >>/etc/sudoers
+exit
+
+# copy shutdown-script
+sudo cp ./opt/shutdown.sh /opt/
+sudo chmod +x /opt/shutdown.sh
+
 
 
 printf "\n------------\n"

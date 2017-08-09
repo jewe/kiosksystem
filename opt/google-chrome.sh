@@ -27,7 +27,7 @@ exit_if_disabled "$SERVICE"
 sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/kiosk/.config/google-chrome/Default/Preferences
 sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/kiosk/.config/google-chrome/Default/Preferences
 
-#sleep 10 # otherwise ignores -kiosk
+sleep 10 # otherwise ignores -kiosk
 
 while true; do 
   rm -rf ~/.{config,cache}/google-chrome/
