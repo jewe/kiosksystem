@@ -2,6 +2,9 @@
 
 export DISPLAY=:0.0
 
+# wait for display manager
+sleep 10
+
 # disable DPMS (Energy Star) features
 xset -dpms
 # screensaver off
@@ -23,7 +26,9 @@ kiosklog "$SERVICE" "$SERVICE script started $0"
 
 exit_if_disabled "$SERVICE"
 
-FILE=/home/kiosk/Videos/G-Marcks_Bildstation-Muche_Master.mp4
+FILE=/home/kiosk/station.mov
+
+
 
 while true; do 
   kiosklog "$SERVICE" "$SERVICE started"

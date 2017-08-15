@@ -175,8 +175,11 @@ sudo chmod -R 0777 /opt/kiosk/ # FIXME
 
 
 # custom functions
-sudo cp ./etc/rc.local /etc/
-sudo /bin/su -c "sudo cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc"
+#sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.disabled"
+
+sudo cp /opt/tmp/kiosksystem/etc/rc.local /etc/
+# TODO prevent multiple executions
+sudo /bin/su -c "cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc"
 
 # disable services in /etc/xdg/autostart/
 # FIXME: change Autostart-enabled to false instead of renaming

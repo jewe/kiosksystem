@@ -8,6 +8,8 @@ export DISPLAY=:0.0
 # cleanup home directory
 sudo rmdir /home/kiosk/Templates
 
+sudo rm /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop
+
 ## check/update with: 
 ## gsettings list-recursively org.mate.background
 
@@ -92,5 +94,5 @@ sudo systemctl disable bluetooth
 echo "Press return to install kiosk software or "
 echo "ctrl-c to break"
 read X
-./install_kiosk_software.sh
+sh ./install_kiosk_software.sh
 

@@ -6,6 +6,19 @@ https://ubuntu-mate.org/download/#xenial
 (16.04.2 LTS)
 
 
+Kiosk-System: 
+```
+sudo apt-get install -y openssh-server
+```
+
+Dev-System: 
+```
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@IP
+ssh user@IP
+```
+
+
+
 ```
 sudo apt install -y git
 cd /opt
@@ -36,5 +49,25 @@ sh lockdown.sh
 ```
 
 ## Slideshow
-config:
+
+add images to
+```
+/home/kiosk/Pictures
+```
+
+config autostart-script:
+```
+sudo nano /opt/slideshow.sh
+```
+
+enable autostart (as user)
+```
+kioskctl enable slideshow
+```
+
+disable autostart (as user)
+```
+kioskctl disable slideshow
+```
+
 

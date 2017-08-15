@@ -2,6 +2,9 @@
 
 export DISPLAY=:0.0
 
+# wait for display manager
+sleep 10
+
 # disable DPMS (Energy Star) features
 xset -dpms
 # screensaver off

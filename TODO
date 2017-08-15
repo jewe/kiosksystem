@@ -21,3 +21,16 @@ path for configs
 
 
 sudo adduser user kiosk
+
+
+
+# immer warten in autostarts, weil displaymanager nicht zuverlässig funktionieren und auch fullscreen oft fehlschlägt
+
+funktion, um schnell in overlayroot zu wechseln
+partition für logs
+fernüberwachung per lte-modem (temporär)
+
+autostart-template?
+monitoring-funktionen
+
+

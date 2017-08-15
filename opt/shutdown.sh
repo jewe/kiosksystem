@@ -5,5 +5,5 @@
 
 
 kiosklog "kiosk" "shutdown"
-
-shutdown now
+sleep 1
+sudo shutdown now
