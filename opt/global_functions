@@ -18,7 +18,7 @@ exit_if_disabled() {
 kiosklog() {
   logger -s -- "$0: $*"
   echo "$( date ): $0: $*" >>"/opt/kiosk/logs/kiosk.log" 
-  echo "$( date ): $0: $*" >>"/opt/kiosk/logs/$1.log" 
+  echo "$( date ): $0: $2" >>"/opt/kiosk/logs/$1.log" 
 }
 
 # Usage: 
@@ -115,7 +115,7 @@ kiosklogsclear(){
 print_mount_status(){
 	#(mount | grep -q 'overlayroot') && echo "ro" || "rw"
 
-	if mount | grep -q 'overlayroot'; then
+	if (mount | grep -q 'overlayroot') then
     	echo "ro"
 	else
 		echo "rw"
