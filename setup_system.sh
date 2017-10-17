@@ -119,14 +119,13 @@ cp ./sample_Images/* /home/user/Pictures
 # create key (for git etc.)
 echo "---"
 echo "Press return to generate ssh-key without passphrase" 
-ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa  # FIXME: skip password
-
+ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa -N '' 
 
 # create kiosk user
 printf "\n------------\n"
 echo "Create kiosk user"
 
-sudo adduser kiosk # FIXME
+id -u kiosk &>/dev/null || sudo adduser --gecos "" kiosk 
 # autologin
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
 
@@ -151,12 +150,13 @@ sudo adduser kiosk sudo
 sudo adduser user kiosk
 
 # allow kiosk and user shutting down the computer
-sudo su
-grep -q ^'user' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/reboot' >>/etc/sudoers
-grep -q ^'user' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/shutdown' >>/etc/sudoers
-grep -q ^'kiosk' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/reboot' >>/etc/sudoers
-grep -q ^'kiosk' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/shutdown' >>/etc/sudoers
-exit
+sudo -s -- <<EOF
+grep -q ^'user ALL=NOPASSWD:/sbin/reboot' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/reboot' >>/etc/sudoers
+grep -q ^'user ALL=NOPASSWD:/sbin/shutdown' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/shutdown' >>/etc/sudoers
+grep -q ^'kiosk ALL=NOPASSWD:/sbin/reboot' /etc/sudoers || echo 'kiosk ALL=NOPASSWD:/sbin/reboot' >>/etc/sudoers
+grep -q ^'kiosk ALL=NOPASSWD:/sbin/shutdown' /etc/sudoers || echo 'kiosk ALL=NOPASSWD:/sbin/shutdown' >>/etc/sudoers
+EOF
+
 
 # copy shutdown-script
 sudo cp ./opt/shutdown.sh /opt/
@@ -179,7 +179,9 @@ sudo chmod -R 0777 /opt/kiosk/ # FIXME
 
 sudo cp /opt/tmp/kiosksystem/etc/rc.local /etc/
 # TODO prevent multiple executions
-sudo /bin/su -c "cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc"
+sudo -s -- <<EOF
+cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc
+EOF
 
 # disable services in /etc/xdg/autostart/
 # FIXME: change Autostart-enabled to false instead of renaming

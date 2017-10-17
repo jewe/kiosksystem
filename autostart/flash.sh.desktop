@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/flash.sh
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[en_US]=Flashplayer
+Name=Flashplayer
+Comment[en_US]=start Flashplayer
+Comment=start Flashplayer

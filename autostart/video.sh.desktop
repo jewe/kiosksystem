@@ -4,6 +4,6 @@ Exec=/opt/video.sh
 Hidden=false
 X-MATE-Autostart-enabled=true
 Name[en_US]=VLC Video
-Name=chromium-VLC Video
+Name=VLC Video
 Comment[en_US]=start VLC Video
 Comment=start VLC Video

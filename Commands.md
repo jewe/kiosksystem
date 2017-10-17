@@ -36,3 +36,10 @@ remove all logs in /opt/kiosk/logs
 
 
 ## kioskhelp
+
+
+
+
+# Other
+login as new user
+mate-session-save --logout-dialog
