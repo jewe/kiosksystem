@@ -3,7 +3,7 @@
 export DISPLAY=:0.0
 
 # wait for display manager
-sleep 10
+sleep 3
 
 # disable DPMS (Energy Star) features
 xset -dpms
@@ -32,7 +32,7 @@ FILE=/home/kiosk/SH_Timeline/bin-release/SH_Timeline.swf
 
 while true; do 
   kiosklog "$SERVICE" "$SERVICE started"
-  /home/kiosk/flash_player_sa_linux.x86_64/flashplayer "$FILE" 
+  /home/kiosk/flashplayer "$FILE" 
   kiosklog "$SERVICE" "$SERVICE crashed"
   sleep 6 # to get time to open terminal (ctrl-alt t)
   exit_if_disabled "$SERVICE"
