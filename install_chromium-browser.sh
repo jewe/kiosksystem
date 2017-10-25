@@ -40,3 +40,4 @@ sudo apt-get -y autoremove
 echo "Installation complete"
 echo "Service enabled - disable with:"
 echo "kioskctl disable chromium-browser"
+echo "webroot: /var/www/html/"

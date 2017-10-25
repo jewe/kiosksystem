@@ -112,6 +112,26 @@ kiosklogsclear(){
 	truncate -s 0 /opt/kiosk/logs/*log
 }
 
+logout(){
+	mate-session-save --logout-dialog
+}
+
+loginas(){
+	if [ "$1" = "kiosk" ]; then
+		$user = "kiosk"
+	else
+		$user = "user"
+	fi
+
+	sudo bash -c 'cat > /etc/lightdm/lightdm.conf.d/50-kiosk.conf' << EOF
+[Seat:*]
+autologin-user=$user
+autologin-user-timeout=0
+EOF
+}
+
+
+
 print_mount_status(){
 	#(mount | grep -q 'overlayroot') && echo "ro" || "rw"
 

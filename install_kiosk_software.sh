@@ -26,7 +26,9 @@ sudo apt-get install -y scrot
 sudo apt-get install -y compizconfig-settings-manager
 
 # vnc
-sudo apt-get install -y xvnc
+sudo apt-get install -y x11vnc
+# start with x11vnc -display :0 -noxrecord -noxfixes -noxdamage -forever -passwd 123456
+# realvnc viewer mac
 
 # nodejs
 # currently v4.2.6

@@ -14,3 +14,7 @@ sudo su -c "ln -s /opt/processing-3.3.5/processing /usr/local/bin/processing"
 # see http://www.artsnova.com/processing/installing-processing-ubuntu-linux-tutorial.html
 # and https://forum.processing.org/two/discussion/1523/shortcut-for-processing-in-ubuntu-13-10-and-unity
 
+# start
+sh /usr/local/bin/processing
+
+echo "sh /usr/local/bin/processing"

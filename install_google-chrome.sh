@@ -26,6 +26,7 @@ google-chrome &
 
 
 # nginx
+sudo apt-get update
 sudo apt-get install -y nginx
 
 # replace webroot index
@@ -40,3 +41,5 @@ sudo apt-get -y autoremove
 echo "Installation complete"
 echo "Service enabled - disable with:"
 echo "kioskctl disable google-chrome"
+echo "webroot: /var/www/html/"
+echo "sudo nano /etc/nginx/nginx.conf"

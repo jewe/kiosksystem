@@ -26,6 +26,7 @@ prints debug infos about screensaver status etc.
 Usage:
 kiosktest
 
+
 ## kiosklogsclear
 remove all logs in /opt/kiosk/logs
 
@@ -33,13 +34,24 @@ remove all logs in /opt/kiosk/logs
 ## kioskdir
 
 
-
-
 ## kioskhelp
 
 
+## logout
+logout and login as other user
+
+
+##loginas
+Usage:
+loginas kiosk
 
 
 # Other
-login as new user
+##login as new user
 mate-session-save --logout-dialog
+
+## start VNC session
+start with 
+x11vnc -display :0 -noxrecord -noxfixes -noxdamage -forever -passwd 123456
+
+use realvnc viewer on osx
