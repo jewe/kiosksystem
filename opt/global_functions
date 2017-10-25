@@ -118,14 +118,14 @@ logout(){
 
 loginas(){
 	if [ "$1" = "kiosk" ]; then
-		$user = "kiosk"
+		USER="kiosk"
 	else
-		$user = "user"
+		USER="user"
 	fi
 
 	sudo bash -c 'cat > /etc/lightdm/lightdm.conf.d/50-kiosk.conf' << EOF
 [Seat:*]
-autologin-user=$user
+autologin-user=$USER
 autologin-user-timeout=0
 EOF
 }
