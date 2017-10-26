@@ -125,7 +125,8 @@ ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa -N ''
 printf "\n------------\n"
 echo "Create kiosk user"
 
-id -u kiosk &>/dev/null || sudo adduser --gecos "" kiosk 
+#id -u kiosk &>/dev/null || 
+sudo adduser --gecos "" kiosk 
 # autologin
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
 

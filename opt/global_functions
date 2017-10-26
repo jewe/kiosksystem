@@ -105,7 +105,7 @@ kioskdir(){
 }
 
 kioskhelp(){
-	cat /opt/tmp/kiosksystem/Commands.md
+	less /opt/tmp/kiosksystem/Commands.md
 }
 
 kiosklogsclear(){
@@ -116,7 +116,7 @@ logout(){
 	mate-session-save --logout-dialog
 }
 
-loginas(){
+autologinas(){
 	if [ "$1" = "kiosk" ]; then
 		USER="kiosk"
 	else

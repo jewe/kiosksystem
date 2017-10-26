@@ -41,7 +41,7 @@ remove all logs in /opt/kiosk/logs
 logout and login as other user
 
 
-##loginas
+## autologinas
 Usage:
 loginas kiosk
 
@@ -55,3 +55,18 @@ start with
 x11vnc -display :0 -noxrecord -noxfixes -noxdamage -forever -passwd 123456
 
 use realvnc viewer on osx
+
+
+## Multitouch
+check if kernel module hid-multitouch loaded
+modprobe hid-multitouch
+
+get vendor:
+lsusb
+
+
+
+
+
+
+
