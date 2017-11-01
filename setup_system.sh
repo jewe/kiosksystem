@@ -10,7 +10,7 @@ echo "UNINSTALL unneeded applications"
 ## check/update with
 ## apt list --installed
 # FIXME: dpkg alle Pakete nach Größe sortieren
-sudo apt-get remove -y firefox rhythmbox thunderbird galculator 
+sudo apt-get remove -y rhythmbox thunderbird galculator 
 sudo apt-get remove -y transmission-common
 sudo apt-get remove -y ubuntu-mate-libreoffice-draw-icons
 sudo apt-get remove -y libreoffice-core
@@ -21,6 +21,10 @@ sudo apt-get remove -y account-plugin-facebook account-plugin-flickr deja-dup
 sudo apt-get remove -y mate-icon-theme-faenza
 sudo apt-get remove -y mate-screensaver 
 sudo apt-get remove -y ubuntu-mate-wallpapers ubuntu-mate-welcome
+sudo apt-get remove -y synapse shotwell 
+#sudo apt-get remove -y mate-dictionary
+
+
 # sudo apt-get remove -y update-notifier
 # mac like dock
 sudo apt-get remove -y plank
@@ -125,7 +129,7 @@ ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa -N ''
 printf "\n------------\n"
 echo "Create kiosk user"
 
-#id -u kiosk &>/dev/null || 
+# id -u kiosk &>/dev/null || 
 sudo adduser --gecos "" kiosk 
 # autologin
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz

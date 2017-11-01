@@ -2,7 +2,7 @@
 printf "\n------------\n"
 echo "INSTALL KIOSK HELPER"
 
-sudo apt-get install -y vim nano curl build-essential
+sudo apt-get install -y nano curl build-essential
 
 # ?
 #sudo apt-get install -y openssh-sftp-server
@@ -30,6 +30,9 @@ sudo apt-get install -y x11vnc
 # start with x11vnc -display :0 -noxrecord -noxfixes -noxdamage -forever -passwd 123456
 # realvnc viewer mac
 
+# system monitoring
+sudo apt-get install lm-sensors cpustat fping
+
 # nodejs
 # currently v4.2.6
 sudo apt-get install -y nodejs-legacy
@@ -39,7 +42,6 @@ sudo apt-get install -y npm
 sudo npm install -g n
 # install (fixed 8.1.2)
 sudo n 8.1.2
-
 
 
 # cleanup

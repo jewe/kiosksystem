@@ -47,6 +47,11 @@ kioskstatus(){
 	printf "\n\n\n===  LOGS  ===\n\n"
 	cd /opt/kiosk/logs && tail *
 
+
+	printf "\n\n\n===  KIOSKSYSTEM GIT  ===\n\n"
+	cd /opt/tmp/kiosksystem && git status
+
+
 	printf "\n\n"
 }
 
@@ -128,7 +133,16 @@ autologinas(){
 autologin-user=$USER
 autologin-user-timeout=0
 EOF
+	
+	cat /etc/lightdm/lightdm.conf.d/50-kiosk.conf
+
 }
+
+startvnc(){
+	x11vnc -display :0 -noxrecord -noxfixes -noxdamage -forever -passwd 123456
+}
+
+
 
 
 

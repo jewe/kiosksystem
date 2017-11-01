@@ -45,6 +45,10 @@ logout and login as other user
 Usage:
 loginas kiosk
 
+## startvnc
+Password: 123456
+
+
 
 # Other
 ##login as new user
@@ -64,9 +68,13 @@ modprobe hid-multitouch
 get vendor:
 lsusb
 
+see 
+    https://wiki.archlinux.org/index.php/Multitouch_displays
+    https://www.chalk-elec.com/?p=2028
+    https://wiki.ubuntuusers.de/Kernelmodule/
 
+/sys/module/hid_multitouch/drivers/hid\:hid-multitouch
 
-
-
+use uname -a to determine your kernel version number. 
 
 

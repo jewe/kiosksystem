@@ -39,6 +39,13 @@ sh install_kiosk_software.sh
 ```
 
 optional:
+
+install developer tools (atom-editor ...)
+```
+sh install_dev_software.sh
+```
+
+install applications:
 ```
 cd /opt/tmp/kiosksystem/
 sh install_chromium-browser.sh

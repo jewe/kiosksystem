@@ -20,7 +20,6 @@ path for configs
 
 
 
-sudo adduser user kiosk
 
 
 
@@ -34,5 +33,6 @@ autostart-template?
 monitoring-funktionen
 
 
-WW 4K Background
+caja + terminal an leiste anheften
 
+/opt & Kiosk an caja seitenleiste
