@@ -134,6 +134,22 @@ autologin-user=$USER
 autologin-user-timeout=0
 EOF
 	
+
+	sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
+[Seat:*]
+autologin-guest=false
+autologin-user=$USER
+autologin-user-timeout=0
+EOF
+
+# cat <<EOF > print.sh
+# #!/bin/bash
+# echo \$PWD
+# echo $PWD
+# EOF
+
+
+
 	cat /etc/lightdm/lightdm.conf.d/50-kiosk.conf
 
 }
