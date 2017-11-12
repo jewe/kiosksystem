@@ -90,7 +90,15 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 sudo systemctl disable bluetooth
 
 
-# reboot
+
+# export DISPLAY=:0.0
+# gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper_4K.png
+# gsettings set org.gnome.desktop.background picture-uri /usr/share/backgrounds/WW_Wallpaper_4K.png
+
+echo "Please check resolution for background image"
+echo "export DISPLAY=:0.0"
+echo "gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper_HD.png"
+echo ""
 echo "Press return to install kiosk software or "
 echo "ctrl-c to break"
 read X

@@ -47,3 +47,8 @@ sudo n 8.1.2
 # cleanup
 sudo apt-get clean
 sudo apt-get -y autoremove
+
+echo "Press return to install development tools or "
+echo "ctrl-c to break"
+read X
+sh ./install_dev_software.sh
