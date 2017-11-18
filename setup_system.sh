@@ -63,8 +63,7 @@ gsettings set org.mate.screensaver lock-enabled false
 
 # set background
 sudo rm -Rf /usr/share/backgrounds/*
-sudo cp ./backgrounds/WW_Wallpaper.png /usr/share/backgrounds/
-sudo cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/
+sudo cp ./backgrounds/*.png /usr/share/backgrounds/
 # greeter
 sudo mkdir /usr/share/backgrounds/ubuntu-mate-common
 sudo cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/ubuntu-mate-common/Ubuntu-Mate-Cold-lightdm.jpg
@@ -99,6 +98,8 @@ dconf write /org/mate/panel/toplevels/top/auto-hide true
 
 # autohide bottom panel
 dconf write /org/mate/panel/toplevels/bottom/auto-hide true
+
+dconf write /com/ubuntu/update-manager/no-show-notifications true
 
 # disable bluetooth
 sudo systemctl disable bluetooth

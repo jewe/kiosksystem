@@ -25,9 +25,8 @@ path for configs
 
 # immer warten in autostarts, weil displaymanager nicht zuverlässig funktionieren und auch fullscreen oft fehlschlägt
 
-funktion, um schnell in overlayroot zu wechseln
 partition für logs
-fernüberwachung per lte-modem (temporär)
+fernüberwachung & update per lte-modem (temporär)
 
 autostart-template?
 monitoring-funktionen
@@ -39,3 +38,28 @@ caja + terminal an leiste anheften
 
 
 Autostart template mit beliebigem Namen
+
+
+
+
+RFID 
+#!/usr/bin/bash
+
+#too lazy to find the id of the device
+idvar=$(xinput list | grep 'Synaptics')
+echo $idvar | grep '^id='
+id=$(echo $idvar | cut -c 39-40)
+
+#echo $id
+
+test=$(xinput list-props 13 | grep 'Device Enabled')
+test=$(echo $test|awk '{print substr($0,length($0),1)}')
+
+if [ $test == 0 ]
+then
+	xinput set-prop $id "Device Enabled" 1
+else
+	xinput set-prop $id "Device Enabled" 0
+fi
+
+xinput test "$i" | while read -r p; do curl --data "$p" "$URL" &>/dev/null; done &

@@ -25,6 +25,8 @@
 #/opt/google-chrome.sh
 
 . /opt/tmp/kiosksystem/opt/global_functions
-kiosklog "startup" "rc.local"
+kiosklog "startup" "system started"
+chmod +w /opt/kiosk/logs/kiosk.log
+#chmod +w /opt/kiosk/logs/startup.log
 
 exit 0
