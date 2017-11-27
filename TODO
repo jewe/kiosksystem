@@ -42,6 +42,14 @@ Autostart template mit beliebigem Namen
 
 
 
+Google Chrome without pinch:
+--disable-pinch
+--overscroll-history-navigation=0
+
+
+
+
+
 RFID 
 #!/usr/bin/bash
 

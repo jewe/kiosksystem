@@ -78,3 +78,10 @@ see
 use uname -a to determine your kernel version number. 
 
 
+# change user in terminal
+su - user
+
+
+
+
+
