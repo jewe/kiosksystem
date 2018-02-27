@@ -6,6 +6,7 @@ sudo apt-get remove -y vim pluma
 
 # atom editor
 sudo add-apt-repository -y ppa:webupd8team/atom
+sudo apt-get update
 sudo apt install atom
 
 

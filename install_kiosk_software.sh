@@ -19,9 +19,6 @@ sudo apt-get install -y scrot
 # hide mouse
 sudo apt-get install -y unclutter
 
-# screenshots from commandline 
-sudo apt-get install -y scrot 
-
 # screen config
 sudo apt-get install -y compizconfig-settings-manager
 

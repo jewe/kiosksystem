@@ -63,7 +63,7 @@ gsettings set org.mate.screensaver lock-enabled false
 
 # set background
 sudo rm -Rf /usr/share/backgrounds/*
-sudo cp ./backgrounds/*.png /usr/share/backgrounds/
+sudo cp ./backgrounds/*.* /usr/share/backgrounds/
 # greeter
 sudo mkdir /usr/share/backgrounds/ubuntu-mate-common
 sudo cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/ubuntu-mate-common/Ubuntu-Mate-Cold-lightdm.jpg
