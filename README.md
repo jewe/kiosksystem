@@ -1,4 +1,5 @@
-# Ubuntu Kiosksystem
+# Ubuntu Kiosksystem based on 16.04.2 LTS
+
 
 ## Installation
 Download Ubuntu Mate
