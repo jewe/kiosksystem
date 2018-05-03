@@ -3,6 +3,7 @@ echo "INSTALL VLC Video"
 
 export DISPLAY=:0.0
 
+sudo apt -y install vlc
 
 # copy start-script
 sudo cp ./opt/video.sh /opt/

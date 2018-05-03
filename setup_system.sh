@@ -10,29 +10,24 @@ echo "UNINSTALL unneeded applications"
 ## check/update with
 ## apt list --installed
 # FIXME: dpkg alle Pakete nach Größe sortieren
-sudo apt-get remove -y rhythmbox thunderbird galculator 
-sudo apt-get remove -y transmission-common
-sudo apt-get remove -y ubuntu-mate-libreoffice-draw-icons
-sudo apt-get remove -y libreoffice-core
-sudo apt-get remove -y libreoffice-common
-sudo apt-get remove -y hexchat simple-scan pidgin brasero cheese
-sudo apt-get remove -y account-plugin-facebook account-plugin-flickr deja-dup
+sudo apt remove -y mate-screensaver # removes mate-core...?
+sudo apt remove -y ubuntu-mate-wallpapers 
+sudo apt remove -y synapse shotwell 
 
-sudo apt-get remove -y mate-icon-theme-faenza
-sudo apt-get remove -y mate-screensaver 
-sudo apt-get remove -y ubuntu-mate-wallpapers ubuntu-mate-welcome
-sudo apt-get remove -y synapse shotwell 
-#sudo apt-get remove -y mate-dictionary
-
+sudo apt remove -y ubuntu-mate-wallpapers-photos
+sudo apt remove -y speech-dispatcher
+sudo apt remove -y sound-theme-freedesktop
+sudo apt remove -y printer-driver-hpcups printer-driver-brlaser printer-driver-c2esp printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-gutenprint printer-driver-hpcups printer-driver-m2300w printer-driver-min12xxw printer-driver-pnm2ppa printer-driver-postscript-hp printer-driver-ptouch/bionic,now 1.4.2-3 amd64 [installed]
+sudo apt remove -y printer-driver-pxljr printer-driver-sag-gdi printer-driver-splix plymouth
 
 # sudo apt-get remove -y update-notifier
 # mac like dock
 sudo apt-get remove -y plank
 # screenreader
-sudo apt-get remove -y gnome-orca
+sudo apt remove -y gnome-orca
 
 # keyring app (otherwise problems with chromium-browser)
-sudo apt-get remove -y gnome-keyring
+sudo apt remove -y gnome-keyring
 
 # remove unused locals
 # sudo apt-get install localepurge # FIXME
@@ -52,6 +47,8 @@ export DISPLAY=:0.0
 
 ## check/update with: 
 ## gsettings list-recursively org.mate.background
+
+
 
 # disable lock screen 
 gsettings set org.mate.lockdown disable-lock-screen true
@@ -94,6 +91,12 @@ gsettings set org.mate.power-manager sleep-display-ups 0
 gsettings set org.mate.power-manager kbd-brightness-dim-by-on-idle 100
 
 # autohide top panel (needs reboot)
+
+
+#update-manager
+#sudo apt install gconf-editor
+#dconf dump /
+
 dconf write /org/mate/panel/toplevels/top/auto-hide true
 
 # autohide bottom panel
@@ -102,7 +105,7 @@ dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 dconf write /com/ubuntu/update-manager/no-show-notifications true
 
 # disable bluetooth
-sudo systemctl disable bluetooth
+sudo systemctl disable bluetooth # permanent?
 
 
 # readonly filesystem
@@ -195,8 +198,6 @@ EOF
 cd /etc/xdg/autostart/
 # bluetooth
 sudo mv blueman.desktop blueman.desktop.disabled
-# backup
-sudo mv deja-dup-monitor.desktop deja-dup-monitor.desktop.disabled
 # power manager
 sudo mv mate-power-manager.desktop mate-power-manager.desktop.disabled
 # screensaver
@@ -206,7 +207,7 @@ sudo mv orca-autostart.desktop orca-autostart.desktop.disabled
 # updates
 sudo mv update-notifier.desktop update-notifier.desktop.disabled
 # mate welcome
-sudo mv /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop.disabled
+sudo mv /home/kiosk/.config/autostart/ubuntu-mate-welcome-autostart.desktop /home/kiosk/.config/autostart/ubuntu-mate-welcome-autostart.desktop.disabled
 # notifications
 sudo mv /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service.disabled 
 

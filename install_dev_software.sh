@@ -2,12 +2,12 @@
 printf "\n------------\n"
 echo "INSTALL KIOSK HELPER"
 
-sudo apt-get remove -y vim pluma
+sudo apt-get remove -y pluma
 
 # atom editor
 sudo add-apt-repository -y ppa:webupd8team/atom
 sudo apt-get update
-sudo apt install atom
+sudo apt install -y atom
 
 
 # configure caja

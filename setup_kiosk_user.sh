@@ -6,9 +6,13 @@ echo "SYSTEM CONFIG"
 export DISPLAY=:0.0
 
 # cleanup home directory
-sudo rmdir /home/kiosk/Templates
+sudo rm -R /home/kiosk/Templates
+sudo rm -R /home/kiosk/Music
+sudo rm -R /home/kiosk/Videos
+sudo rm -R /home/kiosk/snap
+sudo mkdir /home/kiosk/.config/autostart/
 
-sudo rm /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop
+#autostart removed: sudo rm /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop
 
 ## check/update with: 
 ## gsettings list-recursively org.mate.background
