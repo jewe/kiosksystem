@@ -78,3 +78,11 @@ kioskctl disable slideshow
 ```
 
 
+## Multiple Screens
+compizconfig-settings-manager package needed
+Control Center: Look and Feel: CompizConfig Settings Manager: General Options: Display Settings:
+-> uncheck "Detect outputs"
+-> remove all settings in "Outputs"
+xrandr --output HDMI -pos 100x0
+
+

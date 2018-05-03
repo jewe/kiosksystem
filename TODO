@@ -16,10 +16,13 @@ rc.local changed - no success
 ## Help
 path for configs
 
+# check ssd health
+sudo apt-get install smartmontools
 
 
-
-
+add Objects to Mate Panel:
+dconf:
+	org mate panel objects
 
 
 

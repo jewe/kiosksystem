@@ -11,6 +11,8 @@ sudo tar -xzf processing-3.3.6-linux64.tgz -C /opt/
 
 sudo su -c "ln -s /opt/processing-3.3.6/processing /usr/local/bin/processing"
 
+sudo su -c "ln -s /opt/processing-3.3.6/processing-java /usr/local/bin/processing-java"
+
 # see http://www.artsnova.com/processing/installing-processing-ubuntu-linux-tutorial.html
 # and https://forum.processing.org/two/discussion/1523/shortcut-for-processing-in-ubuntu-13-10-and-unity
 

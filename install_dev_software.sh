@@ -16,10 +16,15 @@ sudo apt install atom
 
 # add some caja bookmarks
 sudo bash -c 'cat > /home/user/.gtk-bookmarks' << EOF
+file:///opt/
 file:///opt/tmp/kiosksystem
 file:///opt/kiosk
 file:///var/www/html/
 EOF
+
+# config git
+git config --global user.email "dummy@dummy.de"
+git config --global user.name "J.W."
 
 # cleanup
 sudo apt-get clean
