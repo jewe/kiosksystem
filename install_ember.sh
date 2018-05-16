@@ -24,6 +24,8 @@ git checkout v4.9.0  # the latest stable release
 ./configure
 make
 sudo make install
+#rm -R ../watchman
+
 
 sudo npm install -g phantomjs-prebuilt
 

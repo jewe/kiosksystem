@@ -5,6 +5,9 @@
 Download Ubuntu MATE 18.04 LTS (Bionic)
 http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04-desktop-amd64.iso
 
+Minimal Installation
++Extras
+
 
 Kiosk-System: 
 ```

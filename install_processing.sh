@@ -9,6 +9,8 @@ export DISPLAY=:0.0
 sudo wget http://download.processing.org/processing-3.3.7-linux64.tgz
 sudo tar -xzf processing-3.3.7-linux64.tgz -C /opt/
 
+sudo rm processing-3.3.7-linux64.tgz
+
 sudo su -c "ln -s /opt/processing-3.3.7/processing /usr/local/bin/processing"
 
 sudo su -c "ln -s /opt/processing-3.3.7/processing-java /usr/local/bin/processing-java"

@@ -4,9 +4,9 @@ echo "INSTALL CHROMIUM"
 export DISPLAY=:0.0
 
 sudo apt-get update
-# chromium browser (currently 58.0)
+# chromium browser (currently 65.0)
 sudo apt-get install -y chromium-browser 
-sudo apt-get install -y chromium-browser-l10n chromium-codecs-ffmpeg unity-chromium-extension
+sudo apt-get install -y chromium-browser-l10n chromium-codecs-ffmpeg 
 
 sudo apt-get remove -y firefox 
 

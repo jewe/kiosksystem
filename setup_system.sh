@@ -129,6 +129,10 @@ echo "---"
 echo "Press return to generate ssh-key without passphrase" 
 ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa -N '' 
 
+
+# TODO: disable telemetry
+
+
 # create kiosk user
 printf "\n------------\n"
 echo "Create kiosk user"
