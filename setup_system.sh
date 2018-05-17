@@ -17,14 +17,15 @@ sudo apt remove -y synapse shotwell
 sudo apt remove -y ubuntu-mate-wallpapers-photos
 sudo apt remove -y speech-dispatcher
 sudo apt remove -y sound-theme-freedesktop
-sudo apt remove -y printer-driver-hpcups printer-driver-brlaser printer-driver-c2esp printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-gutenprint printer-driver-hpcups printer-driver-m2300w printer-driver-min12xxw printer-driver-pnm2ppa printer-driver-postscript-hp printer-driver-ptouch/bionic,now 1.4.2-3 amd64 [installed]
-sudo apt remove -y printer-driver-pxljr printer-driver-sag-gdi printer-driver-splix plymouth
+#sudo apt remove -y printer-driver-hpcups printer-driver-brlaser printer-driver-c2esp printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-gutenprint printer-driver-hpcups printer-driver-m2300w printer-driver-min12xxw printer-driver-pnm2ppa printer-driver-postscript-hp printer-driver-ptouch/bionic
+#sudo apt remove -y printer-driver-pxljr printer-driver-sag-gdi printer-driver-splix 
 
 # sudo apt-get remove -y update-notifier
 # mac like dock
 sudo apt-get remove -y plank
+
 # screenreader
-sudo apt remove -y gnome-orca
+#sudo apt remove -y gnome-orca
 
 # keyring app (otherwise problems with chromium-browser)
 sudo apt remove -y gnome-keyring
@@ -142,13 +143,6 @@ sudo adduser --gecos "" kiosk
 # autologin
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
 
-sudo bash -c 'cat > /etc/lightdm/lightdm.conf.d/50-kiosk.conf' << EOF
-[Seat:*]
-autologin-user=kiosk
-autologin-user-timeout=0
-EOF
-
-# Setting below options in only 99-kiosk.conf doesn't seem enough (conflicts on autologin-user).
 sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
 [Seat:*]
 autologin-guest=false
@@ -211,9 +205,8 @@ sudo mv orca-autostart.desktop orca-autostart.desktop.disabled
 # updates
 sudo mv update-notifier.desktop update-notifier.desktop.disabled
 # mate welcome
-sudo mv /home/kiosk/.config/autostart/ubuntu-mate-welcome-autostart.desktop /home/kiosk/.config/autostart/ubuntu-mate-welcome-autostart.desktop.disabled
+sudo mv ubuntu-mate-welcome-autostart.desktop ubuntu-mate-welcome-autostart.desktop.disabled
 # notifications
-sudo mv /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service.disabled 
 
 
 # cleanup
