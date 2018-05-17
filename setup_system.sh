@@ -198,6 +198,7 @@ sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
 
 cd /etc/xdg/autostart/
 # bluetooth
+sudo sed -i 's/Autostart=false/Autostart=true/g' blueman.desktop
 sudo mv blueman.desktop blueman.desktop.disabled
 # power manager
 sudo mv mate-power-manager.desktop mate-power-manager.desktop.disabled
