@@ -193,6 +193,9 @@ EOF
 # disable services in /etc/xdg/autostart/
 # FIXME: change Autostart-enabled to false instead of renaming
 
+# display all hidden apps
+sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
+
 cd /etc/xdg/autostart/
 # bluetooth
 sudo mv blueman.desktop blueman.desktop.disabled
@@ -208,6 +211,19 @@ sudo mv update-notifier.desktop update-notifier.desktop.disabled
 sudo mv ubuntu-mate-welcome-autostart.desktop ubuntu-mate-welcome-autostart.desktop.disabled
 # notifications
 
+# disable common unix printing service
+sudo systemctl disable cupsd.service
+sudo systemctl disable cups-browsed.service
+
+# disable avahi-daemon 
+sudo systemctl disable avahi-daemon
+
+# Disable HUD
+sudo chmod -x /usr/lib/x86_64-linux-gnu/hud/hud-service
+
+# Disable evolution processes
+sudo mv /usr/lib/evolution-data-server /usr/lib/evolution-data-server-disabled
+sudo mv /usr/lib/evolution /usr/lib/evolution-disabled
 
 # cleanup
 printf "\n------------\n"
