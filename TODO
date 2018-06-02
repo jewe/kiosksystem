@@ -1,3 +1,33 @@
+
+# reinstall window manager
+sudo apt install marco
+
+
+sudo cpupower frequency-set -g performance
+
+Hyperthreading Manager
+https://github.com/damentz/ht-manager
+
+
+https://liquorix.net/
+
+
+
+# ureadahead quiet
+sudo mkdir /etc/systemd/system/ureadahead.service.d/
+sudo nano /etc/systemd/system/ureadahead.service.d/quiet.conf
+
+[Service]
+ExecStart=
+ExecStart=/sbin/ureadahead -q
+
+
+
+
+
+
+
+
 ## Screensaver
 
 2017-08-01

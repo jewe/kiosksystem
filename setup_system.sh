@@ -10,19 +10,19 @@ echo "UNINSTALL unneeded applications"
 ## check/update with
 ## apt list --installed
 # FIXME: dpkg alle Pakete nach Größe sortieren
-sudo apt remove -y mate-screensaver # removes mate-core...?
-sudo apt remove -y ubuntu-mate-wallpapers 
-sudo apt remove -y synapse shotwell 
+#sudo apt remove -y mate-screensaver # removes mate-core...?
+#sudo apt remove -y ubuntu-mate-wallpapers 
+#sudo apt remove -y synapse shotwell 
 
 sudo apt remove -y ubuntu-mate-wallpapers-photos
 sudo apt remove -y speech-dispatcher
-sudo apt remove -y sound-theme-freedesktop
+#sudo apt remove -y sound-theme-freedesktop
 #sudo apt remove -y printer-driver-hpcups printer-driver-brlaser printer-driver-c2esp printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-gutenprint printer-driver-hpcups printer-driver-m2300w printer-driver-min12xxw printer-driver-pnm2ppa printer-driver-postscript-hp printer-driver-ptouch/bionic
 #sudo apt remove -y printer-driver-pxljr printer-driver-sag-gdi printer-driver-splix 
 
 # sudo apt-get remove -y update-notifier
 # mac like dock
-sudo apt-get remove -y plank
+#sudo apt-get remove -y plank
 
 # screenreader
 #sudo apt remove -y gnome-orca
@@ -49,8 +49,6 @@ export DISPLAY=:0.0
 ## check/update with: 
 ## gsettings list-recursively org.mate.background
 
-
-
 # disable lock screen 
 gsettings set org.mate.lockdown disable-lock-screen true
 
@@ -58,6 +56,8 @@ gsettings set org.mate.lockdown disable-lock-screen true
 gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.mate.screensaver lock-enabled false
+
+gsettings set org.mate.session idle-delay 0
 
 # set background
 sudo rm -Rf /usr/share/backgrounds/*
@@ -91,13 +91,12 @@ gsettings set org.mate.power-manager sleep-display-ups 0
 # display: disable dim
 gsettings set org.mate.power-manager kbd-brightness-dim-by-on-idle 100
 
-# autohide top panel (needs reboot)
-
 
 #update-manager
 #sudo apt install gconf-editor
 #dconf dump /
 
+# autohide top panel (needs reboot)
 dconf write /org/mate/panel/toplevels/top/auto-hide true
 
 # autohide bottom panel
@@ -143,12 +142,12 @@ sudo adduser --gecos "" kiosk
 # autologin
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
 
-sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
-[Seat:*]
-autologin-guest=false
-autologin-user=kiosk
-autologin-user-timeout=0
-EOF
+# sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
+# [Seat:*]
+# autologin-guest=false
+# autologin-user=kiosk
+# autologin-user-timeout=0
+# EOF
 
 # temporarily allow sudo for installation 
 sudo adduser kiosk sudo
@@ -198,7 +197,7 @@ sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
 
 cd /etc/xdg/autostart/
 # bluetooth
-sudo sed -i 's/Autostart=false/Autostart=true/g' blueman.desktop
+#sudo sed -i 's/Autostart=false/Autostart=true/g' blueman.desktop
 sudo mv blueman.desktop blueman.desktop.disabled
 # power manager
 sudo mv mate-power-manager.desktop mate-power-manager.desktop.disabled
@@ -213,8 +212,8 @@ sudo mv ubuntu-mate-welcome-autostart.desktop ubuntu-mate-welcome-autostart.desk
 # notifications
 
 # disable common unix printing service
-sudo systemctl disable cupsd.service
-sudo systemctl disable cups-browsed.service
+#sudo systemctl disable cupsd.service
+#sudo systemctl disable cups-browsed.service
 
 # disable avahi-daemon 
 sudo systemctl disable avahi-daemon
