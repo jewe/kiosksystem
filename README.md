@@ -19,7 +19,8 @@ Dev-System:
 ssh-copy-id -i ~/.ssh/id_rsa.pub user@IP
 ssh user@IP
 ```
-
+# remote host identification has changed
+ssh-keygen -R 192.168...
 
 
 ```

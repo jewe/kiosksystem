@@ -32,14 +32,14 @@ sudo apt install -y lm-sensors cpustat fping
 
 # nodejs
 # currently v4.2.6
-sudo apt install -y nodejs-legacy
+sudo apt install -y nodejs
 # currently 3.5.2
 sudo apt install -y npm
 # node manager
 sudo npm install -g n
 # install (fixed 8.1.2)
 #sudo n 8.1.2
-sudo n latest
+sudo n lts
 
 # cleanup
 sudo apt-get clean

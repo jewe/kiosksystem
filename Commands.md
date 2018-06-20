@@ -81,7 +81,11 @@ use uname -a to determine your kernel version number.
 # change user in terminal
 su - user
 
+# Detect platform
+uname -a
+Linux user-nano 4.15.0-23-generic #25-Ubuntu SMP Wed May 23 18:02:16 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
 
-
+# Detect graphic
+sudo lshw -c display
 
 

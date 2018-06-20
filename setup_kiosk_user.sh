@@ -37,14 +37,6 @@ gsettings set org.mate.background picture-opacity 100
 gsettings set org.mate.background show-desktop-icons false
 gsettings set org.mate.background picture-options 'centered'
 
-# what's the difference here?
-gsettings set org.gnome.desktop.background picture-uri /usr/share/backgrounds/WW_Wallpaper_HD.png
-
-gsettings set org.gnome.desktop.background primary-color '#555555'
-gsettings set org.gnome.desktop.background secondary-color '#444444'
-gsettings set org.gnome.desktop.background picture-opacity 100
-gsettings set org.gnome.desktop.background show-desktop-icons false
-gsettings set org.gnome.desktop.background picture-options 'centered'
 
 
 # disable notifications (??? No such schema)

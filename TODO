@@ -3,13 +3,7 @@
 sudo apt install marco
 
 
-sudo cpupower frequency-set -g performance
 
-Hyperthreading Manager
-https://github.com/damentz/ht-manager
-
-
-https://liquorix.net/
 
 
 
@@ -20,6 +14,8 @@ sudo nano /etc/systemd/system/ureadahead.service.d/quiet.conf
 [Service]
 ExecStart=
 ExecStart=/sbin/ureadahead -q
+
+
 
 
 
@@ -47,12 +43,19 @@ rc.local changed - no success
 path for configs
 
 # check ssd health
-sudo apt-get install smartmontools
+sudo apt -y install smartmontools
 
+
+
+
+#
 
 add Objects to Mate Panel:
 dconf:
 	org mate panel objects
+
+
+
 
 
 

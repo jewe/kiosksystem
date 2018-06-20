@@ -75,13 +75,13 @@ gsettings set org.mate.background show-desktop-icons false
 gsettings set org.mate.background picture-options 'centered'
 
 # what's the difference here?
-gsettings set org.gnome.desktop.background picture-uri /usr/share/backgrounds/WW_Wallpaper_HD.png
+# gsettings set org.gnome.desktop.background picture-uri /usr/share/backgrounds/WW_Wallpaper_HD.png
 
-gsettings set org.gnome.desktop.background primary-color '#555555'
-gsettings set org.gnome.desktop.background secondary-color '#444444'
-gsettings set org.gnome.desktop.background picture-opacity 100
-gsettings set org.gnome.desktop.background show-desktop-icons false
-gsettings set org.gnome.desktop.background picture-options 'centered'
+# gsettings set org.gnome.desktop.background primary-color '#555555'
+# gsettings set org.gnome.desktop.background secondary-color '#444444'
+# gsettings set org.gnome.desktop.background picture-opacity 100
+# gsettings set org.gnome.desktop.background show-desktop-icons false
+# gsettings set org.gnome.desktop.background picture-options 'centered'
 
 
 # disable display going to sleep
@@ -130,6 +130,15 @@ echo "Press return to generate ssh-key without passphrase"
 ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa -N '' 
 
 
+# disable syslog entries from ureadahead
+sudo mkdir /etc/systemd/system/ureadahead.service.d/
+sudo bash -c 'cat > /etc/systemd/system/ureadahead.service.d/quiet.conf' << EOF
+[Service]
+ExecStart=
+ExecStart=/sbin/ureadahead -q
+EOF
+
+
 # TODO: disable telemetry
 
 
@@ -141,19 +150,24 @@ echo "Create kiosk user"
 sudo adduser --gecos "" kiosk 
 # autologin
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
-
-# sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
-# [Seat:*]
-# autologin-guest=false
-# autologin-user=kiosk
-# autologin-user-timeout=0
-# EOF
+sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
+[Seat:*]
+autologin-guest=false
+autologin-user=kiosk
+autologin-user-timeout=0
+EOF
 
 # temporarily allow sudo for installation 
 sudo adduser kiosk sudo
 
 # allow 'user' to access files from kiosk
 sudo adduser user kiosk
+
+
+# ssh keys from user
+sudo cp -r /home/user/.ssh/ /home/kiosk/.ssh
+sudo chown kiosk:kiosk -R /home/kiosk/.ssh/
+
 
 # allow kiosk and user shutting down the computer
 sudo -s -- <<EOF
@@ -219,11 +233,51 @@ sudo mv ubuntu-mate-welcome-autostart.desktop ubuntu-mate-welcome-autostart.desk
 sudo systemctl disable avahi-daemon
 
 # Disable HUD
-sudo chmod -x /usr/lib/x86_64-linux-gnu/hud/hud-service
+#sudo chmod -x /usr/lib/x86_64-linux-gnu/hud/hud-service
 
 # Disable evolution processes
-sudo mv /usr/lib/evolution-data-server /usr/lib/evolution-data-server-disabled
-sudo mv /usr/lib/evolution /usr/lib/evolution-disabled
+#sudo mv /usr/lib/evolution-data-server /usr/lib/evolution-data-server-disabled
+#sudo mv /usr/lib/evolution /usr/lib/evolution-disabled
+
+
+
+
+# configure mate panel with custom applets
+dconf load /org/mate/panel/objects/ip-applet/ << EOF
+[/]
+applet-iid='CommandAppletFactory::CommandApplet'
+toplevel-id='top'
+position=200
+object-type='applet'
+panel-right-stick=false
+
+[prefs]
+interval=60
+command='echo $( myip4 )'
+EOF
+
+dconf load /org/mate/panel/objects/mount-applet/ << EOF
+[/]
+applet-iid='CommandAppletFactory::CommandApplet'
+toplevel-id='top'
+position=330
+object-type='applet'
+panel-right-stick=false
+
+[prefs]
+interval=60
+command='echo $( print_mount_status )'
+EOF
+
+dconf load /org/mate/panel/general/ << EOF
+[/]
+object-id-list=['briskmenu', 'firefox', 'notification-area', 'indicatorappletcomplete', 'clock', 'show-desktop', 'window-list', 'workspace-switcher',  'ip-applet', 'mount-applet']
+toplevel-id-list=['top', 'bottom']
+EOF
+
+
+
+
 
 # cleanup
 printf "\n------------\n"
