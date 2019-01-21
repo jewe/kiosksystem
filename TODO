@@ -1,10 +1,16 @@
+# check on fresh mate system
+dconf dump /org/mate/power-manager/
+
+
+
+
 
 # reinstall window manager
 sudo apt install marco
 
 
-
-
+# manage via http: Tooloop-Settings-Server
+https://github.com/vollstock/Tooloop-Settings-Server
 
 
 # ureadahead quiet
@@ -18,6 +24,23 @@ ExecStart=/sbin/ureadahead -q
 
 
 
+
+
+
+# Set resolution
+# xrandr --output <YOUR_DISPLAY> --mode <RESOLUTION>  --rate <REFRESHRATE> &
+
+# Turn screen saver off
+xset s 0 &
+xset s blank &
+xset s off &
+
+# Disable DPMS (Energy Star) features
+xset dpms 0 0 0 &
+xset -dpms &
+
+# Disable bell
+xset b off &
 
 
 
@@ -83,6 +106,14 @@ Google Chrome without pinch:
 --overscroll-history-navigation=0
 
 
+
+
+
+
+
+eom --fullscreen --slide-show dir
+- slideshow ohne fading
+vlc --fullscreen -loop --no-osd file
 
 
 

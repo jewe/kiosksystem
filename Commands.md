@@ -43,7 +43,7 @@ logout and login as other user
 
 ## autologinas
 Usage:
-loginas kiosk
+autologinas kiosk
 
 ## startvnc
 Password: 123456

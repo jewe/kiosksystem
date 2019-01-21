@@ -5,7 +5,7 @@
 
 # UNINSTALL unneeded applications
 printf "\n------------\n"
-echo "UNINSTALL unneeded applications"
+echo "UNINSTALL unneeded applications\n"
 
 ## check/update with
 ## apt list --installed
@@ -36,14 +36,14 @@ sudo apt remove -y gnome-keyring
 
 # UPDATE ALL PACKAGES
 printf "\n------------\n"
-echo "UPDATE ALL PACKAGES"
+echo "UPDATE ALL PACKAGES\n"
 sudo apt-get update
 sudo apt-get -y dist-upgrade
 
 
 # SYSTEM CONFIG
 printf "\n------------\n"
-echo "SYSTEM CONFIG"
+echo "SYSTEM CONFIG\n"
 export DISPLAY=:0.0
 
 ## check/update with: 
@@ -53,10 +53,9 @@ export DISPLAY=:0.0
 gsettings set org.mate.lockdown disable-lock-screen true
 
 # screensaver
-gsettings set org.gnome.desktop.session idle-delay 0
-gsettings set org.gnome.desktop.screensaver lock-enabled false
+# gsettings set org.gnome.desktop.session idle-delay 0
+# gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.mate.screensaver lock-enabled false
-
 gsettings set org.mate.session idle-delay 0
 
 # set background
@@ -73,15 +72,6 @@ gsettings set org.mate.background secondary-color '#444444'
 gsettings set org.mate.background picture-opacity 100
 gsettings set org.mate.background show-desktop-icons false
 gsettings set org.mate.background picture-options 'centered'
-
-# what's the difference here?
-# gsettings set org.gnome.desktop.background picture-uri /usr/share/backgrounds/WW_Wallpaper_HD.png
-
-# gsettings set org.gnome.desktop.background primary-color '#555555'
-# gsettings set org.gnome.desktop.background secondary-color '#444444'
-# gsettings set org.gnome.desktop.background picture-opacity 100
-# gsettings set org.gnome.desktop.background show-desktop-icons false
-# gsettings set org.gnome.desktop.background picture-options 'centered'
 
 
 # disable display going to sleep
@@ -121,7 +111,8 @@ sudo cp /boot/grub/grub.cfg /boot/grub/grub.cfg.bak
 # cleanup home directory
 sudo rmdir /home/user/Videos
 sudo rmdir /home/user/Templates
-sudo rmdir /home/user/Music
+sudo rmdir /home/user/Music 
+sudo mkdir /home/user/Pictures
 cp ./sample_Images/* /home/user/Pictures
 
 # create key (for git etc.)
@@ -185,7 +176,7 @@ sudo chmod +x /opt/shutdown.sh
 
 
 printf "\n------------\n"
-echo "Install kiosk scripts"
+echo "Install kiosk scripts\n"
 
 # prepare /opt/
 sudo mkdir /opt/kiosk
@@ -256,6 +247,9 @@ interval=60
 command='echo $( myip4 )'
 EOF
 
+dconf write /org/mate/panel/objects/ip-applet/prefs/command "'echo \$( myip4 )'"
+
+
 dconf load /org/mate/panel/objects/mount-applet/ << EOF
 [/]
 applet-iid='CommandAppletFactory::CommandApplet'
@@ -268,6 +262,8 @@ panel-right-stick=false
 interval=60
 command='echo $( print_mount_status )'
 EOF
+
+dconf write /org/mate/panel/objects/ip-applet/prefs/command "'echo \$( print_mount_status )'"
 
 dconf load /org/mate/panel/general/ << EOF
 [/]
