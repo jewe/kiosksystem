@@ -128,6 +128,33 @@ Chrome
 16-20
 
 
+*** ZBOX-E MAGNUS ER51060-BE AMD Ryzen
+
+Motionmark 4K@60 
+
+
+
+
+*** Shuttle XPC slim Barebone DH02U5 Intel Core i5-7200U GTX 1050
+
+Motionmark: Google Chrome 4k@60
+250
+
+bunny-mark: Google Chrome 4k@60 100.000
+4.8.6: 19fps
+5rc1: 16fps
+
+
+=======================================================
+    glmark2 2014.03+git20150611.fa71af2d
+=======================================================
+    OpenGL Information
+    GL_VENDOR:     NVIDIA Corporation
+    GL_RENDERER:   GeForce GTX 1050/PCIe/SSE2
+    GL_VERSION:    4.6.0 NVIDIA 390.77
+=======================================================
+                                  glmark2 Score: 391 
+=======================================================
 
 
 
@@ -165,12 +192,25 @@ sudo add-apt-repository ppa:damentz/liquorix && sudo apt-get update
 sudo apt-get install linux-image-liquorix-amd64 linux-headers-liquorix-amd64
 
 # benchmark test
-
 sudo apt install glmark2
+glmark2 --fullscreen
+
+# Pixijs Performance
+https://pixijs.io/bunny-mark/
+
 
 # enable hardware acc in chrome
 chrome://gpu
 chrome://flags
+
+
+# Problems with vertical Stripes (tearing)
+Open Nvidia X Server Settings GUI > X Server Display Configuration > choose ‘advanced’ > enable ‘Force Composition Pipeline’
+(https://www.reddit.com/r/linuxquestions/comments/8fb9oj/how_to_fix_screen_tearing_ubuntu_1804_nvidia_390/)
+
+
+
+
 
 
 https://askubuntu.com/questions/410860/how-to-permanently-set-cpu-power-management-to-the-powersave-governor

@@ -30,6 +30,7 @@ sudo mkdir tmp
 sudo chmod 0777 tmp/
 cd tmp/
 git clone https://github.com/jewe/kiosksystem.git
+# git clone -b Mate-16.04.2LTS https://github.com/jewe/kiosksystem.git
 cd kiosksystem
 sh setup_system.sh
 # sudo reboot

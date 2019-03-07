@@ -14,6 +14,7 @@ sh ./install.sh
 
 # access to usb-ports
 sudo usermod -a -G dialout user
+sudo chmod 0777 /dev/ttyU*
 
 # start
 sh /usr/local/bin/arduino

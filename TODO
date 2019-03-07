@@ -1,3 +1,14 @@
+
+* enable service per user, so kiosk starts, but user not
+
+
+
+
+
+
+
+
+
 # check on fresh mate system
 dconf dump /org/mate/power-manager/
 

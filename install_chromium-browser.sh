@@ -17,10 +17,15 @@ sudo chmod +x /opt/chromium-browser.sh
 . /opt/tmp/kiosksystem/opt/global_functions
 kioskctl enable chromium-browser
 
-# autostart 
+# autostart kiosk
 sudo cp ./autostart/chromium-browser.sh.desktop /home/kiosk/.config/autostart/
 sudo chown kiosk /home/kiosk/.config/autostart/chromium-browser.sh.desktop
 sudo chmod +x /home/kiosk/.config/autostart/chromium-browser.sh.desktop
+
+# autostart user
+sudo cp ./autostart/chromium-browser.sh.desktop /home/user/.config/autostart/
+sudo chown user /home/user/.config/autostart/chromium-browser.sh.desktop
+sudo chmod +x /home/user/.config/autostart/chromium-browser.sh.desktop
 
 # first run to configure
 #echo "wenn gleich chromium aufgeht, wieder schliessen (druecke enter)"
@@ -44,3 +49,5 @@ echo "Installation complete"
 echo "Service enabled - disable with:"
 echo "kioskctl disable chromium-browser"
 echo "webroot: /var/www/html/"
+
+# service nginx status

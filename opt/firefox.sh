@@ -12,9 +12,6 @@ xset s off
 # don't blank the video device
 xset s noblank
 
-# xrandr --output HDMI-1 -s 1920x1200 --rotation inverted
-
-
 # load global functions
 . /opt/tmp/kiosksystem/opt/global_functions
 
@@ -26,18 +23,23 @@ kiosklog "$SERVICE" "$SERVICE script started $0"
 
 exit_if_disabled "$SERVICE"
 
-FILE=/home/kiosk/station.mov
+# TODO: check this
 
+# If Chromium crashes (usually due to rebooting), 
+# clear the crash flag so we don't have the annoying warning bar
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/kiosk/.config/google-chrome/Default/Preferences
+sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/kiosk/.config/google-chrome/Default/Preferences
 
+sleep 10 # otherwise ignores -kiosk
 
 while true; do 
+  rm -rf ~/.{config,cache}/.mozilla/firefox
   kiosklog "$SERVICE" "$SERVICE started"
 
-  # https://wiki.videolan.org/VLC_command-line_help/
-  vlc "$FILE" --fullscreen --no-mouse-events --loop --no-osd --no-audio  
-  
-  # alternativ mpv https://mpv.io/manual/master/
-  # mpv "$FILE" 
+  # https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options
+  firefox 'http://localhost/ksw_vdv_exponat/'
+  sleep 1
+  xdotool keydown F11
 
   kiosklog "$SERVICE" "$SERVICE crashed"
   sleep 6 # to get time to open terminal (ctrl-alt t)
