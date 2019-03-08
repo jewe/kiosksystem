@@ -17,11 +17,13 @@ sudo chmod +x /opt/firefox.sh
 kioskctl enable firefox
 
 # autostart kiosk
+mkdir -p /home/kiosk/.config/autostart/
 sudo cp ./autostart/firefox.sh.desktop /home/kiosk/.config/autostart/
 sudo chown kiosk /home/kiosk/.config/autostart/firefox.sh.desktop
 sudo chmod +x /home/kiosk/.config/autostart/firefox.sh.desktop
 
 # autostart user
+mkdir -p /home/user/.config/autostart/
 sudo cp ./autostart/firefox.sh.desktop /home/user/.config/autostart/
 sudo chown user /home/user/.config/autostart/firefox.sh.desktop
 sudo chmod +x /home/user/.config/autostart/firefox.sh.desktop
