@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/firefox.sh
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[en_US]=firefox
+Name=firefox
+Comment[en_US]=start firefox
+Comment=start firefox
