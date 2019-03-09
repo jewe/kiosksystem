@@ -27,10 +27,10 @@ while true; do
   rm -rf ~/.{config,cache}/.mozilla/firefox
   kiosklog "$SERVICE" "$SERVICE started"
 
+  (sleep 3; xdotool keydown F11) &
   # https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options
   firefox 'http://localhost/ksw_vdv_exponat/'
-  sleep 1
-  xdotool keydown F11
+  
 
   kiosklog "$SERVICE" "$SERVICE crashed"
   sleep 6 # to get time to open terminal (ctrl-alt t)
