@@ -23,7 +23,7 @@ sudo chmod +x /home/user/.config/autostart/monitoring.sh.desktop
 kioskdir
 
 sudo mkdir /opt/logs/
-sudo chmod 0777 mkdir /opt/logs/
+sudo chmod 0777 /opt/logs/
 
 echo "Installation complete"
 echo "Service enabled - disable with:"
