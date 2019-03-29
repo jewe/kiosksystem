@@ -21,11 +21,13 @@ exit_if_disabled "$SERVICE"
 while true; do 
   
 	now=$(date +"%m-%d")
-	file="/opt/logs/$now.log"
-	#echo "Starting backup to $_file..."
+	file="/opt/logs/$now_monitoring.log"
+	
+	"\n---\n" >> "$file"
+	$(date +"%H:%M") >> "$file"
 	sensors >> "$file"
 
 
-  	sleep 36
+  	sleep 600
   	exit_if_disabled "$SERVICE"
 done
