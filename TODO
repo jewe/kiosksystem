@@ -2,11 +2,16 @@
 * enable service per user, so kiosk starts, but user not
 
 
+# on mate 18 tested successfully:
+sudo mv /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service.disabled
 
 
 
 
-
+# close popup with xdotool
+xdotool getmouselocation --shell
+xdotool mousemove 100 200 click 1 
+(sleep 4; xdotool key F11) &
 
 
 # check on fresh mate system

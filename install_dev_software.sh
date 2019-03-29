@@ -22,10 +22,6 @@ file:///opt/kiosk
 file:///var/www/html/
 EOF
 
-# config git
-git config --global user.email "dummy@dummy.de"
-git config --global user.name "J.W."
-
 # cleanup
 sudo apt-get clean
 sudo apt-get -y autoremove

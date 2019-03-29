@@ -40,3 +40,6 @@ while true; do
   sleep 6 # to get time to open terminal (ctrl-alt t)
   exit_if_disabled "$SERVICE"
 done
+
+# --enable-logging
+# ~/.config/google-chrome/chrome_debug.log 

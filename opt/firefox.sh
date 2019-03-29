@@ -27,7 +27,7 @@ while true; do
   rm -rf ~/.{config,cache}/.mozilla/firefox
   kiosklog "$SERVICE" "$SERVICE started"
 
-  (sleep 3; xdotool key F11) &
+  (sleep 4; xdotool key F11) &
   # https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options
   firefox 'http://localhost/ksw_vdv_exponat/'
   # while pidof firefox >/dev/null; do sleep 1; done

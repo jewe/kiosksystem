@@ -133,6 +133,12 @@ EOF
 # TODO: disable telemetry
 
 
+# config git
+git config --global user.email "dummy@dummy.de"
+git config --global user.name "J.W."
+
+
+
 # create kiosk user
 printf "\n------------\n"
 echo "Create kiosk user"

@@ -24,6 +24,10 @@ sudo cp ./autostart/google-chrome.sh.desktop /home/kiosk/.config/autostart/
 sudo chown kiosk /home/kiosk/.config/autostart/google-chrome.sh.desktop
 sudo chmod +x /home/kiosk/.config/autostart/google-chrome.sh.desktop
 
+# sudo cp ./autostart/google-chrome.sh.desktop /home/user/.config/autostart/
+# sudo chown user /home/user/.config/autostart/google-chrome.sh.desktop
+# sudo chmod +x /home/user/.config/autostart/google-chrome.sh.desktop
+
 # first run to configure
 google-chrome &
 
