@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/processing.sh
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[en_US]=processing
+Name=processing
+Comment[en_US]=start processing
+Comment=start processing
