@@ -1,4 +1,13 @@
 
+- include service wifi
+- include more monitoring options
+- log path structures
+
+
+
+
+
+
 * enable service per user, so kiosk starts, but user not
 
 
@@ -19,6 +28,8 @@ dconf dump /org/mate/power-manager/
 
 
 
+
+xdotool key ctrl+shift+r
 
 
 # reinstall window manager
