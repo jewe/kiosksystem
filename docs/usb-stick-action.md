@@ -1,3 +1,9 @@
+# WIP: Old Version - detect USB-stick by python
+
+
+
+
+
 https://askubuntu.com/questions/554273/executing-a-script-when-inserting-a-flash-drive
 
 

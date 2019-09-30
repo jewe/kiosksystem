@@ -158,6 +158,26 @@ bunny-mark: Google Chrome 4k@60 100.000
 
 
 
+*** Shuttle DS77 ***
+(VKI GRH 2019)
+i5-7200
+HD Graphics 620
+8GB
+
+Motionmark 178 HD@60 Chromium
+
+glmark2 --fullscreen
+=======================================================
+    glmark2 2014.03+git20150611.fa71af2d
+=======================================================
+    OpenGL Information
+    GL_VENDOR:     Intel Open Source Technology Center
+    GL_RENDERER:   Mesa DRI Intel(R) HD Graphics 620 (Kaby Lake GT2) 
+    GL_VERSION:    3.0 Mesa 18.0.0-rc5
+                                  glmark2 Score: 156 
+=======================================================
+
+
 
 
 

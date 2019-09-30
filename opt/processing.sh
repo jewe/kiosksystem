@@ -19,6 +19,8 @@ kiosklog "$SERVICE" "$SERVICE script started $0"
 
 exit_if_disabled "$SERVICE"
 
+sudo chmod 0777 /dev/ttyUSB0
+
 while true; do 
   #rm -rf ~/.{config,cache}/google-chrome/
   kiosklog "$SERVICE" "$SERVICE started"

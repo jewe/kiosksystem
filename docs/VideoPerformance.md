@@ -1,3 +1,8 @@
+# screen tearing
+https://learnubuntumate.weebly.com/screen-tearing-on-intel-graphics.html
+
+
+
 # VLC
 
 http://testpattern.jewe.net
