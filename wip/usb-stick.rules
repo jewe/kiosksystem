@@ -1,0 +1,2 @@
+# all usb devices
+ACTION=="add", KERNEL=="sd?", SUBSYSTEM=="block", ATTRS{idVendor}=="****", ATTRS{idProduct}=="****", RUN+="/usr/local/my_script.sh"

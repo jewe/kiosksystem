@@ -51,3 +51,5 @@ echo "kioskctl disable chromium-browser"
 echo "webroot: /var/www/html/"
 
 # service nginx status
+# cat /lib/systemd/system/nginx.service
+#

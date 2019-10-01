@@ -57,6 +57,7 @@ gsettings set org.mate.lockdown disable-lock-screen true
 # gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.mate.screensaver lock-enabled false
 gsettings set org.mate.session idle-delay 0
+gsettings set org.mate.screensaver idle-activation-enabled false
 
 # set background
 sudo rm -Rf /usr/share/backgrounds/*

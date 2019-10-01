@@ -29,3 +29,5 @@ echo "Installation complete"
 echo "Service enabled - disable with:"
 echo "kioskctl disable reverse-ssh"
 echo "configure reverse-ssh in /opt/reverse-ssh.sh"
+echo "---"
+echo 'autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -R 63001:localhost:22 -p 63111 pi@wecld.zapto.org'

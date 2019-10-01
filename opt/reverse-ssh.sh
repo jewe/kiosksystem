@@ -17,9 +17,9 @@ exit_if_disabled "$SERVICE"
 
 while true; do 
   
-	ssh -R 63001:localhost:22 -p 63111 pi@wecld.zapto.org 
+	autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -R 63001:localhost:22 -p 63111 pi@wecld.zapto.org
 
-
-  	sleep 1200
+  	kiosklog "$SERVICE" "$SERVICE crashed"
+  	sleep 120
   	exit_if_disabled "$SERVICE"
 done
