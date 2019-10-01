@@ -115,6 +115,7 @@ sudo rmdir /home/user/Templates
 sudo rmdir /home/user/Music 
 sudo mkdir /home/user/Pictures
 cp ./sample_Images/* /home/user/Pictures
+sudo mkdir /home/user/.config/autostart
 
 # create key (for git etc.)
 echo "---"
