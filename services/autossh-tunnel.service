@@ -1,0 +1,10 @@
+[Unit]
+Description=AutoSSH tunnel service
+After=network.target
+
+[Service]
+Environment="AUTOSSH_GATETIME=0"
+ExecStart=/usr/bin/autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -R 63001:localhost:22 -p 63111 pi@wecld.zapto.org
+
+[Install]
+WantedBy=multi-user.target

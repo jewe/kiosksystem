@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/opt/monitoring.sh
-Hidden=false
-X-MATE-Autostart-enabled=true
-Name[en_US]=monitoring
-Name=monitoring
-Comment[en_US]=start monitoring
-Comment=start monitoring

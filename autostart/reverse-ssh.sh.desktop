@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/opt/reverse-ssh.sh
-Hidden=false
-X-MATE-Autostart-enabled=true
-Name[en_US]=reverse-ssh
-Name=reverse-ssh
-Comment[en_US]=start reverse-ssh
-Comment=start reverse-ssh
