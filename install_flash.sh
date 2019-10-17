@@ -22,8 +22,8 @@ sudo chmod +x /home/kiosk/.config/autostart/flash.sh.desktop
 # install flashplayer
 cd /home/kiosk/
 
-# alternative: http://pol2095.free.fr/flash_player_sa_linux.x86_64
-wget https://fpdownload.macromedia.com/pub/flashplayer/updaters/27/flash_player_sa_linux.x86_64.tar.gz -O flash_player_sa_linux.x86_64.tar.gz
+wget https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux64/flash_player_sa_linux.x86_64.tar.gz
+# old: https://fpdownload.macromedia.com/pub/flashplayer/updaters/27/flash_player_sa_linux.x86_64.tar.gz -O flash_player_sa_linux.x86_64.tar.gz
 tar xvzf flash_player_sa_linux.x86_64.tar.gz
 rm flash_player_sa_linux.x86_64.tar.gz
 
