@@ -1,0 +1,72 @@
+first_ethernet_mac()
+{
+    ip --oneline link show |
+    fgrep '<BROADCAST,MULTICAST,UP,LOWER_UP' |
+    sed 's|.*link/ether \(.*\) brd.*|\1|'
+}
+
+defaultroute_dev()
+{
+    ip route list exact '0.0.0.0/0' | cut -d' ' -f5
+}
+
+myip6()
+{
+    set -- $( ip address show dev "$(defaultroute_dev)" | fgrep 'inet6 ' | head -n1 )
+    echo ${2:-no_ipV6}
+}
+
+myip4()
+{
+    set -- $( ip address show dev "$(defaultroute_dev)" | fgrep 'inet ' | head -n1 )
+    echo ${2:-no_ipV4}
+}
+
+git_hash()
+{
+    (
+        cd /home/user/rsapp/
+        git log -1 --format=%h
+    )
+}
+
+chrome_version()
+{
+    google-chrome --version
+}
+
+write_network_json()
+{
+    cat > /home/user/rsapp/dist/system.json <<EOF
+{
+	"system": {
+		"ipv6": "$( myip6 )",
+		"ipv4": "$( myip4 )",
+		"mac": "$( first_ethernet_mac )",
+		"git": "$( git_hash )",
+		"chrome": "$( chrome_version )"
+	}
+}
+EOF
+}
+
+log()
+{
+	local message="$1"
+	local option="$2"	# monitoring
+
+	#echo "$( date ): $message" >>/dev/shm/RCLOCAL
+	logger -s "$message"
+
+	[ -n "$MONITORING_URL" -a "$option" = 'monitoring' ] && {
+		( curl -X POST --data "message=$message" "$MONITORING_URL" >/dev/null ) &
+	}
+}
+
+
+write_network_json
+MONITORING_URL=http://10.41.0.123/api/v1/monitoring
+
+log "# whoami: $(whoami)"
+
+exit 0

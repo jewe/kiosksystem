@@ -24,6 +24,8 @@ sudo apt remove -y speech-dispatcher
 # mac like dock
 #sudo apt-get remove -y plank
 
+sudo snap remove ubuntu-mate-welcome
+
 # screenreader
 #sudo apt remove -y gnome-orca
 
@@ -197,6 +199,8 @@ sudo chmod -R 0777 /opt/kiosk/ # FIXME
 #sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.disabled"
 
 sudo cp /opt/tmp/kiosksystem/etc/rc.local /etc/
+chmod +x /etc/rc.local
+
 # TODO prevent multiple executions
 sudo -s -- <<EOF
 cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc
@@ -221,7 +225,8 @@ sudo mv orca-autostart.desktop orca-autostart.desktop.disabled
 # updates
 sudo mv update-notifier.desktop update-notifier.desktop.disabled
 # mate welcome
-sudo mv ubuntu-mate-welcome-autostart.desktop ubuntu-mate-welcome-autostart.desktop.disabled
+#sudo mv ubuntu-mate-welcome-autostart.desktop ubuntu-mate-welcome-autostart.desktop.disabled
+sudo snap remove ubuntu-mate-welcome
 # notifications
 
 # disable common unix printing service

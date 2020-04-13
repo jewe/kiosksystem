@@ -27,6 +27,7 @@ wget https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux6
 tar xvzf flash_player_sa_linux.x86_64.tar.gz
 rm flash_player_sa_linux.x86_64.tar.gz
 
+mkdir ~/.local/share/applications
 cd ~/.local/share/applications
 echo "[Desktop Entry]" >> flashplayer.desktop
 echo "Encoding=UTF-8" >> flashplayer.desktop
