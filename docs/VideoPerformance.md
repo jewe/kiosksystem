@@ -3,6 +3,11 @@ https://learnubuntumate.weebly.com/screen-tearing-on-intel-graphics.html
 
 
 
+# Nvidia stripe problem
+https://boggsman.com/2020/05/nvidia-screen-tearing-on-linux/
+Nvidia settings > 2.Pkt: X Server Display ... > Advanced > Force full composition pipeline
+
+
 # VLC
 
 http://testpattern.jewe.net

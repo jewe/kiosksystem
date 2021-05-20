@@ -106,6 +106,27 @@ Chromium HD maximized
 
 
 
+--- 10/2020 Ubuntu Mate 20.04
+
+Shuttle xh110g AMD W2100 4K@60 fullscreen
+Motionmark 1
+
+=======================================================
+    glmark2 2014.03+git20150611.fa71af2d
+=======================================================
+    OpenGL Information
+    GL_VENDOR:     X.Org
+    GL_RENDERER:   AMD OLAND (DRM 2.50.0, 5.4.0-48-generic, LLVM 10.0.0)
+    GL_VERSION:    4.5 (Compatibility Profile) Mesa 20.0.8
+=======================================================
+                                  glmark2 Score: 164 
+=======================================================
+
+
+
+
+
+
 
 *** Schiller Touchscreen 
 1280x1024@60

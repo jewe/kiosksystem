@@ -35,7 +35,7 @@ sleep 5 # otherwise ignores -kiosk
 while true; do 
   rm -rf ~/.{config,cache}/google-chrome/
   kiosklog "$SERVICE" "$SERVICE started"
-  google-chrome --kiosk --no-first-run --incognito --no-default-browser-check --disable-pinch --disable-translate --disable-features=TranslateUI --disk-cache-dir=/tmp/cache 'http://localhost'
+  google-chrome --kiosk --no-first-run --incognito --no-default-browser-check --disable-pinch --disable-translate --disable-features=TranslateUI --simulate-outdated-no-au='Tue, 31 Dec 2099 23:59:59 GMT' --disk-cache-dir=/tmp/cache 'http://localhost'
   kiosklog "$SERVICE" "$SERVICE crashed"
   sleep 6 # to get time to open terminal (ctrl-alt t)
   exit_if_disabled "$SERVICE"
