@@ -255,3 +255,10 @@ Open Nvidia X Server Settings GUI > X Server Display Configuration > choose ‘a
 
 
 https://askubuntu.com/questions/410860/how-to-permanently-set-cpu-power-management-to-the-powersave-governor
+
+
+
+
+# zbox neues museum 2021
+nvidia gtx 1060 3gb
+glmark score 1677 4k@60
