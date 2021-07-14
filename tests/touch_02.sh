@@ -7,7 +7,7 @@ y2=1080
 
 
 
-function random_number {
+random_number {
     # we take two parameters: from and to, inclusive
     # we return random number within this range
     echo $(($1 + RANDOM % $2))

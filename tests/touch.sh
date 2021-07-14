@@ -13,13 +13,13 @@ ay=1100
 bx=160
 by=1910
 
-function random_number {
+random_number () {
     # we take two parameters: from and to, inclusive
     # we return random number within this range
     echo $(($1 + RANDOM % $2))
 }
 
-function click {
+click () {
   # https://wiki.ubuntuusers.de/xdotool/
   xdotool mousemove $1 $2 click 1 &
   sleep $3
