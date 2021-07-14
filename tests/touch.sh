@@ -22,6 +22,7 @@ random_number () {
 click () {
   # https://wiki.ubuntuusers.de/xdotool/
   xdotool mousemove $1 $2 click 1 &
+  echo "$1, $2"
   sleep $3
 }
 
@@ -33,12 +34,12 @@ while true; do
   # random
   x=$(random_number x1 x2)
   y=$(random_number y1 y2)
-  $(click x y 10)
+  $(click x y 1)
 
 
   $(click bx by 1)
   $(click bx by 1)
 
-  $(click ax ay 10)
+  $(click ax ay 1)
   echo "---"
 done
