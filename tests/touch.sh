@@ -37,12 +37,12 @@ while true; do
   click $(random_number x1 x2) $(random_number y1 y2) .3
 
 
-  click $bx $by .3
-  click $bx $by .3
-  click $bx $by .3
-  click $bx $by .3
-  click $bx $by .3
+  click $bx $ay .3
+  click $bx $ay .3
+  click $bx $ay .3
+  click $bx $ay .3
+  click $bx $ay .3
 
-  click $ax $ay 1
+  click $ax $by 2
   echo "---"
 done
