@@ -21,7 +21,7 @@ random_number () {
 
 click () {
   # https://wiki.ubuntuusers.de/xdotool/
-  #xdotool mousemove $1 $2 click 1 &
+  xdotool mousemove $1 $2 click 1 &
   echo "$1, $2"
   sleep $3
 }
@@ -32,9 +32,9 @@ echo "sending touch events to screen"
 
 while true; do
   # random
-  # x=$(random_number x1 x2)
-  # y=$(random_number y1 y2)
-  click $(random_number x1 x2) $(random_number y1 y2) .3
+  x=$(random_number x1 x2)
+  y=$(random_number y1 y2)
+  click $x $y .3
 
 
   click $bx $ay .3
