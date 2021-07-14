@@ -34,12 +34,12 @@ while true; do
   # random
   x=$(random_number x1 x2)
   y=$(random_number y1 y2)
-  $(click x y 1)
+  click $x $y 1
 
 
-  $(click bx by 1)
-  $(click bx by 1)
+  click $bx $by 1
+  click $bx $by 1
 
-  $(click ax ay 1)
+  click $ax $ay 1
   echo "---"
 done
