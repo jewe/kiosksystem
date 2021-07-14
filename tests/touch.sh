@@ -32,17 +32,17 @@ echo "sending touch events to screen"
 
 while true; do
   # random
-  x=$(random_number x1 x2)
-  y=$(random_number y1 y2)
+  x=$(random_number $x1 $x2)
+  y=$(random_number $y1 $y2)
   click $x $y .3
 
 
-  click $bx $ay .3
-  click $bx $ay .3
-  click $bx $ay .3
-  click $bx $ay .3
-  click $bx $ay .3
+  click $ax $ay .3
+  click $ax $ay .3
+  click $ax $ay .3
+  click $ax $ay .3
+  click $ax $ay .3
 
-  click $ax $by 2
+  click $bx $by 2
   echo "---"
 done
