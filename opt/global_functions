@@ -61,6 +61,7 @@ kioskmount(){
 	echo "currently $( print_mount_status ) mounted (detected by output of mount)"
 	
 	if [ "$1" = "ro" ]; then
+		sudo cp /etc/overlayroot.local.conf /etc/overlayroot.local.conf.enabled
 		sudo cp /etc/overlayroot.local.conf.disabled /etc/overlayroot.local.conf
 		echo "ro mounted after reboot"
 		kiosklog "kiosk" "ro mounted"

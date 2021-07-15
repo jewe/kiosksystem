@@ -16,12 +16,13 @@ by=1910
 random_number () {
     # we take two parameters: from and to, inclusive
     # we return random number within this range
-    echo $(($1 + RANDOM % $2))
+    # echo $(($1 + RANDOM % $2))
+    echo $(shuf -i "$1-$2" -n 1)
 }
 
 click () {
   # https://wiki.ubuntuusers.de/xdotool/
-  #xdotool mousemove $1 $2 click 1 &
+  xdotool mousemove $1 $2 click 1 &
   echo "$1, $2"
   sleep $3
 }

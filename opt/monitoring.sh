@@ -25,7 +25,7 @@ while true; do
 	sensors >> "$file"
 	
 	echo "---" >> "$file"
-	free >> "$file"
+	free -h >> "$file"
 
   	sleep 1200
   	exit_if_disabled "$SERVICE"
