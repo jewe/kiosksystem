@@ -151,12 +151,13 @@ echo "Create kiosk user"
 sudo adduser --gecos "" kiosk 
 # autologin
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
-sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
-[Seat:*]
-autologin-guest=false
-autologin-user=kiosk
-autologin-user-timeout=0
-EOF
+
+# sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
+# [Seat:*]
+# autologin-guest=false
+# autologin-user=kiosk
+# autologin-user-timeout=0
+# EOF
 
 # temporarily allow sudo for installation 
 sudo adduser kiosk sudo
@@ -243,8 +244,8 @@ sudo systemctl disable avahi-daemon
 #sudo mv /usr/lib/evolution-data-server /usr/lib/evolution-data-server-disabled
 #sudo mv /usr/lib/evolution /usr/lib/evolution-disabled
 
-
-
+# net-tools
+sudo apt-get install -y net-tools
 
 # configure mate panel with custom applets
 dconf load /org/mate/panel/objects/ip-applet/ << EOF

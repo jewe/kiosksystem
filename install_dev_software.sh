@@ -5,10 +5,12 @@ echo "INSTALL KIOSK HELPER"
 sudo apt-get remove -y pluma
 
 # atom editor
-sudo add-apt-repository -y ppa:webupd8team/atom
-sudo apt-get update
-sudo apt install -y atom
+# sudo add-apt-repository -y ppa:webupd8team/atom
+# sudo apt-get update
+# sudo apt install -y atom
 
+# gedit
+sudo apt-get install gedit 
 
 # configure caja
 #dconf write /org/mate/caja/

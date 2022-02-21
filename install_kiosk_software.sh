@@ -41,6 +41,13 @@ sudo npm install -g n
 #sudo n 8.1.2
 sudo n lts
 
+# add some caja bookmarks
+sudo bash -c 'cat > /home/user/.gtk-bookmarks' << EOF
+file:///opt/
+file:///opt/tmp/kiosksystem
+file:///opt/kiosk
+EOF
+
 # cleanup
 sudo apt-get clean
 sudo apt-get -y autoremove

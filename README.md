@@ -50,6 +50,9 @@ install developer tools (atom-editor ...)
 sh install_dev_software.sh
 ```
 
+cd /opt/tmp/kiosksystem/
+sh setup_secrets.sh
+
 install applications:
 ```
 cd /opt/tmp/kiosksystem/
@@ -91,3 +94,6 @@ Control Center: Look and Feel: CompizConfig Settings Manager: General Options: D
 xrandr --output HDMI -pos 100x0
 
 
+# Secrets 
+jwm-2570:kiosksystem jensweber$ ssh-add ~/.ssh/id_rsa
+ssh-add -L

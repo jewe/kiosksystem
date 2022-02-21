@@ -1,5 +1,6 @@
 #!/bin/bash
-#echo "use agent forwarding / ssh -A "
+
+echo "use agent forwarding / ssh -A "
 
 cd /opt/tmp/
 git clone git@gitlab.com:jewe/kiosk_secrets.git

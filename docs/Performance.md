@@ -262,3 +262,33 @@ https://askubuntu.com/questions/410860/how-to-permanently-set-cpu-power-manageme
 # zbox neues museum 2021
 nvidia gtx 1060 3gb
 glmark score 1677 4k@60
+
+
+
+
+
+# shuttle 2021 gtx 1030
+GeForce GT1030 2GB GDDR5
+i5-7500
+4GB RAM
+SSD
+4K@60fps
+Chromium Fullscreen
+motionmark score 470 4K@60 chromium
+
+
+
+# ZBOX Magnus
+ZBOX-ECM73070C/53060C
+Intel(R) Core(TM) i5-10400 CPU @ 2.90GHz
+
+=======================================================
+    glmark2 2021.02
+=======================================================
+    OpenGL Information
+    GL_VENDOR:     NVIDIA Corporation
+    GL_RENDERER:   NVIDIA GeForce RTX 3060/PCIe/SSE2
+    GL_VERSION:    4.6.0 NVIDIA 470.74
+=======================================================
+
+Motionmark 621 HD@60 chromium
