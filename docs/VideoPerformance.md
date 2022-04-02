@@ -1,12 +1,16 @@
 # screen tearing
 https://learnubuntumate.weebly.com/screen-tearing-on-intel-graphics.html
 
-
+# NVIDIA Drivers
+https://phoenixnap.com/kb/install-nvidia-drivers-ubuntu
 
 # Nvidia stripe problem
 https://boggsman.com/2020/05/nvidia-screen-tearing-on-linux/
 Nvidia settings > 2.Pkt: X Server Display ... > Advanced > Force full composition pipeline
 
+
+# GRUB
+https://askubuntu.com/questions/148095/how-do-i-set-the-grub-timeout-and-the-grub-default-boot-entry/148097#148097
 
 # VLC
 

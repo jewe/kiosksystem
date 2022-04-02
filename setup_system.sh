@@ -35,6 +35,8 @@ sudo apt remove -y gnome-keyring
 # remove unused locals
 # sudo apt-get install localepurge # FIXME
 
+# updated nvidia drivers
+# sudo add-apt-repository ppa:graphics-drivers/ppa
 
 # UPDATE ALL PACKAGES
 printf "\n------------\n"
@@ -115,7 +117,6 @@ sudo cp /boot/grub/grub.cfg /boot/grub/grub.cfg.bak
 sudo rmdir /home/user/Videos
 sudo rmdir /home/user/Templates
 sudo rmdir /home/user/Music 
-sudo mkdir /home/user/Pictures
 cp ./sample_Images/* /home/user/Pictures
 sudo mkdir /home/user/.config/autostart
 
