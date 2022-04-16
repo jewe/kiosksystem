@@ -42,7 +42,7 @@ sudo rm /var/www/html/index.nginx-debian.html
 sudo cp ./www/index.html /var/www/html/
 
 # add some caja bookmarks
-sudo bash -c 'cat > /home/user/.gtk-bookmarks' << EOF
+sudo bash -c 'cat > /home/user/.config/gtk-3.0/bookmarks' << EOF
 file:///var/www/html/
 EOF
 

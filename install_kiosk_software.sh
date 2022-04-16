@@ -4,12 +4,6 @@ echo "INSTALL KIOSK HELPER"
 
 sudo apt install -y curl build-essential
 
-# ?
-#sudo apt-get install -y openssh-sftp-server
-
-# swap to ram, enable for systems with <2MB RAM
-#sudo apt-get install -y zram-config
-
 # simulate keystrokes
 sudo apt install -y xdotool
 
@@ -20,7 +14,7 @@ sudo apt install -y scrot
 sudo apt install -y unclutter
 
 # screen config
-sudo apt install -y compizconfig-settings-manager
+# sudo apt install -y compizconfig-settings-manager
 
 # vnc
 sudo apt install -y x11vnc
@@ -42,7 +36,7 @@ sudo npm install -g n
 sudo n lts
 
 # add some caja bookmarks
-sudo bash -c 'cat > /home/user/.gtk-bookmarks' << EOF
+sudo bash -c 'cat > /home/user/.config/gtk-3.0/bookmarks' << EOF
 file:///opt/
 file:///opt/tmp/kiosksystem
 file:///opt/kiosk

@@ -1,8 +1,9 @@
 # Ubuntu Kiosksystem
 (for 16.04.2LTS Version see branch)
+(for 20.04.2LTS Version see branch)
 
 ## Installation
-Download Ubuntu MATE 18.04 LTS (Bionic)
+Download Ubuntu MATE 20.04 LTS (Bionic)
 http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04-desktop-amd64.iso
 
 Minimal Installation
