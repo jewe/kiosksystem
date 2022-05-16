@@ -88,4 +88,15 @@ Linux user-nano 4.15.0-23-generic #25-Ubuntu SMP Wed May 23 18:02:16 UTC 2018 x8
 # Detect graphic
 sudo lshw -c display
 
+# Rotate Screen+Touch
 
+xinput -list
+
+## screen
+export DISPLAY=:0.0
+xrandr -o left
+## touch
+xinput set-prop "eGalax Inc. USB TouchController" --type=float "Coordinate Transformation Matrix" 0 -1 1 1 0 0 0 0 1
+
+sudo apt install xinput-calibrator
+xinput_calibrator

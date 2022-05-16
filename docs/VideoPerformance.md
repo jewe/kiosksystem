@@ -49,3 +49,7 @@ Für 4K keine Abspielmöglichkeit
 VLC 2x_4K on 4K monitor:
     X-server: 10% of frames shown
     NVIDIA: 
+
+
+# Shuttle ZBox 2022
+Nvidia nvidia-driver-510 (tested prop)
