@@ -1,3 +1,13 @@
+# CPU performance
+
+alias cpugetavail='cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_available_governors'
+alias cpushowcurrent='cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+alias cpusethigh='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+
+
+
+
+
 ## Browser Graphics Benchmark
 https://browserbench.org/MotionMark
 
