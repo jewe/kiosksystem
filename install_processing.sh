@@ -7,9 +7,9 @@ export DISPLAY=:0.0
 
 sudo wget https://github.com/processing/processing4/releases/download/processing-1283-4.0b8/processing-4.0b8-linux-x64.tgz
 # sudo wget http://download.processing.org/processing-3.4-linux64.tgz
-sudo tar -xzf processing-*-linux64.tgz -C /opt/
+sudo tar -xzf processing-*-x64.tgz -C /opt/
 
-sudo rm processing-*-linux64.tgz
+sudo rm processing-*-x64.tgz
 
 sudo su -c "ln -s /opt/processing-*/processing /usr/local/bin/processing"
 
@@ -22,7 +22,7 @@ sudo bash -c 'cat > /usr/share/applications/processing.desktop' << EOF
 [Desktop Entry]
 Version=2.1
 Name=Processing
-Comment=Processing Rocks
+Comment=Processing 
 Exec=processing
 Icon=/opt/processing/lib/icons/pde-256.png
 Terminal=false
