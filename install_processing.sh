@@ -5,8 +5,8 @@ echo "INSTALL PROCESSING 3.4"
 
 export DISPLAY=:0.0
 
-
-sudo wget http://download.processing.org/processing-3.4-linux64.tgz
+sudo wget https://github.com/processing/processing4/releases/download/processing-1283-4.0b8/processing-4.0b8-linux-x64.tgz
+# sudo wget http://download.processing.org/processing-3.4-linux64.tgz
 sudo tar -xzf processing-*-linux64.tgz -C /opt/
 
 sudo rm processing-*-linux64.tgz
