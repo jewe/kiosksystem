@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/app.sh
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[en_US]=App
+Name=VLC App
+Comment[en_US]=start App
+Comment=start App

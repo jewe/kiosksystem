@@ -9,6 +9,7 @@ sudo apt install xinput-calibrator
 xinput --list
 xinput set-props "Devicename" "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 1
 
+# rotation matrixes see: https://wiki.ubuntu.com/X/InputCoordinateTransformation
 
 xscale 0 -xoffset
 0 yscale -yoffset

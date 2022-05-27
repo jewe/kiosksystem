@@ -31,7 +31,6 @@ sudo apt install -y nodejs
 sudo apt install -y npm
 # node manager
 sudo npm install -g n
-# install (fixed 8.1.2)
 #sudo n 8.1.2
 sudo n lts
 

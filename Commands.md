@@ -100,3 +100,12 @@ xinput set-prop "eGalax Inc. USB TouchController" --type=float "Coordinate Trans
 
 sudo apt install xinput-calibrator
 xinput_calibrator
+
+
+
+# performance
+sudo systemctl start cpupower.service
+sudo systemctl enable cpupower.service
+
+sudo systemctl start energy_performance.service
+sudo systemctl enable energy_performance.service

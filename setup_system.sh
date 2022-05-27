@@ -142,7 +142,10 @@ EOF
 git config --global user.email "dummy@dummy.de"
 git config --global user.name "J.W."
 
-
+# git lfs
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install git-lfs
+git-lfs install
 
 # create kiosk user
 printf "\n------------\n"
@@ -247,6 +250,12 @@ sudo systemctl disable avahi-daemon
 
 # net-tools
 sudo apt-get install -y net-tools
+
+# performance, cpu-power etc...
+sudo apt install linux-tools-generic
+sudo cp services/cpupower.service /etc/systemd/system/ 
+sudo cp services/energy_performance.service /etc/systemd/system/ 
+
 
 # configure mate panel with custom applets
 dconf load /org/mate/panel/objects/ip-applet/ << EOF
