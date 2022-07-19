@@ -302,3 +302,19 @@ Intel(R) Core(TM) i5-10400 CPU @ 2.90GHz
 =======================================================
 
 Motionmark 621 HD@60 chromium
+
+
+
+
+# Shuttle TUM Rechner 
+with ChromeOS Flex 2022-07
+Motionsmark 1.2
+HD@60 without graphics card
+666
+
+4K@60
+1
+
+
+
+

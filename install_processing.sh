@@ -11,7 +11,7 @@ sudo tar -xzf processing-*-x64.tgz -C /opt/
 
 sudo rm processing-*-x64.tgz
 
-sudo sh /opt/processing-*/ install.sh
+sudo sh /opt/processing-*/install.sh
 
 # sudo su -c "ln -s /opt/processing-*/processing /usr/local/bin/processing"
 

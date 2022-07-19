@@ -22,6 +22,7 @@ random_number () {
 
 click () {
   # https://wiki.ubuntuusers.de/xdotool/
+  # https://gitlab.com/cunidev/gestures/-/wikis/xdotool-list-of-key-codes
   xdotool mousemove $1 $2 click 1 &
   echo "$1, $2"
   sleep $3

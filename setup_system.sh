@@ -108,7 +108,8 @@ printf "\n------------\n"
 echo "Readonly filesystem"
 sudo apt-get install -y overlayroot
 # prepare disabled config
-sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.disabled"
+sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.enabled"
+sudo /bin/su -c "echo 'overlayroot=""' >> /etc/overlayroot.local.conf.disabled"
 sudo cp /boot/grub/grub.cfg /boot/grub/grub.cfg.bak
 
 
@@ -146,6 +147,19 @@ git config --global user.name "J.W."
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install git-lfs
 git-lfs install
+
+# gitlab
+ssh-add ~/.ssh/id_rsa
+sudo bash -c 'cat > /home/user/.ssh/config' << EOF
+# GitLab.com server
+Host gitlab.com
+RSAAuthentication yes
+IdentityFile ~/.ssh/id_rsa
+EOF
+
+# allow clone to /opt
+sudo chmod 0777 /opt
+
 
 # create kiosk user
 printf "\n------------\n"

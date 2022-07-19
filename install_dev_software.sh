@@ -10,7 +10,7 @@ echo "INSTALL KIOSK HELPER"
 # sudo apt install -y atom
 
 # gedit
-sudo apt-get install gedit 
+sudo apt-get -y install gedit 
 
 # configure caja
 #dconf write /org/mate/caja/
