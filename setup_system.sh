@@ -215,7 +215,8 @@ sudo chmod -R 0777 /opt/kiosk/ # FIXME
 
 
 # custom functions
-#sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.disabled"
+sudo /bin/su -c "echo 'overlayroot=""' >> /etc/overlayroot.local.conf.disabled"
+sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.enabled"
 
 sudo cp /opt/tmp/kiosksystem/etc/rc.local /etc/
 chmod +x /etc/rc.local

@@ -74,7 +74,7 @@ kioskmount(){
 		# TODO 
 		# rm -f /etc/overlayroot.local.conf
 		sudo /usr/sbin/overlayroot-chroot << EOF
-			cp -f /etc/overlayroot.local.conf.disabled /etc/overlayroot.local.conf
+			cacp -f /etc/overlayroot.local.conf.disabled /etc/overlayroot.local.conf
 EOF
 
 		echo "rw mounted after reboot"
@@ -172,7 +172,7 @@ startvnc(){
 print_mount_status(){
 	#(mount | grep -q 'overlayroot') && echo "ro" || "rw"
 
-	if (mount | grep -q 'overlayroot') then
+	if (mount | grep -q 'tmpfs') then
     	echo "ro"
 	else
 		echo "rw"
