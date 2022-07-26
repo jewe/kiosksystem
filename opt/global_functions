@@ -172,7 +172,7 @@ startvnc(){
 print_mount_status(){
 	#(mount | grep -q 'overlayroot') && echo "ro" || "rw"
 
-	if (mount | grep -q 'tmpfs') then
+	if (mount | grep -q 'overlayroot') then
     	echo "ro"
 	else
 		echo "rw"
