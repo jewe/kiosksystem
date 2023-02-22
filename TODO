@@ -31,9 +31,10 @@ dconf dump /org/mate/power-manager/
 
 
 
-
+xdotool key F12
+xdotool key ctrl+shift+j
 xdotool key ctrl+shift+r
-
+xdotool search --onlyvisible --class browser windowsize 100% 100%
 
 # reinstall window manager
 sudo apt install marco

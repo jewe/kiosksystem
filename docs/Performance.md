@@ -315,6 +315,11 @@ HD@60 without graphics card
 4K@60
 1
 
-
-
-
+# Futuro
+Celeron J4105 1.5GHz 4x
+Mesa Intel UHD Graphics 600 GLK2
+Motionmark 
+Chrome 
+HD@60 internal 
+164 (1.0)
+211 (1.2)

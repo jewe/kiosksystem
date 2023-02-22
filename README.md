@@ -50,6 +50,8 @@ install developer tools (atom-editor ...)
 ```
 sh install_dev_software.sh
 ```
+jwm-2570:kiosksystem$ ssh-add ~/.ssh/id_rsa
+ssh-add -L
 
 cd /opt/tmp/kiosksystem/
 sh setup_secrets.sh
