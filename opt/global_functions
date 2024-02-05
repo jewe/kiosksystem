@@ -74,7 +74,7 @@ kioskmount(){
 		# TODO 
 		# rm -f /etc/overlayroot.local.conf
 		sudo /usr/sbin/overlayroot-chroot << EOF
-			cacp -f /etc/overlayroot.local.conf.disabled /etc/overlayroot.local.conf
+			cp -f /etc/overlayroot.local.conf.disabled /etc/overlayroot.local.conf
 EOF
 
 		echo "rw mounted after reboot"

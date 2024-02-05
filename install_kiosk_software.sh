@@ -11,7 +11,8 @@ sudo apt install -y xdotool
 sudo apt install -y scrot
 
 # hide mouse
-sudo apt install -y unclutter
+# sudo apt install -y unclutter
+sudo apt install -y unclutter-xfixes
 
 # screen config
 # sudo apt install -y compizconfig-settings-manager
