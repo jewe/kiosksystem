@@ -53,3 +53,5 @@ VLC 2x_4K on 4K monitor:
 
 # Shuttle ZBox 2022
 Nvidia nvidia-driver-510 (tested prop)
+
+

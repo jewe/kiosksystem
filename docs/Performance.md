@@ -323,3 +323,13 @@ Chrome
 HD@60 internal 
 164 (1.0)
 211 (1.2)
+
+
+# Shuttle DS6012 (GSA)
+i7 12700
+Mesa UHD 770
+Motionmark 1.3
+Chromium HD@60
+1386@60fps
+
+glmark2 1056

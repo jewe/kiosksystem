@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/node-service.sh
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[en_US]=node-service
+Name=node-service
+Comment[en_US]=start node-service
+Comment=start node-service

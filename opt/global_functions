@@ -93,7 +93,7 @@ kiosktest(){
 
     echo "currently $( print_mount_status ) mounted"
 
-	# FIXME
+	# FIXMEgit@gitlab.com:jewe/gsa-sophie-2024_exhibit.git
 	# check screensaver
 	xset q
 

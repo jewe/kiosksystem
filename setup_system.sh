@@ -124,8 +124,8 @@ sudo mkdir /home/user/.config/autostart
 # create key (for git etc.)
 echo "---"
 echo "Press return to generate ssh-key without passphrase" 
-ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa -N '' 
-
+# ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa -N '' 
+ssh-keygen -t ed25519 -C "mail@kiosksystem.jewe.net" -f /home/user/.ssh/id_rsa -N '' 
 
 # disable syslog entries from ureadahead
 sudo mkdir /etc/systemd/system/ureadahead.service.d/
