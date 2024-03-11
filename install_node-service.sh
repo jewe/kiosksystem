@@ -20,7 +20,7 @@ sudo cp ./autostart/node-service.sh.desktop /home/user/.config/autostart/
 sudo chown user /home/user/.config/autostart/node-service.sh.desktop
 sudo chmod +x /home/user/.config/autostart/node-service.sh.desktop
 
-sh /opt/node-service.sh
+sh /opt/node-service.sh &
 
 echo "Installation complete"
 echo "Service enabled - disable with:"
