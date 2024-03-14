@@ -3,9 +3,18 @@ printf "\n------------\n"
 echo "INSTALL NODE JS"
 
 cd ~
+
 curl -sL https://deb.nodesource.com/setup_21.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
-sudo apt install nodejs
+sudo apt install -y nodejs
 node -v
 
-npm i n
+# make cache folder (if missing) and take ownership
+sudo mkdir -p /usr/local/n
+sudo chown -R $(whoami) /usr/local/n
+# make sure the required folders exist (safe to execute even if they already exist)
+sudo mkdir -p /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
+# take ownership of Node.js install destination folders
+sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
+
+curl -L https://bit.ly/n-install | bash

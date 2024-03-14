@@ -264,10 +264,10 @@ sudo systemctl disable avahi-daemon
 #sudo mv /usr/lib/evolution /usr/lib/evolution-disabled
 
 # net-tools
-sudo apt-get install -y net-tools
+sudo apt-get install -y net-tools curl
 
 # performance, cpu-power etc...
-sudo apt install linux-tools-generic
+sudo apt install -y linux-tools-generic
 sudo cp services/cpupower.service /etc/systemd/system/ 
 sudo cp services/energy_performance.service /etc/systemd/system/ 
 
