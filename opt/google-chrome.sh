@@ -23,14 +23,14 @@ kiosklog "$SERVICE" "$SERVICE script started $0"
 
 exit_if_disabled "$SERVICE"
 
-# TODO: check this
+gsettings set org.gnome.desktop.notifications show-banners false
 
 # If Chromium crashes (usually due to rebooting), 
 # clear the crash flag so we don't have the annoying warning bar
 sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/kiosk/.config/google-chrome/Default/Preferences
 sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/kiosk/.config/google-chrome/Default/Preferences
 
-sleep 5 # otherwise ignores -kiosk
+sleep 4 # otherwise ignores -kiosk
 
 while true; do 
   rm -rf ~/.{config,cache}/google-chrome/

@@ -15,6 +15,6 @@ while true; do
   # insert node command here
   cd /var/www/html/gsa-sophie-2024/
   node .output/server/index.mjs
-  sleep 60
+  sleep 1
   exit_if_disabled "$SERVICE"
 done

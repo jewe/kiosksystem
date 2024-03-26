@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# sudo apt install -y xdotool 
+
 x1=0
 x2=1920
 y1=0

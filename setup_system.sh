@@ -86,6 +86,9 @@ gsettings set org.mate.power-manager sleep-display-ups 0
 # display: disable dim
 gsettings set org.mate.power-manager kbd-brightness-dim-by-on-idle 100
 
+# notifications
+sudo mv /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service.disabled
+gsettings set org.gnome.desktop.notifications show-banners false
 
 #update-manager
 #sudo apt install gconf-editor
