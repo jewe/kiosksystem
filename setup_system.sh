@@ -4,11 +4,12 @@
 ## check/update with
 ## apt-get list --installed
 # remove packages
-apt-get remove -y ubuntu-mate-wallpapers-photos ubuntu-mate-wallpapers-common ubuntu-mate-wallpapers-noble speech-dispatcher gnome-keyring firefox libreoffice-common libreoffice-core speech-dispatcher
+apt-get remove -y ubuntu-mate-wallpapers-common ubuntu-mate-wallpapers-noble firefox libreoffice-common libreoffice-core
 apt-get update
-apt-get autoremove --purge && apt-get clean
+apt-get autoremove -y --purge && apt-get -y clean
 
-# clean user dir
+# cleanup user dir
+echo "cleanup user dir"
 rmdir /home/user/Music 
 rmdir /home/user/Pictures 
 rmdir /home/user/Templates 
@@ -17,17 +18,17 @@ journalctl --vacuum-time=14d
 
 # settings desktop
 export DISPLAY=:0.0
-gsettings set org.mate.lockdown disable-lock-screen true
-gsettings set org.mate.screensaver lock-enabled false
-gsettings set org.mate.screensaver idle-activation-enabled false
-gsettings set org.mate.session idle-delay 0
+sudo gsettings set org.mate.lockdown disable-lock-screen true
+sudo gsettings set org.mate.screensaver lock-enabled false
+sudo gsettings set org.mate.screensaver idle-activation-enabled false
+sudo gsettings set org.mate.session idle-delay 0
 
 # desktop design
-gsettings set org.mate.background primary-color '#555555'
-gsettings set org.mate.background secondary-color '#444444'
-gsettings set org.mate.background picture-opacity 100
-gsettings set org.mate.background show-desktop-icons false
-gsettings set org.mate.background picture-options 'centered'
+sudo gsettings set org.mate.background primary-color '#555555'
+sudo gsettings set org.mate.background secondary-color '#444444'
+sudo gsettings set org.mate.background picture-opacity 100
+sudo gsettings set org.mate.background show-desktop-icons false
+sudo gsettings set org.mate.background picture-options 'centered'
 
 rm -Rf /usr/share/backgrounds/*
 cp ./backgrounds/*.* /usr/share/backgrounds/
@@ -41,7 +42,7 @@ dconf write /org/mate/panel/toplevels/top/auto-hide true
 dconf write /org/mate/panel/toplevels/top/auto-hide-size 0
 dconf write /org/mate/panel/toplevels/bottom/auto-hide true
 dconf write /org/mate/panel/toplevels/bottom/auto-hide-size 0
-gsettings set org.mate.panel object-id-list ['briskmenu']
+# gsettings set org.mate.panel object-id-list ['briskmenu']
 gsettings set org.mate.panel toplevel-id-list ['top']
 
 # standby
@@ -300,30 +301,10 @@ sudo mv mate-screensaver.desktop mate-screensaver.desktop.disabled
 sudo mv orca-autostart.desktop orca-autostart.desktop.disabled
 # updates
 sudo mv update-notifier.desktop update-notifier.desktop.disabled
-# mate welcome
-#sudo mv ubuntu-mate-welcome-autostart.desktop ubuntu-mate-welcome-autostart.desktop.disabled
-sudo snap remove ubuntu-mate-welcome
-# notifications
-
-# disable common unix printing service
-#sudo systemctl disable cupsd.service
-#sudo systemctl disable cups-browsed.service
-
 # disable avahi-daemon 
 sudo systemctl disable avahi-daemon
 
-# Disable HUD
-#sudo chmod -x /usr/lib/x86_64-linux-gnu/hud/hud-service
-
-# Disable evolution processes
-#sudo mv /usr/lib/evolution-data-server /usr/lib/evolution-data-server-disabled
-#sudo mv /usr/lib/evolution /usr/lib/evolution-disabled
-
-# net-tools
-sudo apt-get install -y net-tools curl
-
 # performance, cpu-power etc...
-sudo apt-get install -y linux-tools-generic
 sudo cp services/cpupower.service /etc/systemd/system/ 
 sudo cp services/energy_performance.service /etc/systemd/system/ 
 

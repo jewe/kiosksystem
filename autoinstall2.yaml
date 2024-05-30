@@ -21,7 +21,6 @@ autoinstall:
   snaps:
     - name: code
       classic: true
-    - name: google-chrome
     - name: chromium
   packages:
     - curl
