@@ -16,12 +16,11 @@ autoinstall:
   timezone: Europe/Berlin
   identity:
     hostname: kiosksystem
-    username: local-optimum
+    username: user
     password: $6$qBEaYNd9lxorQPqZ$hqk8MSGpklUtYEm2l/LwRdF68HXMJQInLlrQAclFBj2gRI.0eusDR1hoLXfV0X2e0y5d2/3PAG/VtYmo.msZM/
   snaps:
     - name: code
       classic: true
-    - name: google-chrome
     - name: chromium
   packages:
     - curl
@@ -45,63 +44,18 @@ autoinstall:
     authorized-keys: []
     install-server: true
   late-commands:
-    # remove packages
-    - curtin in-target -- apt remove -y ubuntu-mate-wallpapers-photos speech-dispatcher gnome-keyring firefox libreoffice-common libreoffice-core speech-dispatcher
-    - curtin in-target -- apt update
-    - curtin in-target -- apt autoremove --purge && apt clean
-    # clean user dir
-    - curtin in-target -- rmdir /home/user/Music 
-    - curtin in-target -- rmdir /home/user/Pictures 
-    - curtin in-target -- rmdir /home/user/Templates 
-    - curtin in-target -- rmdir /home/user/Video 
-    - curtin in-target -- journalctl --vacuum-time=14d
-
-    # settings desktop
-    - curtin in-target -- gsettings set org.mate.lockdown disable-lock-screen true
-    - curtin in-target -- gsettings set org.mate.screensaver lock-enabled false
-    - curtin in-target -- gsettings set org.mate.screensaver idle-activation-enabled false
-    - curtin in-target -- gsettings set org.mate.session idle-delay 0
-    # desktop design
-    - curtin in-target -- gsettings set org.mate.background primary-color '#555555'
-    - curtin in-target -- gsettings set org.mate.background secondary-color '#444444'
-    - curtin in-target -- gsettings set org.mate.background picture-opacity 100
-    - curtin in-target -- gsettings set org.mate.background show-desktop-icons false
-    - curtin in-target -- gsettings set org.mate.background picture-options 'centered'
-    # desktop layout 
-    - curtin in-target -- dconf write /org/mate/panel/toplevels/top/auto-hide true
-    - curtin in-target -- dconf write /org/mate/panel/toplevels/top/auto-hide-size 0
-    - curtin in-target -- dconf write /org/mate/panel/toplevels/bottom/auto-hide true
-    - curtin in-target -- dconf write /org/mate/panel/toplevels/bottom/auto-hide-size 0
-    - curtin in-target -- gsettings set org.mate.panel object-id-list ['briskmenu']
-    - curtin in-target -- gsettings set org.mate.panel toplevel-id-list ['top']
-    # standby
-    - curtin in-target -- gsettings set org.mate.power-manager sleep-display-ac 0
-    - curtin in-target -- gsettings set org.mate.power-manager sleep-display-battery 0
-    - curtin in-target -- gsettings set org.mate.power-manager sleep-display-ups 0
-    - curtin in-target -- gsettings set org.mate.power-manager kbd-brightness-dim-by-on-idle 100
-    # notifications
-    - curtin in-target -- gsettings set org.mate.caja.preferences show-notifications false 
-    - curtin in-target -- gsettings set org.gnome.desktop.notifications show-banners false
-    - curtin in-target -- mv /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service.disabled
-
-    # disable services
-    - curtin in-target -- systemctl disable bluetooth
-    - curtin in-target -- systemctl disable apport.service
-
-    # readonly
-    - curtin in-target -- sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.enabled"
-    - curtin in-target -- sudo /bin/su -c "echo 'overlayroot=""' >> /etc/overlayroot.local.conf.disabled"
-    - curtin in-target -- cp /boot/grub/grub.cfg /boot/grub/grub.cfg.bak
-    # other
-    - curtin in-target -- mkdir /home/user/.config/autostart
-    - curtin in-target -- ssh-keygen -t ed25519 -C "mail@kiosksystem.jewe.net" -f /home/user/.ssh/id_rsa -N '' 
-    - curtin in-target -- ubuntu-report -f send no
-    - curtin in-target -- ssh-add ~/.ssh/id_rsa
-    - curtin in-target -- chmod 0777 /opt
-    # node
-    - curtin in-target -- curl -L https://bit.ly/n-install | bash
-    # kiosksystem
-    - curtin in-target -- mkdir opt/tmp && cd tmp/ && git clone https://github.com/jewe/kiosksystem.git && cd kiosksystem && sh setup_system.sh > opt/kiosksystem_install.log
-
+    - curtin in-target -- apt-get remove -y ubuntu-mate-wallpapers-common ubuntu-mate-wallpapers-noble firefox libreoffice-common libreoffice-core
+    - curtin in-target -- chmod 0777 /opt && mkdir -p /opt/tmp && cd /opt/tmp/ && git clone https://github.com/jewe/kiosksystem.git
+  user-data: # Commands here run during first boot (cannot be interactive)
+    runcmd:
+      - [apt-get, remove, --yes,  ubuntu-mate-wallpapers-common]
+      - |
+        #!/usr/bin/env bash
+        echo ''
+        echo '***************************************'
+        echo ' To complete install setup please run, '
+        echo ' sudo sh /opt/tmp/kiosksystem/setup_system.sh'
+        echo '***************************************'
+        echo ''
   autoinstall:
     shutdown: reboot

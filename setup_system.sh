@@ -1,6 +1,9 @@
 # Ubuntu MATE 24.04.1
 # THIS FILE IS STEP 1
 
+echo "----"
+echo whoami
+
 ## check/update with
 ## apt-get list --installed
 # remove packages
@@ -13,22 +16,22 @@ echo "cleanup user dir"
 rmdir /home/user/Music 
 rmdir /home/user/Pictures 
 rmdir /home/user/Templates 
-rmdir /home/user/Video 
+rmdir /home/user/Videos 
 journalctl --vacuum-time=14d
 
 # settings desktop
 export DISPLAY=:0.0
-sudo gsettings set org.mate.lockdown disable-lock-screen true
-sudo gsettings set org.mate.screensaver lock-enabled false
-sudo gsettings set org.mate.screensaver idle-activation-enabled false
-sudo gsettings set org.mate.session idle-delay 0
+gsettings set org.mate.lockdown disable-lock-screen true
+gsettings set org.mate.screensaver lock-enabled false
+gsettings set org.mate.screensaver idle-activation-enabled false
+gsettings set org.mate.session idle-delay 0
 
 # desktop design
-sudo gsettings set org.mate.background primary-color '#555555'
-sudo gsettings set org.mate.background secondary-color '#444444'
-sudo gsettings set org.mate.background picture-opacity 100
-sudo gsettings set org.mate.background show-desktop-icons false
-sudo gsettings set org.mate.background picture-options 'centered'
+gsettings set org.mate.background primary-color '#555555'
+gsettings set org.mate.background secondary-color '#444444'
+gsettings set org.mate.background picture-opacity 100
+gsettings set org.mate.background show-desktop-icons false
+gsettings set org.mate.background picture-options 'centered'
 
 rm -Rf /usr/share/backgrounds/*
 cp ./backgrounds/*.* /usr/share/backgrounds/
@@ -76,6 +79,10 @@ mkdir /home/user/.config/autostart
 ssh-keygen -t ed25519 -C "mail@kiosksystem.jewe.net" -f /home/user/.ssh/id_rsa -N '' 
 ubuntu-report -f send no
 ssh-add ~/.ssh/id_rsa
+
+# config git
+git config --global user.email "dummy@dummy.de"
+git config --global user.name "J.W."
 
 # gitlab
 ssh-add ~/.ssh/id_rsa
@@ -142,8 +149,6 @@ EOF
 sudo cp ./opt/shutdown.sh /opt/
 sudo chmod +x /opt/shutdown.sh
 
-
-
 printf "\n------------\n"
 echo "Install kiosk scripts\n"
 
@@ -184,36 +189,6 @@ sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
 ## check/update with: 
 ## gsettings list-recursively org.mate.background
 
-#update-manager
-#sudo apt-get install gconf-editor
-#dconf dump /
-
-# create key (for git etc.)
-echo "---"
-echo "Press return to generate ssh-key without passphrase" 
-# ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa -N '' 
-ssh-keygen -t ed25519 -C "mail@kiosksystem.jewe.net" -f /home/user/.ssh/id_rsa -N '' 
-
-
-
-# config git
-git config --global user.email "dummy@dummy.de"
-git config --global user.name "J.W."
-
-# git lfs
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get install git-lfs
-git-lfs install
-
-# gitlab
-ssh-add ~/.ssh/id_rsa
-sudo bash -c 'cat > /home/user/.ssh/config' << EOF
-# GitLab.com server
-Host gitlab.com
-RSAAuthentication yes
-IdentityFile ~/.ssh/id_rsa
-EOF
-
 # allow clone to /opt
 sudo chmod 0777 /opt
 
@@ -222,17 +197,16 @@ sudo chmod 0777 /opt
 printf "\n------------\n"
 echo "Create kiosk user"
 
-# id -u kiosk &>/dev/null || 
 sudo adduser --gecos "" kiosk 
 # autologin
 # See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
 
-# sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
-# [Seat:*]
-# autologin-guest=false
-# autologin-user=kiosk
-# autologin-user-timeout=0
-# EOF
+sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
+[Seat:*]
+autologin-guest=false
+autologin-user=user
+autologin-user-timeout=0
+EOF
 
 # temporarily allow sudo for installation 
 sudo adduser kiosk sudo
@@ -254,22 +228,9 @@ grep -q ^'kiosk ALL=NOPASSWD:/sbin/reboot' /etc/sudoers || echo 'kiosk ALL=NOPAS
 grep -q ^'kiosk ALL=NOPASSWD:/sbin/shutdown' /etc/sudoers || echo 'kiosk ALL=NOPASSWD:/sbin/shutdown' >>/etc/sudoers
 EOF
 
-
 # copy shutdown-script
 sudo cp ./opt/shutdown.sh /opt/
 sudo chmod +x /opt/shutdown.sh
-
-
-
-printf "\n------------\n"
-echo "Install kiosk scripts\n"
-
-# prepare /opt/
-sudo mkdir /opt/kiosk
-sudo mkdir /opt/kiosk/services
-sudo mkdir /opt/kiosk/logs
-sudo chmod -R 0777 /opt/kiosk/ # FIXME
-
 
 # custom functions
 sudo /bin/su -c "echo 'overlayroot=""' >> /etc/overlayroot.local.conf.disabled"
@@ -346,10 +307,6 @@ dconf load /org/mate/panel/general/ << EOF
 object-id-list=['briskmenu', 'firefox', 'notification-area', 'indicatorappletcomplete', 'clock', 'show-desktop', 'window-list', 'workspace-switcher',  'ip-applet', 'mount-applet']
 toplevel-id-list=['top', 'bottom']
 EOF
-
-
-
-
 
 # cleanup
 printf "\n------------\n"
