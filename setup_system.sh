@@ -14,7 +14,6 @@ apt-get autoremove -y --purge && apt-get -y clean
 # cleanup user dir
 echo "cleanup user dir"
 rmdir /home/user/Music 
-rmdir /home/user/Pictures 
 rmdir /home/user/Templates 
 rmdir /home/user/Videos 
 journalctl --vacuum-time=14d

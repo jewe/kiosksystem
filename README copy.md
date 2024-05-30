@@ -1,23 +1,41 @@
 # Ubuntu Kiosksystem
+(for 16.04.2LTS Version see branch)
+(for 20.04.2LTS Version see branch)
 
 ## Installation
-Download Ubuntu MATE 
-set autoconfig url:
-https://raw.githubusercontent.com/jewe/kiosksystem/master/autoinstall.yaml
+Download Ubuntu MATE 20.04 LTS (Bionic)
+http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04/release/ubuntu-mate-18.04-desktop-amd64.iso
 
-### Login via ssh
-```
-ssh user@192.168.0...
-```
+Minimal Installation
++Extras
 
-### Setup Kiosksystem
+
+Kiosk-System: 
 ```
-sudo chmod 0777 /opt && mkdir -p /opt/tmp && cd /opt/tmp/ && git clone https://github.com/jewe/kiosksystem.git && sh setup_system.sh
+sudo apt-get install -y openssh-server
 ```
 
+Dev-System: 
+```
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@IP
+ssh user@IP
+```
 # remote host identification has changed
-ssh-keygen -R 192.168.0...
+ssh-keygen -R 192.168...
 
+
+```
+sudo apt install -y git
+cd /opt
+sudo mkdir tmp
+sudo chmod 0777 tmp/
+cd tmp/
+git clone https://github.com/jewe/kiosksystem.git
+# git clone -b Mate-16.04.2LTS https://github.com/jewe/kiosksystem.git
+cd kiosksystem
+sh setup_system.sh
+# sudo reboot
+```
 
 After Reboot login as kiosk@ip and:
 ```
@@ -28,7 +46,7 @@ sh install_kiosk_software.sh
 
 optional:
 
-install developer tools 
+install developer tools (atom-editor ...)
 ```
 sh install_dev_software.sh
 ```
