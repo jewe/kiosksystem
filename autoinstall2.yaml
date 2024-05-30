@@ -16,7 +16,7 @@ autoinstall:
   timezone: Europe/Berlin
   identity:
     hostname: kiosksystem
-    username: local-optimum
+    username: user
     password: $6$qBEaYNd9lxorQPqZ$hqk8MSGpklUtYEm2l/LwRdF68HXMJQInLlrQAclFBj2gRI.0eusDR1hoLXfV0X2e0y5d2/3PAG/VtYmo.msZM/
   snaps:
     - name: code
@@ -45,6 +45,6 @@ autoinstall:
     authorized-keys: []
     install-server: true
   late-commands:
-    - curtin in-target -- mkdir opt/tmp && cd tmp/ && git clone https://github.com/jewe/kiosksystem.git && cd kiosksystem && sh setup_system.sh > /opt/kiosksystem_install.log
+    - curtin in-target -- chmod 0777 /opt && mkdir -p /opt/tmp && cd /opt/tmp/ && git clone https://github.com/jewe/kiosksystem.git && cd kiosksystem && sh setup_system.sh > /opt/kiosksystem_install.log
   autoinstall:
     shutdown: reboot

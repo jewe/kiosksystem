@@ -1,134 +1,92 @@
-# Ubuntu MATE 16.04.2
-
+# Ubuntu MATE 24.04.1
 # THIS FILE IS STEP 1
 
-
-# UNINSTALL unneeded applications
-printf "\n------------\n"
-echo "UNINSTALL unneeded applications\n"
-
 ## check/update with
-## apt list --installed
-# FIXME: dpkg alle Pakete nach Größe sortieren
-#sudo apt remove -y mate-screensaver # removes mate-core...?
-#sudo apt remove -y ubuntu-mate-wallpapers 
-#sudo apt remove -y synapse shotwell 
+## apt-get list --installed
+# remove packages
+apt-get remove -y ubuntu-mate-wallpapers-photos ubuntu-mate-wallpapers-common ubuntu-mate-wallpapers-noble speech-dispatcher gnome-keyring firefox libreoffice-common libreoffice-core speech-dispatcher
+apt-get update
+apt-get autoremove --purge && apt-get clean
 
-sudo apt remove -y ubuntu-mate-wallpapers-photos
-sudo apt remove -y speech-dispatcher
-#sudo apt remove -y sound-theme-freedesktop
-#sudo apt remove -y printer-driver-hpcups printer-driver-brlaser printer-driver-c2esp printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-gutenprint printer-driver-hpcups printer-driver-m2300w printer-driver-min12xxw printer-driver-pnm2ppa printer-driver-postscript-hp printer-driver-ptouch/bionic
-#sudo apt remove -y printer-driver-pxljr printer-driver-sag-gdi printer-driver-splix 
+# clean user dir
+rmdir /home/user/Music 
+rmdir /home/user/Pictures 
+rmdir /home/user/Templates 
+rmdir /home/user/Video 
+journalctl --vacuum-time=14d
 
-# sudo apt-get remove -y update-notifier
-# mac like dock
-#sudo apt-get remove -y plank
-
-sudo snap remove ubuntu-mate-welcome
-
-# screenreader
-#sudo apt remove -y gnome-orca
-
-# keyring app (otherwise problems with chromium-browser)
-sudo apt remove -y gnome-keyring
-
-# remove unused locals
-# sudo apt-get install localepurge # FIXME
-
-# updated nvidia drivers
-# sudo add-apt-repository ppa:graphics-drivers/ppa
-
-# UPDATE ALL PACKAGES
-printf "\n------------\n"
-echo "UPDATE ALL PACKAGES\n"
-sudo apt-get update
-sudo apt-get -y dist-upgrade
-
-
-# SYSTEM CONFIG
-printf "\n------------\n"
-echo "SYSTEM CONFIG\n"
+# settings desktop
 export DISPLAY=:0.0
-
-## check/update with: 
-## gsettings list-recursively org.mate.background
-
-# disable lock screen 
 gsettings set org.mate.lockdown disable-lock-screen true
-
-# screensaver
-# gsettings set org.gnome.desktop.session idle-delay 0
-# gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.mate.screensaver lock-enabled false
-gsettings set org.mate.session idle-delay 0
 gsettings set org.mate.screensaver idle-activation-enabled false
+gsettings set org.mate.session idle-delay 0
 
-# set background
-sudo rm -Rf /usr/share/backgrounds/*
-sudo cp ./backgrounds/*.* /usr/share/backgrounds/
-# greeter
-sudo mkdir /usr/share/backgrounds/ubuntu-mate-common
-sudo cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/ubuntu-mate-common/Ubuntu-Mate-Cold-lightdm.jpg
-
-gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper_HD.png
-
+# desktop design
 gsettings set org.mate.background primary-color '#555555'
 gsettings set org.mate.background secondary-color '#444444'
 gsettings set org.mate.background picture-opacity 100
 gsettings set org.mate.background show-desktop-icons false
 gsettings set org.mate.background picture-options 'centered'
 
+rm -Rf /usr/share/backgrounds/*
+cp ./backgrounds/*.* /usr/share/backgrounds/
+# greeter
+mkdir /usr/share/backgrounds/ubuntu-mate-common
+cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/ubuntu-mate-common/Ubuntu-Mate-Cold-lightdm.jpg
+gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper_HD.png
 
-# disable display going to sleep
+# desktop layout 
+dconf write /org/mate/panel/toplevels/top/auto-hide true
+dconf write /org/mate/panel/toplevels/top/auto-hide-size 0
+dconf write /org/mate/panel/toplevels/bottom/auto-hide true
+dconf write /org/mate/panel/toplevels/bottom/auto-hide-size 0
+gsettings set org.mate.panel object-id-list ['briskmenu']
+gsettings set org.mate.panel toplevel-id-list ['top']
+
+# standby
 gsettings set org.mate.power-manager sleep-display-ac 0
 gsettings set org.mate.power-manager sleep-display-battery 0
 gsettings set org.mate.power-manager sleep-display-ups 0
-# display: disable dim
 gsettings set org.mate.power-manager kbd-brightness-dim-by-on-idle 100
 
 # notifications
-sudo mv /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service.disabled
+gsettings set org.mate.caja.preferences show-notifications false 
 gsettings set org.gnome.desktop.notifications show-banners false
+mv /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service.disabled
 
-#update-manager
-#sudo apt install gconf-editor
-#dconf dump /
-
-# autohide top panel (needs reboot)
-dconf write /org/mate/panel/toplevels/top/auto-hide true
-
-# autohide bottom panel
-dconf write /org/mate/panel/toplevels/bottom/auto-hide true
-
-dconf write /com/ubuntu/update-manager/no-show-notifications true
-
-# disable bluetooth
-sudo systemctl disable bluetooth # permanent?
-
+# disable services
+systemctl disable bluetooth
+systemctl disable apport.service
 
 # readonly filesystem
 printf "\n------------\n"
 echo "Readonly filesystem"
-sudo apt-get install -y overlayroot
 # prepare disabled config
 sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.enabled"
 sudo /bin/su -c "echo 'overlayroot=""' >> /etc/overlayroot.local.conf.disabled"
 sudo cp /boot/grub/grub.cfg /boot/grub/grub.cfg.bak
 
-
-# main user: user
-# cleanup home directory
-sudo rmdir /home/user/Videos
-sudo rmdir /home/user/Templates
-sudo rmdir /home/user/Music 
-cp ./sample_Images/* /home/user/Pictures
-sudo mkdir /home/user/.config/autostart
+# other
+mkdir /home/user/.config/autostart
+# chmod -R 0777 /opt
 
 # create key (for git etc.)
-echo "---"
-echo "Press return to generate ssh-key without passphrase" 
-# ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa -N '' 
 ssh-keygen -t ed25519 -C "mail@kiosksystem.jewe.net" -f /home/user/.ssh/id_rsa -N '' 
+ubuntu-report -f send no
+ssh-add ~/.ssh/id_rsa
+
+# gitlab
+ssh-add ~/.ssh/id_rsa
+sudo bash -c 'cat > /home/user/.ssh/config' << EOF
+# GitLab.com server
+Host gitlab.com
+RSAAuthentication yes
+IdentityFile ~/.ssh/id_rsa
+EOF
+
+# allow clone to /opt
+sudo chmod 0777 /opt
 
 # disable syslog entries from ureadahead
 sudo mkdir /etc/systemd/system/ureadahead.service.d/
@@ -138,8 +96,103 @@ ExecStart=
 ExecStart=/sbin/ureadahead -q
 EOF
 
+# create kiosk user
+printf "\n------------\n"
+echo "Create kiosk user"
 
-# TODO: disable telemetry
+# id -u kiosk &>/dev/null || 
+sudo adduser --gecos "" kiosk 
+
+# node
+curl -L https://bit.ly/n-install | bash
+
+# autologin
+# See LightDM "help" in: /usr/share/doc/lightdm/lightdm.conf.gz
+
+# sudo bash -c 'cat > /etc/lightdm/lightdm.conf' << EOF
+# [Seat:*]
+# autologin-guest=false
+# autologin-user=kiosk
+# autologin-user-timeout=0
+# EOF
+
+# temporarily allow sudo for installation 
+sudo adduser kiosk sudo
+
+# allow 'user' to access files from kiosk
+sudo adduser user kiosk
+
+
+# ssh keys from user
+sudo cp -r /home/user/.ssh/ /home/kiosk/.ssh
+sudo chown kiosk:kiosk -R /home/kiosk/.ssh/
+
+
+# allow kiosk and user shutting down the computer
+sudo -s -- <<EOF
+grep -q ^'user ALL=NOPASSWD:/sbin/reboot' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/reboot' >>/etc/sudoers
+grep -q ^'user ALL=NOPASSWD:/sbin/shutdown' /etc/sudoers || echo 'user ALL=NOPASSWD:/sbin/shutdown' >>/etc/sudoers
+grep -q ^'kiosk ALL=NOPASSWD:/sbin/reboot' /etc/sudoers || echo 'kiosk ALL=NOPASSWD:/sbin/reboot' >>/etc/sudoers
+grep -q ^'kiosk ALL=NOPASSWD:/sbin/shutdown' /etc/sudoers || echo 'kiosk ALL=NOPASSWD:/sbin/shutdown' >>/etc/sudoers
+EOF
+
+
+# copy shutdown-script
+sudo cp ./opt/shutdown.sh /opt/
+sudo chmod +x /opt/shutdown.sh
+
+
+
+printf "\n------------\n"
+echo "Install kiosk scripts\n"
+
+# prepare /opt/
+sudo mkdir /opt/kiosk
+sudo mkdir /opt/kiosk/services
+sudo mkdir /opt/kiosk/logs
+sudo chmod -R 0777 /opt/kiosk/ # FIXME
+
+
+# custom functions
+sudo /bin/su -c "echo 'overlayroot=""' >> /etc/overlayroot.local.conf.disabled"
+sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.enabled"
+
+sudo cp /opt/tmp/kiosksystem/etc/rc.local /etc/
+chmod +x /etc/rc.local
+
+# TODO prevent multiple executions
+sudo -s -- <<EOF
+cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc
+EOF
+
+# disable services in /etc/xdg/autostart/
+# FIXME: change Autostart-enabled to false instead of renaming
+
+# display all hidden apps
+sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
+
+
+
+
+# keyring app (otherwise problems with chromium-browser)
+# sudo apt-get remove -y gnome-keyring
+
+# remove unused locals
+# sudo apt-get install localepurge # FIXME
+
+## check/update with: 
+## gsettings list-recursively org.mate.background
+
+#update-manager
+#sudo apt-get install gconf-editor
+#dconf dump /
+
+# create key (for git etc.)
+echo "---"
+echo "Press return to generate ssh-key without passphrase" 
+# ssh-keygen -t rsa -b 4096 -f /home/user/.ssh/id_rsa -N '' 
+ssh-keygen -t ed25519 -C "mail@kiosksystem.jewe.net" -f /home/user/.ssh/id_rsa -N '' 
+
 
 
 # config git
@@ -270,7 +323,7 @@ sudo systemctl disable avahi-daemon
 sudo apt-get install -y net-tools curl
 
 # performance, cpu-power etc...
-sudo apt install -y linux-tools-generic
+sudo apt-get install -y linux-tools-generic
 sudo cp services/cpupower.service /etc/systemd/system/ 
 sudo cp services/energy_performance.service /etc/systemd/system/ 
 
