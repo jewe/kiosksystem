@@ -17,6 +17,10 @@ gsettings set org.mate.background picture-opacity 100
 gsettings set org.mate.background show-desktop-icons false
 gsettings set org.mate.background picture-options 'centered'
 gsettings set org.mate.background show-desktop-icons false
+# dconf write /org/mate/panel/toplevel/background/color "rgba(0,0,0,1)"
+gsettings set org.mate.interface gtk-theme 'Yaru-bark-dark'
+
+# /usr/share/themes/Yaru-bark-dark/gtk-3.0/
 
 # background
 sudo rm -Rf /usr/share/backgrounds/*
@@ -79,7 +83,7 @@ dconf load /org/mate/panel/objects/mount-applet/ << EOF
 [/]
 applet-iid='CommandAppletFactory::CommandApplet'
 toplevel-id='top'
-position=500
+position=550
 object-type='applet'
 panel-right-stick=false
 [prefs]
@@ -92,7 +96,7 @@ dconf load /org/mate/panel/objects/disk-applet/ << EOF
 [/]
 applet-iid='CommandAppletFactory::CommandApplet'
 toplevel-id='top'
-position=550
+position=600
 object-type='applet'
 panel-right-stick=false
 [prefs]
@@ -105,18 +109,12 @@ dconf load /org/mate/panel/objects/system-monitor-applet/ << EOF
 [/]
 applet-iid='MultiLoadAppletFactory::MultiLoadApplet'
 object-type='applet'
-position=600
+position=650
 toplevel-id='top'
 EOF
 
+gsettings set org.mate.panel object-id-list "['briskmenu', 'firefox', 'notification-area', 'indicatorappletcomplete', 'show-desktop', 'window-list', 'disk-applet', 'ip-applet', 'mount-applet', 'caja-applet', 'terminal-applet', 'chromium-applet', 'disk-applet', 'system-monitor-applet']"
 
-gsettings set org.mate.panel object-id-list "['briskmenu', 'firefox', 'notification-area', 'indicatorappletcomplete', 'show-desktop', 'window-list', 'disk-applet', 'ip-applet', 'mount-applet',
-'caja-applet', 'terminal-applet', 'chromium-applet', 'disk-applet', 'system-monitor-applet',
-]"
-
-
-# dconf load /org/mate/panel/general/ << EOF
-# [/]
-# object-id-list=['briskmenu', 'firefox', 'notification-area', 'indicatorappletcomplete', 'clock', 'show-desktop', 'window-list', 'workspace-switcher',  'ip-applet', 'mount-applet']
-# toplevel-id-list=['top', 'bottom']
-# EOF
+sudo bash -c 'cat > /home/user/.config/gtk-3.0/bookmarks' << EOF
+file:///var/www/html/
+EOF
