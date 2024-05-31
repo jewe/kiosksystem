@@ -106,7 +106,7 @@ sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
 
 sh setup_02_kiosk-user.sh
 
-sh setup_03_mate-desktop.sh
+bash setup_03_mate-desktop.sh
 
 # disable services in /etc/xdg/autostart/
 # FIXME: change Autostart-enabled to false instead of renaming

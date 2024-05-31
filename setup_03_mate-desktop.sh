@@ -75,7 +75,7 @@ panel-right-stick=false
 [prefs]
 interval=60
 EOF
-dconf write /org/mate/panel/objects/ip-applet/prefs/command "'echo \"$(\. /etc/bash.bashrc && myip4)\"'"
+dconf write /org/mate/panel/objects/ip-applet/prefs/command "'hostname -I'"
 
 # mount-applet
 dconf load /org/mate/panel/objects/mount-applet/ << EOF
