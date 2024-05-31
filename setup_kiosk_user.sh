@@ -15,7 +15,6 @@ sudo mkdir /home/kiosk/.config/autostart/
 #autostart removed: sudo rm /home/kiosk/.config/autostart/ubuntu-mate-welcome.desktop
 
 ## check/update with: 
-## gsettings list-recursively org.mate.background
 
 # disable lock screen 
 gsettings set org.mate.lockdown disable-lock-screen true

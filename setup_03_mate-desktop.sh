@@ -1,5 +1,8 @@
 echo "\nConfigure Desktop\n"
 
+# gsettings list-recursively org.mate.background
+# dconf dump /org/mate/panel/objects/object-0/
+
 # settings desktop
 export DISPLAY=:0.0
 gsettings set org.mate.lockdown disable-lock-screen true
@@ -30,39 +33,86 @@ gsettings set org.mate.panel toplevel-id-list "['top']" # disable bottom bar
 
 
 # configure mate panel with custom applets
+
+# caja
+dconf load /org/mate/panel/objects/caja-applet/ << EOF
+[/]
+launcher-location='/usr/share/applications/caja-browser.desktop'
+object-type='launcher'
+position=200
+toplevel-id='top'
+EOF
+
+# terminal
+dconf load /org/mate/panel/objects/terminal-applet/ << EOF
+[/]
+launcher-location='/usr/share/applications/mate-terminal.desktop'
+object-type='launcher'
+position=250
+toplevel-id='top'
+EOF
+
+# chromium
+dconf load /org/mate/panel/objects/chromium-applet/ << EOF
+[/]
+launcher-location='/var/lib/snapd/desktop/applications/chromium_chromium.desktop'
+object-type='launcher'
+position=300
+toplevel-id='top'
+EOF
+
+# ip-applet
 dconf load /org/mate/panel/objects/ip-applet/ << EOF
 [/]
 applet-iid='CommandAppletFactory::CommandApplet'
 toplevel-id='top'
-position=200
+position=400
 object-type='applet'
 panel-right-stick=false
-
 [prefs]
 interval=60
-command='echo $( myip4 )'
 EOF
+dconf write /org/mate/panel/objects/ip-applet/prefs/command "'echo \"$(myip4)\"'"
 
-dconf write /org/mate/panel/objects/ip-applet/prefs/command "'echo \$( myip4 )'"
-
-
+# mount-applet
 dconf load /org/mate/panel/objects/mount-applet/ << EOF
 [/]
 applet-iid='CommandAppletFactory::CommandApplet'
 toplevel-id='top'
-position=330
+position=500
 object-type='applet'
 panel-right-stick=false
-
 [prefs]
 interval=60
-command='echo $( print_mount_status )'
+EOF
+dconf write /org/mate/panel/objects/mount-applet/prefs/command "'echo \"$(print_mount_status)\"'"
+
+# disk-applet for avail space
+dconf load /org/mate/panel/objects/disk-applet/ << EOF
+[/]
+applet-iid='CommandAppletFactory::CommandApplet'
+toplevel-id='top'
+position=550
+object-type='applet'
+panel-right-stick=false
+[prefs]
+interval=60
+EOF
+dconf write /org/mate/panel/objects/disk-applet/prefs/command "'echo \"$(df -h / | awk 'NR==2 {print $4}')\"'"
+
+# system monitor
+dconf load /org/mate/panel/objects/system-monitor-applet/ << EOF
+[/]
+applet-iid='MultiLoadAppletFactory::MultiLoadApplet'
+object-type='applet'
+position=600
+toplevel-id='top'
 EOF
 
-dconf write /org/mate/panel/objects/ip-applet/prefs/command "'echo \$( print_mount_status )'"
 
-
-gsettings set org.mate.panel object-id-list "['briskmenu', 'firefox', 'notification-area', 'indicatorappletcomplete', 'show-desktop', 'window-list', 'ip-applet', 'mount-applet']"
+gsettings set org.mate.panel object-id-list "['briskmenu', 'firefox', 'notification-area', 'indicatorappletcomplete', 'show-desktop', 'window-list', 'disk-applet', 'ip-applet', 'mount-applet',
+'caja-applet', 'terminal-applet', 'chromium-applet', 'disk-applet', 'system-monitor-applet',
+]"
 
 
 # dconf load /org/mate/panel/general/ << EOF
