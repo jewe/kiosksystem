@@ -35,6 +35,7 @@ gsettings set org.mate.panel toplevel-id-list "['top']" # disable bottom bar
 
 
 # configure mate panel with custom applets
+source /etc/bash.bashrc
 
 # caja
 dconf load /org/mate/panel/objects/caja-applet/ << EOF
@@ -74,7 +75,7 @@ panel-right-stick=false
 [prefs]
 interval=60
 EOF
-dconf write /org/mate/panel/objects/ip-applet/prefs/command "'echo \"$(myip4)\"'"
+dconf write /org/mate/panel/objects/ip-applet/prefs/command "'echo \"$(\. /etc/bash.bashrc && myip4)\"'"
 
 # mount-applet
 dconf load /org/mate/panel/objects/mount-applet/ << EOF
