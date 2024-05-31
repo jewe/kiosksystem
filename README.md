@@ -82,3 +82,7 @@ xrandr --output HDMI -pos 100x0
 # Secrets 
 jwm-2570:kiosksystem jensweber$ ssh-add ~/.ssh/id_rsa
 ssh-add -L
+
+
+# Desktop config
+dconf-editor

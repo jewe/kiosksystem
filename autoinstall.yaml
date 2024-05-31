@@ -50,6 +50,8 @@ autoinstall:
     install-server: true
   late-commands:
     - curtin in-target -- apt-get remove -y ubuntu-mate-wallpapers-common ubuntu-mate-wallpapers-noble firefox libreoffice-common libreoffice-core
-    # - curtin in-target -- chmod 0777 /opt && mkdir -p /opt/tmp && cd /opt/tmp/ && git clone https://github.com/jewe/kiosksystem.git
+    - curtin in-target -- apt-get update
+    - curtin in-target -- apt-get autoremove -y --purge 
+    - curtin in-target -- apt-get -y clean
   autoinstall:
     shutdown: reboot
