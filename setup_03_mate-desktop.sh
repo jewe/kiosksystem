@@ -16,10 +16,8 @@ gsettings set org.mate.background secondary-color '#444444'
 gsettings set org.mate.background picture-opacity 100
 gsettings set org.mate.background show-desktop-icons false
 gsettings set org.mate.background picture-options 'centered'
-gsettings set org.mate.background show-desktop-icons false
 # dconf write /org/mate/panel/toplevel/background/color "rgba(0,0,0,1)"
 gsettings set org.mate.interface gtk-theme 'Yaru-bark-dark'
-
 # /usr/share/themes/Yaru-bark-dark/gtk-3.0/
 
 # background
@@ -105,16 +103,21 @@ EOF
 dconf write /org/mate/panel/objects/disk-applet/prefs/command "'echo \"$(df -h / | awk 'NR==2 {print $4}')\"'"
 
 # system monitor
-dconf load /org/mate/panel/objects/system-monitor-applet/ << EOF
-[/]
-applet-iid='MultiLoadAppletFactory::MultiLoadApplet'
-object-type='applet'
-position=650
-toplevel-id='top'
-EOF
+# dconf load /org/mate/panel/objects/system-monitor-applet/ << EOF
+# [/]
+# applet-iid='MultiLoadAppletFactory::MultiLoadApplet'
+# object-type='applet'
+# position=650
+# toplevel-id='top'
+# EOF
 
-gsettings set org.mate.panel object-id-list "['briskmenu', 'firefox', 'notification-area', 'indicatorappletcomplete', 'show-desktop', 'window-list', 'disk-applet', 'ip-applet', 'mount-applet', 'caja-applet', 'terminal-applet', 'chromium-applet', 'disk-applet', 'system-monitor-applet']"
+gsettings set org.mate.panel object-id-list "['briskmenu', 'firefox', 'notification-area', 'indicatorappletcomplete', 'show-desktop', 'window-list', 'disk-applet', 'ip-applet', 'mount-applet', 'caja-applet', 'terminal-applet', 'chromium-applet']"
 
+# caja bookmarks
+mkdir /home/user/.config/gtk-3.0
 sudo bash -c 'cat > /home/user/.config/gtk-3.0/bookmarks' << EOF
 file:///var/www/html/
+file:///opt/
 EOF
+
+sudo service lightdm restart

@@ -15,6 +15,8 @@ export DISPLAY=:0.0
 gsettings set org.mate.power-manager sleep-display-ac 0
 gsettings set org.mate.power-manager sleep-display-battery 0
 gsettings set org.mate.power-manager sleep-display-ups 0
+gsettings set org.mate.power-manager sleep-computer-ac 0
+gsettings set org.mate.power-manager sleep-computer-battery 0
 gsettings set org.mate.power-manager kbd-brightness-dim-by-on-idle 100
 
 # notifications
@@ -37,6 +39,8 @@ sudo cp /boot/grub/grub.cfg /boot/grub/grub.cfg.bak
 
 # other
 mkdir /home/user/.config/autostart
+sed -i '/^HISTSIZE=/c\HISTSIZE=10000' ~/.bashrc
+sed -i '/^HISTFILESIZE=/c\HISTFILESIZE=20000' ~/.bashrc
 
 # create key (for git etc.)
 ssh-keygen -t ed25519 -C "mail@kiosksystem.jewe.net" -f /home/user/.ssh/id_rsa -N '' 
