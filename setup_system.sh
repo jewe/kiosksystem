@@ -1,22 +1,20 @@
 # Ubuntu MATE 24.04.1
 # THIS FILE IS STEP 1
 
-echo "----"
-echo whoami
-
 ## check/update with
-## apt-get list --installed
+## apt list --installed
 # remove packages
-apt-get remove -y ubuntu-mate-wallpapers-common ubuntu-mate-wallpapers-noble firefox libreoffice-common libreoffice-core
-apt-get update
-apt-get autoremove -y --purge && apt-get -y clean
+sudo apt-get remove -y ubuntu-mate-wallpapers-common ubuntu-mate-wallpapers-noble firefox libreoffice-common libreoffice-core
+sudo apt-get update
+sudo apt-get autoremove -y --purge 
+sudo apt-get -y clean
 
 # cleanup user dir
 echo "cleanup user dir"
 rmdir /home/user/Music 
 rmdir /home/user/Templates 
 rmdir /home/user/Videos 
-journalctl --vacuum-time=14d
+sudo journalctl --vacuum-time=14d
 
 # settings desktop
 export DISPLAY=:0.0
@@ -32,11 +30,11 @@ gsettings set org.mate.background picture-opacity 100
 gsettings set org.mate.background show-desktop-icons false
 gsettings set org.mate.background picture-options 'centered'
 
-rm -Rf /usr/share/backgrounds/*
-cp ./backgrounds/*.* /usr/share/backgrounds/
+sudo rm -Rf /usr/share/backgrounds/*
+sudo cp ./backgrounds/*.* /usr/share/backgrounds/
 # greeter
-mkdir /usr/share/backgrounds/ubuntu-mate-common
-cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/ubuntu-mate-common/Ubuntu-Mate-Cold-lightdm.jpg
+sudo mkdir /usr/share/backgrounds/ubuntu-mate-common
+sudo cp ./backgrounds/WW_Wallpaper_HD.png /usr/share/backgrounds/ubuntu-mate-common/Ubuntu-Mate-Cold-lightdm.jpg
 gsettings set org.mate.background picture-filename /usr/share/backgrounds/WW_Wallpaper_HD.png
 
 # desktop layout 
@@ -56,11 +54,11 @@ gsettings set org.mate.power-manager kbd-brightness-dim-by-on-idle 100
 # notifications
 gsettings set org.mate.caja.preferences show-notifications false 
 gsettings set org.gnome.desktop.notifications show-banners false
-mv /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service.disabled
+sudo mv /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service /usr/share/dbus-1/services/org.freedesktop.mate.Notifications.service.disabled
 
 # disable services
-systemctl disable bluetooth
-systemctl disable apport.service
+sudo systemctl disable bluetooth
+sudo systemctl disable apport.service
 
 # readonly filesystem
 printf "\n------------\n"
@@ -95,6 +93,15 @@ EOF
 # allow clone to /opt
 sudo chmod 0777 /opt
 
+# autologin
+sudo bash -c 'cat > /etc/lightdm/lightdm.conf.d/10-user-autologin.conf' << EOF
+[Seat:*]
+autologin-guest=false
+autologin-user=user
+autologin-user-timeout=0
+EOF
+
+
 # disable syslog entries from ureadahead
 sudo mkdir /etc/systemd/system/ureadahead.service.d/
 sudo bash -c 'cat > /etc/systemd/system/ureadahead.service.d/quiet.conf' << EOF
@@ -105,7 +112,7 @@ EOF
 
 # create kiosk user
 printf "\n------------\n"
-echo "Create kiosk user"
+echo "Creating kiosk user"
 
 # id -u kiosk &>/dev/null || 
 sudo adduser --gecos "" kiosk 
@@ -156,11 +163,6 @@ sudo mkdir /opt/kiosk
 sudo mkdir /opt/kiosk/services
 sudo mkdir /opt/kiosk/logs
 sudo chmod -R 0777 /opt/kiosk/ # FIXME
-
-
-# custom functions
-sudo /bin/su -c "echo 'overlayroot=""' >> /etc/overlayroot.local.conf.disabled"
-sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.enabled"
 
 sudo cp /opt/tmp/kiosksystem/etc/rc.local /etc/
 chmod +x /etc/rc.local
@@ -227,34 +229,19 @@ grep -q ^'kiosk ALL=NOPASSWD:/sbin/reboot' /etc/sudoers || echo 'kiosk ALL=NOPAS
 grep -q ^'kiosk ALL=NOPASSWD:/sbin/shutdown' /etc/sudoers || echo 'kiosk ALL=NOPASSWD:/sbin/shutdown' >>/etc/sudoers
 EOF
 
-# copy shutdown-script
-sudo cp ./opt/shutdown.sh /opt/
-sudo chmod +x /opt/shutdown.sh
-
-# custom functions
-sudo /bin/su -c "echo 'overlayroot=""' >> /etc/overlayroot.local.conf.disabled"
-sudo /bin/su -c "echo 'overlayroot="tmpfs:swap=1,recurse=0"' >> /etc/overlayroot.local.conf.enabled"
-
-sudo cp /opt/tmp/kiosksystem/etc/rc.local /etc/
-chmod +x /etc/rc.local
-
-# TODO prevent multiple executions
-sudo -s -- <<EOF
-cat /opt/tmp/kiosksystem/opt/global_functions >> /etc/bash.bashrc
-EOF
-
-# disable services in /etc/xdg/autostart/
-# FIXME: change Autostart-enabled to false instead of renaming
-
 # display all hidden apps
 sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
 
+
+# disable services in /etc/xdg/autostart/
+# FIXME: change Autostart-enabled to false instead of renaming
 cd /etc/xdg/autostart/
 # bluetooth
 #sudo sed -i 's/Autostart=false/Autostart=true/g' blueman.desktop
-sudo mv blueman.desktop blueman.desktop.disabled
+# sudo mv blueman.desktop blueman.desktop.disabled
+# sudo systemctl disable blueman
 # power manager
-sudo mv mate-power-manager.desktop mate-power-manager.desktop.disabled
+# sudo mv mate-power-manager.desktop mate-power-manager.desktop.disabled
 # screensaver
 sudo mv mate-screensaver.desktop mate-screensaver.desktop.disabled
 # screenreader
@@ -267,7 +254,6 @@ sudo systemctl disable avahi-daemon
 # performance, cpu-power etc...
 sudo cp services/cpupower.service /etc/systemd/system/ 
 sudo cp services/energy_performance.service /etc/systemd/system/ 
-
 
 # configure mate panel with custom applets
 dconf load /org/mate/panel/objects/ip-applet/ << EOF
@@ -306,13 +292,6 @@ dconf load /org/mate/panel/general/ << EOF
 object-id-list=['briskmenu', 'firefox', 'notification-area', 'indicatorappletcomplete', 'clock', 'show-desktop', 'window-list', 'workspace-switcher',  'ip-applet', 'mount-applet']
 toplevel-id-list=['top', 'bottom']
 EOF
-
-# cleanup
-printf "\n------------\n"
-echo "CLEANUP"
-sudo apt-get clean
-sudo apt-get -y autoremove
-
 
 # reboot
 echo "Press return to reboot now and login as 'kiosk'"

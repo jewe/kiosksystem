@@ -12,7 +12,7 @@ ssh user@192.168.0...
 
 ### Setup Kiosksystem
 ```
-sudo chmod 0777 /opt && mkdir -p /opt/tmp && cd /opt/tmp/ && git clone https://github.com/jewe/kiosksystem.git && sh setup_system.sh
+sudo chmod 0777 /opt && mkdir -p /opt/tmp && cd /opt/tmp/ && git clone https://github.com/jewe/kiosksystem.git && cd kiosksystem && sh setup_system.sh
 ```
 
 # remote host identification has changed
