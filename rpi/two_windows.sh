@@ -53,7 +53,8 @@ fi
 
 # Extract the Window ID of the new window
 WID=`cut -d' ' -f 1 "$WF3"`
-TIME=$(bc <<< "scale=2; $i / 4")
+# TIME=$(bc <<< "scale=2; $i / 4")
+TIME=$(echo "scale=2; $i / 4" | bc)
 echo "Found new window ID $WID after $TIME seconds"
 rm "$WF3"
 
