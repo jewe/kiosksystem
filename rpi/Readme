@@ -1,0 +1,35 @@
+
+sudo nano /etc/systemd/system/videokiosk.service
+
+sudo systemctl enable videokiosk.service 
+sudo systemctl start videokiosk.service
+sudo journalctl -xfu videokiosk.service
+sudo systemctl status videokiosk.service
+
+https://www.raspberrypi.org/documentation/configuration/screensaver.md
+sudo nano /boot/cmdline.txt
+
+# WLAN
+wpa_cli 
+
+sudo iwconfig wlan0 txpower off
+sudo ifconfig wlan0 down
+sudo ifconfig wlan0 up
+
+# set static ip for eth0
+sudo nano /etc/dhcpcd.conf
+
+
+
+# Shrink ISO image for smaler cards
+pishrink
+https://github.com/Drewsif/PiShrink 
+
+
+# prevent from sleep
+sudo raspi-config
+> advanced
+
+# overlay filesystem
+sudo raspi-config
+> advanced

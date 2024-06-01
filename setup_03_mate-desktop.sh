@@ -35,7 +35,7 @@ gsettings set org.mate.panel toplevel-id-list "['top']" # disable bottom bar
 
 
 # configure mate panel with custom applets
-source /etc/bash.bashrc
+# source /etc/bash.bashrc
 
 # caja
 dconf load /org/mate/panel/objects/caja-applet/ << EOF

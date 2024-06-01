@@ -1,0 +1,12 @@
+[Unit]
+Description=Chromium
+
+[Service]
+User=pi
+Environment="DISPLAY=:0"
+ExecStart=start_chromium.sh >> /opt/logs/launcher_err.log 2>&1
+WorkingDirectory=
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
