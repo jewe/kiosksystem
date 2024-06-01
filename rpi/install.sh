@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo apt install unclutter
+sudo apt install wmctrl # multiple screens
 
 # install videokiosk.service
 cd /opt/ksw_bm_2020_scripts
