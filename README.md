@@ -5,6 +5,9 @@ Download Ubuntu MATE
 set autoconfig url:
 https://raw.githubusercontent.com/jewe/kiosksystem/master/autoinstall.yaml
 
+
+ssh-copy-id user@192.168.10.56
+
 ### Login via ssh
 ```
 ssh user@192.168.0...

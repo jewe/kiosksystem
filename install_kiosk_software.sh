@@ -14,6 +14,9 @@ sudo apt install -y scrot
 # sudo apt install -y unclutter
 sudo apt install -y unclutter-xfixes
 
+# System infos  
+sudo apt install inxi 
+
 # screen config
 # sudo apt install -y compizconfig-settings-manager
 

@@ -51,6 +51,7 @@ kioskstatus(){
 	printf "\n\n\n===  KIOSKSYSTEM GIT  ===\n\n"
 	cd /opt/tmp/kiosksystem && git status
 
+	inxi
 
 	printf "\n\n"
 }

@@ -1,3 +1,5 @@
+sudo nano /etc/xdg/autostart/myapp.desktop
+
 
 sudo nano /etc/systemd/system/videokiosk.service
 
@@ -33,3 +35,18 @@ sudo raspi-config
 # overlay filesystem
 sudo raspi-config
 > advanced
+
+
+# Disable screen blanking
+To disable screen blanking, set consoleblank=0.
+You can also use the raspi-config tool to disable screen blanking.
+
+
+# Lightdm
+cat /etc/lightdm/lightdm.conf
+
+
+user@rpi-2024:~ $ xrandr
+Screen 0: minimum 16 x 16, current 3000 x 1080, maximum 32767 x 32767
+XWAYLAND0 connected 1080x1080+1920+0 (normal left inverted right x axis y axis) 480mm x 270mm
+   1080x1080     59.91*+

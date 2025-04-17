@@ -333,3 +333,65 @@ Chromium HD@60
 1386@60fps
 
 glmark2 1056
+
+
+# NSD 2025
+Motionmark: 898
+Chromium @4K fullscreen
+
+Chrome 
+
+glmark2 Score: 27
+
+
+
+
+# ZOTAC ZBOX ERP74070C
+Machine:
+  Type: Desktop System: ZOTAC product: ZBOX-ERP74070C/ERP74070W/ERP54060C/ERP54060W v: XX
+    serial: <superuser required>
+  Mobo: N/A model: N/A serial: <superuser required> UEFI: American Megatrends LLC. v: 5.27
+    date: 12/01/2023
+CPU:
+  Info: 16-core (8-mt/8-st) model: 13th Gen Intel Core i7-13700 bits: 64 type: MST AMCP cache:
+    L2: 24 MiB
+  Speed (MHz): avg: 992 min/max: 800/5100:5200:4100 cores: 1: 801 2: 800 3: 800 4: 800 5: 1035
+    6: 800 7: 1372 8: 800 9: 1400 10: 800 11: 1753 12: 800 13: 800 14: 800 15: 1315 16: 800 17: 800
+    18: 800 19: 800 20: 800 21: 1069 22: 1400 23: 1670 24: 800
+Graphics:
+  Device-1: Intel Raptor Lake-S GT1 [UHD Graphics 770] driver: i915 v: kernel
+  Device-2: NVIDIA AD104 [GeForce RTX 4070] driver: nvidia v: 535.183.01
+  Display: x11 server: X.org v: 1.21.1.11 driver: X: loaded: modesetting,nouveau
+    unloaded: fbdev,vesa failed: nvidia dri: iris gpu: nvidia,nvidia-nvswitch tty: 163x26
+    resolution: 1: 3840x2160
+  API: EGL v: 1.5 drivers: iris,nvidia,swrast platforms: gbm,surfaceless,device
+  API: OpenGL v: 4.6.0 compat-v: 4.5 vendor: mesa v: 24.2.8-1ubuntu1~24.04.1
+    note: console (EGL sourced) renderer: Mesa Intel Graphics (RPL-S), NVIDIA GeForce RTX
+    4070/PCIe/SSE2, llvmpipe (LLVM 19.1.1 256 bits)
+
+## NVIDIA
+Chromium
+Motionmark: 2527  4K@60fps
+GL_VENDOR:      NVIDIA Corporation
+    GL_RENDERER:    NVIDIA GeForce RTX 4070/PCIe/SSE2
+    GL_VERSION:     4.6.0 NVIDIA 535.183.01
+    Surface Config: buf=32 r=8 g=8 b=8 a=8 depth=24 stencil=0 samples=0
+    Surface Size:   3840x2160 fullscreen
+glmark2 Score: 4453 
+
+## Intel
+Chromium
+Motionmark: 1193
+    OpenGL Information
+    GL_VENDOR:      Intel
+    GL_RENDERER:    Mesa Intel(R) Graphics (RPL-S)
+    GL_VERSION:     4.6 (Compatibility Profile) Mesa 24.2.8-1ubuntu1~24.04.1
+    Surface Config: buf=32 r=8 g=8 b=8 a=8 depth=24 stencil=0 samples=0
+    Surface Size:   3840x2160 fullscreen
+
+glmark2 Score: 215 
+
+
+# NSD Lenovo 2025
+Motionmark:   4K@30fps Chrome
+
