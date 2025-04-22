@@ -393,5 +393,11 @@ glmark2 Score: 215
 
 
 # NSD Lenovo 2025
-Motionmark:   4K@30fps Chrome
 
+## NVIDIA T1000
+Motionmark:   3460x1080@30fps Chromium
+
+## NVIDIA RTX 3060
+Motionmark: 3882  3460x1080@60fps Chromium
+
+glmark 2023

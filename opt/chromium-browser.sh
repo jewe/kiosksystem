@@ -28,8 +28,9 @@ gsettings set org.gnome.desktop.notifications show-banners false
 
 # If Chromium crashes (usually due to rebooting), 
 # clear the crash flag so we don't have the annoying warning bar
-sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/kiosk/.config/chromium/Default/Preferences
-sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/kiosk/.config/chromium/Default/Preferences
+# sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/kiosk/.config/chromium/Default/Preferences
+# sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/kiosk/.config/chromium/Default/Preferences
+rm home/user/snap/chromium/common/chromium/Single*
 
 sleep 4 # otherwise ignores -kiosk
 

@@ -7,6 +7,11 @@ rmdir /home/user/Music
 rmdir /home/user/Templates 
 rmdir /home/user/Videos 
 
+# remove software
+sudo apt remove --purge libreoffice* -y
+sudo apt remove --purge mate-utils mate-calc -y
+sudo apt autoremove -y
+
 sudo journalctl --vacuum-time=14d
 ubuntu-report -f send no
 export DISPLAY=:0.0

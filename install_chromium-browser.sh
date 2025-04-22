@@ -60,3 +60,5 @@ echo "sudo nano /etc/nginx/sites-enabled/default"
 # service nginx status
 # cat /lib/systemd/system/nginx.service
 # sudo nano /etc/nginx/nginx.conf
+
+# ls ~/snap/chromium/common/chromium/

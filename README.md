@@ -6,6 +6,8 @@ set autoconfig url:
 https://raw.githubusercontent.com/jewe/kiosksystem/master/autoinstall.yaml
 
 
+sudo apt install -y openssh-server git 
+
 ssh-copy-id user@192.168.10.56
 
 ### Login via ssh
