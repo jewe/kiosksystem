@@ -134,6 +134,9 @@ sudo mv update-notifier.desktop update-notifier.desktop.disabled
 sudo cp services/cpupower.service /etc/systemd/system/ 
 sudo cp services/energy_performance.service /etc/systemd/system/ 
 
+# screenshot from commandline
+sudo apt install -y scrot
+
 # reboot
 echo "Press return to reboot now and login as 'kiosk'"
 read X

@@ -10,6 +10,8 @@ sudo apt install -y openssh-server git
 
 ssh-copy-id user@192.168.10.56
 
+ssh-keygen -R 192.168.
+
 ### Login via ssh
 ```
 ssh user@192.168.0...
@@ -91,3 +93,12 @@ ssh-add -L
 
 # Desktop config
 dconf-editor
+
+
+# NVIDIA / Graphiccards
+
+lspci | grep -i vga
+lspci -vnn | grep -A 12 -i vga
+sudo lshw -c display
+glxinfo | grep "OpenGL renderer"
+nvidia-smi

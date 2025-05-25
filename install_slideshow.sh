@@ -4,7 +4,7 @@ echo "INSTALL GTHUMB SLIDESHOW"
 export DISPLAY=:0.0
 
 # slideshow / image viewer
-sudo apt-get install -y gthumb 
+sudo apt-get install -y gthumb pqiv
 # config fade in Preferences - Viewer
 #    - Slideshow Transition Effect - Fade in
 #    - Restart wenn finished

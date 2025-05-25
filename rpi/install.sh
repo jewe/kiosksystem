@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo apt install unclutter
+# sudo apt install unclutter
+sudo apt install unclutter-xfixes
 sudo apt install wmctrl # multiple screens
 
 # install videokiosk.service
