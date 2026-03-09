@@ -29,7 +29,18 @@
             object-fit: contain;
         }
 
-        /* Custom control bar */
+        /* Remove Ubuntu accent styling */
+        * {
+            accent-color: #ccc;
+        }
+
+        button,
+        input[type="range"] {
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        /* ===== Controls ===== */
         #controls {
             position: absolute;
             bottom: 5%;
@@ -44,26 +55,65 @@
             border-radius: 5px;
         }
 
+        /* Neutralize GTK button styling */
         #controls button {
-            background: #222;
-            color: white;
-            border: 1px solid #444;
-            padding: 5px 10px 2px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+            padding: 6px;
             cursor: pointer;
-            font-size: 16px;
-            border-radius: 10%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        #controls button:hover {
-            background: #444;
+        #controls button:focus,
+        #controls button:active {
+            background: transparent !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* SVG icons */
+        .icon {
+            width: 28px;
+            height: 28px;
+            fill: white;
+            pointer-events: none;
         }
 
         #progress {
             flex: 1;
         }
 
+        /* ===== Custom Range Styling ===== */
         input[type="range"] {
             width: 99%;
+            height: 6px;
+            background: #444;
+            border-radius: 3px;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            height: 6px;
+            background: #444;
+            border-radius: 3px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #222;
+            margin-top: -5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -76,8 +126,29 @@
     </video>
 
     <div id="controls">
-        <button id="rewind">⏮</button>
-        <button id="playPause">⏸</button>
+
+        <!-- Restart -->
+        <button id="restart" aria-label="Restart">
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M11 18V6l-8.5 6L11 18zm1-6 8.5 6V6L12 12z"/>
+            </svg>
+        </button>
+
+        <!-- Rewind 10s -->
+        <!-- <button id="rewind" aria-label="Rewind 10 seconds">
+            <svg class="icon" viewBox="0 0 24 24">
+                
+            </svg>
+        </button> -->
+
+        <!-- Play / Pause -->
+        <button id="playPause" aria-label="Play / Pause">
+            <svg class="icon" id="playIcon" viewBox="0 0 24 24">
+                <!-- default pause -->
+                <path id="playPath" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+
         <div id="progress">
             <input type="range" id="seek" min="0" max="100" value="0">
         </div>
@@ -85,25 +156,37 @@
 </div>
 
 <script>
-    const video = document.getElementById('video');
-    const playPauseBtn = document.getElementById('playPause');
-    const rewindBtn = document.getElementById('rewind');
-    const seek = document.getElementById('seek');
+    const video = document.getElementById("video");
+    const restartBtn = document.getElementById("restart");
+    const rewindBtn = document.getElementById("rewind");
+    const playPauseBtn = document.getElementById("playPause");
+    const playPath = document.getElementById("playPath");
+    const seek = document.getElementById("seek");
 
     video.volume = 1.0;
 
     // Ensure autoplay
-    window.addEventListener('load', () => {
+    window.addEventListener("load", () => {
         const promise = video.play();
         if (promise !== undefined) {
             promise.catch(() => {
-                document.addEventListener('click', () => video.play(), { once: true });
+                document.addEventListener("click", () => video.play(), { once: true });
             });
         }
     });
 
+    // Restart
+    restartBtn.addEventListener("click", () => {
+        video.currentTime = 0;
+    });
+
+    // Rewind 10s
+    rewindBtn.addEventListener("click", () => {
+        video.currentTime = Math.max(0, video.currentTime - 10);
+    });
+
     // Play / Pause
-    playPauseBtn.addEventListener('click', () => {
+    playPauseBtn.addEventListener("click", () => {
         if (video.paused) {
             video.play();
         } else {
@@ -111,29 +194,30 @@
         }
     });
 
-    video.addEventListener('play', () => {
-        playPauseBtn.textContent = "⏸";
+    video.addEventListener("play", () => {
+        // pause icon
+        playPath.setAttribute("d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z");
     });
 
-    video.addEventListener('pause', () => {
-        playPauseBtn.textContent = "▶";
-    });
-
-    // Rewind 
-    rewindBtn.addEventListener('click', () => {
-        video.currentTime = 0;
+    video.addEventListener("pause", () => {
+        // play icon
+        playPath.setAttribute("d", "M8 5v14l11-7z");
     });
 
     // Update seek bar
-    video.addEventListener('timeupdate', () => {
-        const value = (video.currentTime / video.duration) * 100;
-        seek.value = value || 0;
+    video.addEventListener("timeupdate", () => {
+        if (video.duration) {
+            const value = (video.currentTime / video.duration) * 100;
+            seek.value = value;
+        }
     });
 
     // Seek manually
-    seek.addEventListener('input', () => {
-        const time = (seek.value / 100) * video.duration;
-        video.currentTime = time;
+    seek.addEventListener("input", () => {
+        if (video.duration) {
+            const time = (seek.value / 100) * video.duration;
+            video.currentTime = time;
+        }
     });
 </script>
 
