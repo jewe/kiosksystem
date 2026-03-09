@@ -102,3 +102,16 @@ lspci -vnn | grep -A 12 -i vga
 sudo lshw -c display
 glxinfo | grep "OpenGL renderer"
 nvidia-smi
+
+
+# Cron Display on/off
+
+crontab -e
+
+0 0 * * * /opt/turn-off-display.sh
+0 6 * * * /opt/turn-on-display.sh
+
+
+# Remote Access 
+https://login.tailscale.com
+curl -fsSL https://tailscale.com/install.sh | sh

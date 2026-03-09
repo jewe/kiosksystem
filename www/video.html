@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiosk Video</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: contain;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+
+<video id="kioskVideo"
+       controls
+       autoplay
+       loop
+       playsinline>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<script>
+    const video = document.getElementById('kioskVideo');
+
+    // Ensure autoplay with sound (may require user interaction depending on browser policy)
+    video.volume = 1.0;
+
+    // Try to force play on load
+    window.addEventListener('load', () => {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // If autoplay with sound is blocked, try again after user interaction
+                document.addEventListener('click', () => {
+                    video.play();
+                }, { once: true });
+            });
+        }
+    });
+
+    // Optional keyboard controls
+    document.addEventListener('keydown', (e) => {
+        switch (e.key) {
+            case ' ':
+                e.preventDefault();
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+                break;
+            case 'ArrowLeft':
+                video.currentTime = Math.max(0, video.currentTime - 10);
+                break;
+            case 'ArrowRight':
+                video.currentTime = Math.min(video.duration, video.currentTime + 10);
+                break;
+        }
+    });
+</script>
+
+</body>
+</html>
