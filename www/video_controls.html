@@ -158,7 +158,6 @@
 <script>
     const video = document.getElementById("video");
     const restartBtn = document.getElementById("restart");
-    const rewindBtn = document.getElementById("rewind");
     const playPauseBtn = document.getElementById("playPause");
     const playPath = document.getElementById("playPath");
     const seek = document.getElementById("seek");
@@ -178,11 +177,6 @@
     // Restart
     restartBtn.addEventListener("click", () => {
         video.currentTime = 0;
-    });
-
-    // Rewind 10s
-    rewindBtn.addEventListener("click", () => {
-        video.currentTime = Math.max(0, video.currentTime - 10);
     });
 
     // Play / Pause
