@@ -8,7 +8,7 @@
         html, body {
             margin: 0;
             padding: 0;
-            background: black;
+            background: #888;
             height: 100%;
             width: 100%;
             overflow: hidden;
@@ -21,37 +21,37 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: black;
         }
 
         video {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            background: black;
         }
 
         /* Custom control bar */
         #controls {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            bottom: 5%;
+            left: 15%;
+            width: 70%;
+            background: rgba(0, 0, 0, 0.5);
             padding: 10px;
             box-sizing: border-box;
             display: flex;
             align-items: center;
             gap: 15px;
+            border-radius: 5px;
         }
 
         #controls button {
             background: #222;
             color: white;
             border: 1px solid #444;
-            padding: 8px 14px;
+            padding: 5px 10px 2px;
             cursor: pointer;
             font-size: 16px;
+            border-radius: 10%;
         }
 
         #controls button:hover {
@@ -63,7 +63,7 @@
         }
 
         input[type="range"] {
-            width: 100%;
+            width: 99%;
         }
     </style>
 </head>
@@ -76,7 +76,7 @@
     </video>
 
     <div id="controls">
-        <button id="rewind">⏪ 10s</button>
+        <button id="rewind">⏮</button>
         <button id="playPause">⏸</button>
         <div id="progress">
             <input type="range" id="seek" min="0" max="100" value="0">
@@ -119,9 +119,9 @@
         playPauseBtn.textContent = "▶";
     });
 
-    // Rewind 10 seconds
+    // Rewind 
     rewindBtn.addEventListener('click', () => {
-        video.currentTime = Math.max(0, video.currentTime - 10);
+        video.currentTime = 0;
     });
 
     // Update seek bar
